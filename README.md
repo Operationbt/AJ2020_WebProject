@@ -1,6 +1,15 @@
 ># AJ2020_WebProject
 ># 후원사이트 프로젝트
 
+>## 빌드 도움말
+> 이클립스 프로젝트를 만들고 빌드 path에서 라이브러리로 mysql-connector-java-8.0.20.jar를 추가해줘야함
+
+> 원활한 실행 테스트를 하려면 /DB의 최신 테이블을 자신의 mySQL에 import시켜야 할 수도 있음
+
+> /jdbc/ConnectionProvider.java의 USER, PASS값을 자신의 mySQL에 맞춰 설정해야함. DB_SCHEMAS는 teamcoffeedb
+
+> 
+
 >## doc
 >doc폴더는 프로젝트 진행하면서 나온 문서들 저장
 
