@@ -9,13 +9,13 @@ import java.util.List;
 import dto.UserDataBean;
 /*
 >>### userdata_tb
->>user_id char(20) not null : 유저 아이디를 저장
+>>user_id char(20) not null : �쑀�� �븘�씠�뵒瑜� ���옣
 
->>user_password char(20) not null : 유저 비밀번호를 저장
+>>user_password char(20) not null : �쑀�� 鍮꾨�踰덊샇瑜� ���옣
 
->>user_money int null : 기부에 필요한 재화를 저장
+>>user_money int null : 湲곕��뿉 �븘�슂�븳 �옱�솕瑜� ���옣
 
->>user_isAdmin tinyint null : 관리자 권한인지 판별. 0이면 일반 사용자, 1이면 관리자
+>>user_isAdmin tinyint null : 愿�由ъ옄 沅뚰븳�씤吏� �뙋蹂�. 0�씠硫� �씪諛� �궗�슜�옄, 1�씠硫� 愿�由ъ옄
  */
 public class UserDataTableDAO {
 	private UserDataTableDAO() { 
@@ -48,7 +48,7 @@ public class UserDataTableDAO {
 	public int delete(Connection conn, String id) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "delete from userdata_tb where id=?";
+			String sql = "delete from userdata_tb where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			return pstmt.executeUpdate();
@@ -64,7 +64,7 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set password=? money=? isAdmin=? where id=?";
+			String sql = "update userdata_tb set user_password=? user_money=? user_isAdmin=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pe.getPassword());
 			pstmt.setInt(2, pe.getMoney());
@@ -85,7 +85,7 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set password=? where id=?";
+			String sql = "update userdata_tb set user_password=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pe.getPassword());
 			pstmt.setString(2, pe.getId());
@@ -104,7 +104,7 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set money=? where id=?";
+			String sql = "update userdata_tb set user_money=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pe.getMoney());
 			pstmt.setString(2, pe.getId());
@@ -123,7 +123,7 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set isAdmin=? where id=?";
+			String sql = "update userdata_tb set user_isAdmin=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pe.getIsAdmin());
 			pstmt.setString(2, pe.getId());
@@ -142,7 +142,7 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select * from userdata_tb where id=?";
+			String sql = "select * from userdata_tb where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -163,10 +163,10 @@ public class UserDataTableDAO {
 	}
 	
 	public UserDataBean createFromResultSet(ResultSet rs) throws SQLException {
-		String id = rs.getString("id");
-		String password = rs.getString("password");
-		int money = rs.getInt("money");
-		int isAdmin = rs.getInt("isAdmin");
+		String id = rs.getString("user_id");
+		String password = rs.getString("user_password");
+		int money = rs.getInt("user_money");
+		int isAdmin = rs.getInt("user_isAdmin");
 		
 		UserDataBean pe = new UserDataBean(id, password, money, isAdmin);
 		return pe;
