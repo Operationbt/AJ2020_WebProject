@@ -29,14 +29,24 @@ CREATE TABLE `projectdata_tb` (
   `proj_date` datetime NOT NULL,
   `proj_content` text NOT NULL,
   `proj_image` varchar(255) DEFAULT NULL,
-  `proj_deadline` date NOT NULL,
+  `proj_deadline` datetime NOT NULL,
   `proj_goal` int NOT NULL,
   `proj_current` int DEFAULT NULL,
   `proj_sponsor` int DEFAULT NULL,
   `proj_approval` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`proj_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `projectdata_tb`
+--
+
+LOCK TABLES `projectdata_tb` WRITE;
+/*!40000 ALTER TABLE `projectdata_tb` DISABLE KEYS */;
+INSERT INTO `projectdata_tb` VALUES (1000,'test2','help','2020-05-16 00:00:00','Help me please',NULL,'2020-06-16 20:00:00',100000,NULL,NULL,NULL),(1001,'test3','hello','2020-05-16 00:00:00','hiiii',NULL,'2020-05-30 08:00:00',200000,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `projectdata_tb` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -47,4 +57,4 @@ CREATE TABLE `projectdata_tb` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-16 20:41:07
+-- Dump completed on 2020-05-16 23:08:07
