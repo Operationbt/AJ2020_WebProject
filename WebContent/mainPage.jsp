@@ -16,6 +16,7 @@
 	<button type="button" onclick="location.href='signIn.jsp'">로그인</button>
 </div>
 <a href="myPage.jsp?id=test" role="button">MyPage</a>
+<button type="button" onclick="location.href='addProjectForm.jsp'">모금 프로젝트 신청</button>
 <%-- 개설된 프로젝트 제목과 작은 설명 보여주는 공간 --%>
 <div class="container">
 	<div style="padding-top:50px">
