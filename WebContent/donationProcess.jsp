@@ -19,11 +19,11 @@
 out.println(pid);
 %>
 <%
-
+String session_userID = (String)session.getAttribute("userID");
 int newMoney=Integer.parseInt(request.getParameter("donationAmount"));
 int pid2=Integer.parseInt(request.getParameter("Pid"));
 %>
-<%--ÀÌ°Å Á¾·áµÇ°í ¸ÞÀÎÆäÀÌÁö°¡ ¾Æ´Ï¶ó µµ³×ÀÌ¼Ç ÆäÀÌÁö·Î µ¹¾Æ°¡°ÔÇÏ°í½ÍÀºµ¥ --%>
+<%--ì´ê±° ì¢…ë£Œë˜ê³  ë©”ì¸íŽ˜ì´ì§€ê°€ ì•„ë‹ˆë¼ ë„ë„¤ì´ì…˜ íŽ˜ì´ì§€ë¡œ ëŒì•„ê°€ê²Œí•˜ê³ ì‹¶ì€ë° --%>
 <%
 Connection conn=null;
 try{
@@ -36,7 +36,7 @@ try{
 	dao.editCurrent(conn, ProjectData);
 	
 	UserDataTableDAO dao2=UserDataTableDAO.getInstance();
-	UserDataBean pastData2=dao2.select(conn, "test");
+	UserDataBean pastData2=dao2.select(conn, session_userID);
 	UserDataBean UserData=new UserDataBean(pastData2.getId(),pastData2.getPassword(),pastData2.getMoney()-newMoney,pastData2.getIsAdmin());
 	dao2.editMoney(conn, UserData);
 	response.sendRedirect("mainPage.jsp");
