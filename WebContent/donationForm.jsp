@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="dto.ProjectDataBean" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,19 +11,18 @@
 </head>
 <body>
 
-<% int pid=Integer.parseInt(request.getParameter("pid"));
+<% 
+int pid=Integer.parseInt(request.getParameter("pid"));
+List<ProjectDataBean> dList= (List<ProjectDataBean>) application.getAttribute("dList");
 %>
-<form action="donationProcess.jsp?pid=<%=pid%>"><%--юл╟е pid╬хЁя╬Н╟╗ --%>
+<form action="donationProcess.jsp?pid=<%=pid %>" method="post">
 <div class="form-group row">
-pid=<%=pid %>
-<label class="col-sm-2">га╥на╖ф╝╦М</label>
-		<div class="col-sm-3"><input type="text" value=<%=pid %> name="Pid" class="form-control"></div>
-		</div>
-		<label class="col-sm-2">╠Б╨нгр ╠щ╬вю╩ ют╥бго╫ц©ю</label>
-		<div class="col-sm-3"><input type="text" value="0" name="donationAmount" class="form-control">©Ь</div>
+<h2>М■└К║°Л═²М┼╦К╙┘: <%= dList.get(pid-1000).getTitle()%></h2>
+		<label class="col-sm-2">Й╦╟К╤─М∙═ Й╦┬Л∙║Л²└ Л·┘К═╔М∙≤Л▀°Л≤╓</label>
+		<div class="col-sm-3"><input type="text" value="0" name="donationAmount" class="form-control">Л⌡░</div>
 		</div>
 		<div class="form-group row">
-		<div class="col-sm-offset-2 col-sm-10"><input type="submit" value="х╝юн"></div>
+		<div class="col-sm-offset-2 col-sm-10"><input type="submit" value="М≥∙Л²╦"></div>
 		</div>
 </form>
 
