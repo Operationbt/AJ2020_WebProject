@@ -93,6 +93,9 @@ local.properties
 *.tar.gz
 *.rar
 
+# SQL Connection Information #
+src\jdbc\ConnectionProvider.java
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 

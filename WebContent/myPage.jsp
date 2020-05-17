@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import="jdbc.ConnectionProvider" %>
 <%@ page import ="dto.UserDataBean" %>
 <%@ page import="dao.UserDataTableDAO" %>
@@ -7,23 +7,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
+<body>
 <%
-String userId="test";
+String userId = request.getParameter("id");
 %>
-<h1><%=userId%>´ÔÀÇ ¸¶ÀÌÆäÀÌÁö</h1>
+<h1><%=userId%>ë‹˜ì˜ ë§ˆì´íŽ˜ì´ì§€</h1>
 
-<%--Col --%>
+<%-- Col --%>
 <%
-UserDataBean UserInfo=new UserDataBean();
-Connection conn=null;
+UserDataBean UserInfo = new UserDataBean();
+Connection conn = null;
 try{
-	conn=ConnectionProvider.getConnection();
-	UserDataTableDAO dao=UserDataTableDAO.getInstance();
-	UserInfo=dao.select(conn, userId);
+	conn = ConnectionProvider.getConnection();
+	UserDataTableDAO dao = UserDataTableDAO.getInstance();
+	UserInfo = dao.select(conn, userId);
 	
 }catch(SQLException e){
 	e.printStackTrace();
@@ -36,14 +36,14 @@ try{
 	}
 }
 %>
-<h2>ÇöÀç ±Ý¾×: <%=UserInfo.getMoney() %>¿ø</h2>
-<body>
-<%--ÃæÀüÇÏ±â »õ·Î Ã¢ ¶ç¿ö¼­ ÇÒ¼ö ÀÖÀ¸¸é ÇÏ±â --%>
+<h2>í˜„ìž¬ ê¸ˆì•¡: <%=UserInfo.getMoney()%>ì›</h2>
+
+<%--ì¶©ì „í•˜ê¸° ìƒˆë¡œ ì°½ ë„ì›Œì„œ í• ìˆ˜ ìžˆìœ¼ë©´ í•˜ê¸° --%>
 
 
 
 <div style="float: left;">
-	<button type="submit" class="btn btn-primary" name="test"  method="post" onclick="location.href='addMoneyForm.jsp?id=<%=userId%>'">ÃæÀüÇÏ±â</button>
+	<button type="submit" class="btn btn-primary" name="test"  method="post" onclick="location.href='addMoneyForm.jsp?id=<%=userId%>'">ì¶©ì „í•˜ê¸°</button>
 </div>
 <br><br>
 <div style="float: left;">
