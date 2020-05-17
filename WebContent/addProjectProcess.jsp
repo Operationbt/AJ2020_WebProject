@@ -18,20 +18,18 @@
 <body>
 
 <%
+
 request.setCharacterEncoding("UTF-8");
 String newWriter = request.getParameter("writer");
 String newTitle = request.getParameter("title");
-String deadline=request.getParameter("deadline");
-
-Date newDeadline = Date.valueOf(deadline);
+java.sql.Date now = new java.sql.Date(new java.util.Date().getTime());
+Date deadline = Date.valueOf(request.getParameter("deadline"));
 int newGoal = Integer.parseInt(request.getParameter("goal"));
 String newContent = request.getParameter("content");
 String newImage = request.getParameter("imageURL");
-//java.util.Date now = new java.util.Date();
-//String newDate = format1.format(now);
 
 
-ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, newDeadline, newContent, newImage, newDeadline, newGoal, 0, 0, false);
+ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, now, newContent, newImage, deadline, newGoal, 0, 0, false);
 out.println("<br>" + pe + "<br>");
 %>
 

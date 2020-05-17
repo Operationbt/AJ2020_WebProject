@@ -15,11 +15,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<% String pid=request.getParameter("pid");
+out.println(pid);
+%>
 <%
 
 int newMoney=Integer.parseInt(request.getParameter("donationAmount"));
-
+int pid2=Integer.parseInt(request.getParameter("Pid"));
 %>
 <%--이거 종료되고 메인페이지가 아니라 도네이션 페이지로 돌아가게하고싶은데 --%>
 <%
@@ -27,7 +29,7 @@ Connection conn=null;
 try{
 	conn=ConnectionProvider.getConnection();
 	ProjectDataTableDAO dao=ProjectDataTableDAO.getInstance();
-	ProjectDataBean pastData=dao.select(conn, "1000");
+	ProjectDataBean pastData=dao.select(conn, pid2);
 	ProjectDataBean ProjectData=new ProjectDataBean(pastData.getPid(),pastData.getWriter(),pastData.getTitle(),pastData.getDate(),
 			pastData.getContent(),pastData.getImageURL(),
 			pastData.getDeadline(),pastData.getGoal(),pastData.getCurrent()+newMoney,pastData.getSponsor()+1,false);

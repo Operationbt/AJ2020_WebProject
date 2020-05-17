@@ -15,12 +15,12 @@
 List<ProjectDataBean> dList= (List<ProjectDataBean>) application.getAttribute("dList");
 
 %>
-<h1><% dList.get(pid-1000).getTitle();%></h1>
+
 <h2>Hello!!!</h2>
 
-<button type="button" onclick="location.href='donationForm.jsp'">기부하기</button>
+<button type="button" onclick="location.href='donationForm.jsp?pid=<%=pid%>'">기부하기</button>
 <div style="float: left;">
-	<button type="button" class="btn btn-primary" name="test"  onclick="location.href='mainPage.jsp'">Home</button>
+	<button type="button" class="btn btn-primary" name="home"  onclick="location.href='mainPage.jsp'">Home</button>
 </div>
 
 </body>
