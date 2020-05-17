@@ -15,20 +15,19 @@
 <body>
 
 <%
-
-int newMoney=Integer.parseInt(request.getParameter("Amount"));
-
+int newMoney = Integer.parseInt(request.getParameter("Amount"));
+String userid = request.getParameter("id");
 %>
 
 <%
 Connection conn=null;
 try{
 	conn=ConnectionProvider.getConnection();
-	UserDataTableDAO dao=UserDataTableDAO.getInstance();
-	UserDataBean pastData=dao.select(conn, "test");
-	UserDataBean userData=new UserDataBean(pastData.getId(),pastData.getPassword(),pastData.getMoney()+newMoney,0);
+	UserDataTableDAO dao = UserDataTableDAO.getInstance();
+	UserDataBean pastData = dao.select(conn, userid);
+	UserDataBean userData = new UserDataBean(pastData.getId(), pastData.getPassword(), pastData.getMoney() + newMoney, 0);
 	dao.editMoney(conn, userData);
-	response.sendRedirect("myPage.jsp");
+	response.sendRedirect("myPage.jsp?id=" + userid); //myPage로 다시 돌려보내는데 id 같이 안보내면 id가 null됨
 	
 }catch(SQLException e){
 	e.printStackTrace();
