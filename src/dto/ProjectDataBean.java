@@ -1,6 +1,6 @@
 package dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 /*
 >>### projectdata_tb
@@ -20,10 +20,10 @@ public class ProjectDataBean implements java.io.Serializable{
 	private int pid;
 	private String writer;
 	private String title;
-	private String date;
+	private Date date;
 	private String content;
 	private String imageURL;
-	private String deadline;
+	private Date deadline;
 	private int goal;
 	private int current;
 	private int sponsor;
@@ -33,8 +33,8 @@ public class ProjectDataBean implements java.io.Serializable{
 		this(0, null, null, null, null, null, null, 0, 0, 0, false);
 	}
 	
-	public ProjectDataBean(int pid, String writer, String title, String date, String content, String imageURL,
-			String deadline, int goal, int current, int sponsor, boolean approval) {
+	public ProjectDataBean(int pid, String writer, String title, Date date, String content, String imageURL,
+			Date deadline, int goal, int current, int sponsor, boolean approval) {
 		super();
 		this.pid = pid;
 		this.writer = writer;
@@ -73,11 +73,11 @@ public class ProjectDataBean implements java.io.Serializable{
 		this.title = title;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -97,11 +97,11 @@ public class ProjectDataBean implements java.io.Serializable{
 		this.imageURL = imageURL;
 	}
 
-	public String getDeadline() {
+	public Date getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(String deadline) {
+	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
 

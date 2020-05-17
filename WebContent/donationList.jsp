@@ -5,6 +5,7 @@
 <%@ page import="dto.ProjectDataBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.sql.Date" %>
 
 
 <!DOCTYPE html>
@@ -20,25 +21,26 @@ try{
 	conn=ConnectionProvider.getConnection();
 	ProjectDataTableDAO dao=ProjectDataTableDAO.getInstance();
 	List<ProjectDataBean> dList=dao.selectList(conn);
+	application.setAttribute("dList",dList);
 	%>
-<table>
+<table border=1>
 <%
 	for(ProjectDataBean donation:dList) {
 %>
 		<tr>
-		<td><b><%=donation.getTitle() %></b></td>
+		<td><a href="donationPage.jsp?pid=<%=donation.getPid()%>"><b><%=donation.getTitle() %></b></a></td>
 		<td><%=donation.getWriter() %></td>
 		<td><%=donation.getContent() %></td>
-		<td><%=donation.getGoal() %></td>
-		<td><%=donation.getDeadline() %></td>
-		
+		<td>목표금액:<%=donation.getGoal() %></td>
+		<td>모인 금액:<%=donation.getCurrent() %></td>
+		<td>기한:<%=donation.getDeadline() %></td>
 		</tr>
 <%} %>
 </table>
 	<%
 }catch(SQLException e){
 	e.printStackTrace();
-	System.out.print("No connection in addMoneyProcess\n");
+	System.out.print("No connection in donationList\n");
 }finally{
 	try{
 		if(conn !=null) conn.close();

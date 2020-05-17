@@ -3,9 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.sql.*;
 
 
@@ -33,12 +34,10 @@ public class ProjectDataTableDAO {
 			pstmt.setInt(1, pe.getPid());
 			pstmt.setString(2, pe.getWriter());
 			pstmt.setString(3, pe.getTitle());
-		    Timestamp ts_1 = java.sql.Timestamp.valueOf(pe.getDate());
-			pstmt.setTimestamp(4, ts_1);
+		    pstmt.setDate(4, pe.getDate());
 			pstmt.setString(5, pe.getContent());
 			pstmt.setString(6, pe.getImageURL());
-			Timestamp ts_2 = java.sql.Timestamp.valueOf(pe.getDeadline());
-			pstmt.setTimestamp(7, ts_2);
+			pstmt.setDate(7, pe.getDate());
 			pstmt.setInt(8, pe.getGoal());
 			pstmt.setInt(9, pe.getCurrent());
 			pstmt.setInt(10, pe.getSponsor());
@@ -176,10 +175,10 @@ public class ProjectDataTableDAO {
 		int id = rs.getInt("proj_id");
 		String writer = rs.getString("proj_writer");
 		String title=rs.getString("proj_title");
-		String date=rs.getString("proj_date");
+		Date date=rs.getDate("proj_date");
 		String content=rs.getString("proj_content");
 		String image=rs.getString("proj_image");
-		String deadline=rs.getString("proj_deadline");
+		Date deadline=rs.getDate("proj_deadline");
 		int goal=rs.getInt("proj_goal");
 		int currentMoney=rs.getInt("proj_current");
 		int sponsor=rs.getInt("proj_sponsor");

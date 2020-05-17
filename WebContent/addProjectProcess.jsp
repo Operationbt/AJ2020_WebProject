@@ -3,7 +3,7 @@
 <%@ page import="jdbc.ConnectionProvider" %>
 <%@ page import="dao.ProjectDataTableDAO" %>
 <%@ page import="dto.ProjectDataBean" %>
-
+<%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
@@ -21,9 +21,9 @@
 request.setCharacterEncoding("UTF-8");
 String newWriter = request.getParameter("writer");
 String newTitle = request.getParameter("title");
-//String newDl = request.getParameter("deadline");
-//SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//String newDeadline = format1.format(newDl);
+String deadline=request.getParameter("deadline");
+
+Date newDeadline = Date.valueOf(deadline);
 int newGoal = Integer.parseInt(request.getParameter("goal"));
 String newContent = request.getParameter("content");
 String newImage = request.getParameter("imageURL");
@@ -31,7 +31,7 @@ String newImage = request.getParameter("imageURL");
 //String newDate = format1.format(now);
 
 
-ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, "2020-12-31 12:11:11", newContent, newImage, "2020-12-31 12:11:11", newGoal, 0, 0, false);
+ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, newDeadline, newContent, newImage, newDeadline, newGoal, 0, 0, false);
 out.println("<br>" + pe + "<br>");
 %>
 
