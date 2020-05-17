@@ -31,9 +31,11 @@ try{
 		<td><a href="donationPage.jsp?pid=<%=donation.getPid()%>"><b><%=donation.getTitle() %></b></a></td>
 		<td><%=donation.getWriter() %></td>
 		<td><%=donation.getContent() %></td>
+		<td>신청일:<%=donation.getDate() %></td>
 		<td>목표금액:<%=donation.getGoal() %></td>
 		<td>모인 금액:<%=donation.getCurrent() %></td>
 		<td>기한:<%=donation.getDeadline() %></td>
+		<td><img src="<%=donation.getImageURL() %>"/></td>
 		</tr>
 <%} %>
 </table>

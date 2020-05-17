@@ -37,7 +37,7 @@ public class ProjectDataTableDAO {
 		    pstmt.setDate(4, pe.getDate());
 			pstmt.setString(5, pe.getContent());
 			pstmt.setString(6, pe.getImageURL());
-			pstmt.setDate(7, pe.getDate());
+			pstmt.setDate(7, pe.getDeadline());
 			pstmt.setInt(8, pe.getGoal());
 			pstmt.setInt(9, pe.getCurrent());
 			pstmt.setInt(10, pe.getSponsor());
@@ -125,13 +125,13 @@ public class ProjectDataTableDAO {
 	}
 	
 	// select(find/get)
-	public ProjectDataBean select(Connection conn, String pid) throws SQLException {
+	public ProjectDataBean select(Connection conn, int pid) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			String sql = "select * from projectdata_tb where proj_id=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, pid);
+			pstmt.setInt(1, pid);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return createFromResultSet(rs);
