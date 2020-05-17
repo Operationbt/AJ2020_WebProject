@@ -8,9 +8,10 @@
 </head>
 <body>
 <% 
-String userid = request.getParameter("id");
+//세션에서 로그인id 가져와서 판별
+String session_userID = (String)session.getAttribute("userID");
 %>
-<form name="addMoneyForm" action="addMoneyProcess.jsp?id=<%=userid%>" method="post">
+<form name="addMoneyForm" action="addMoneyProcess.jsp" method="post">
 <div class="form-group row">
 			<label class="col-sm-2">충전할 금액을 입력하시오</label>
 			<div class="col-sm-3"><input type="text" value="0" name="Amount" class="form-control">원</div>

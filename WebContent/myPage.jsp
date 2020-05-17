@@ -12,9 +12,11 @@
 </head>
 <body>
 <%
-String userId = request.getParameter("id");
+//마이페이지는 로그인 사용자만 볼 수 있음
+//세션에서 로그인id 가져와서 판별
+String session_userID = (String)session.getAttribute("userID");
 %>
-<h1><%=userId%>님의 마이페이지</h1>
+<h1><%=session_userID%>님의 마이페이지</h1>
 
 <%-- Col --%>
 <%
@@ -23,7 +25,7 @@ Connection conn = null;
 try{
 	conn = ConnectionProvider.getConnection();
 	UserDataTableDAO dao = UserDataTableDAO.getInstance();
-	UserInfo = dao.select(conn, userId);
+	UserInfo = dao.select(conn, session_userID);
 	
 }catch(SQLException e){
 	e.printStackTrace();
@@ -43,7 +45,7 @@ try{
 
 
 <div style="float: left;">
-	<button type="submit" class="btn btn-primary" name="test"  method="post" onclick="location.href='addMoneyForm.jsp?id=<%=userId%>'">충전하기</button>
+	<button type="submit" class="btn btn-primary" name="test"  method="post" onclick="location.href='addMoneyForm.jsp'">충전하기</button>
 </div>
 <br><br>
 <div style="float: left;">
