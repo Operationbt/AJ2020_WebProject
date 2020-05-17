@@ -7,6 +7,7 @@
 <title>프로젝트 신청</title>
 </head>
 <body>
+
 <a href="mainPage.jsp" role="button">MainPage</a>
 <h1>프로젝트 개설 신청</h1>
 <form name=addProjectForm" action="addProjectProcess.jsp" method="post">
