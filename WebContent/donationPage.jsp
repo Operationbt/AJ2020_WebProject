@@ -23,7 +23,7 @@ if (leftTime<0){
 	leftDay = -1;
 }
 else{
-    leftDay = (int)Math.floor(leftTime/(1000*60*60*24)); 
+    leftDay = (int)Math.floor(leftTime/(1000*60*60*24))+1; 
 }
 %>
 	
