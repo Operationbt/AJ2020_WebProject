@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="jdbc.ConnectionProvider" %>
 <%@ page import="dao.ProjectDataTableDAO" %>
 <%@ page import="dto.ProjectDataBean" %>
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,8 +29,8 @@ try{
 	for(ProjectDataBean donation:dList) {
 %>
 		<tr>
-		if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>
-		<td><img src="https://lh3.googleusercontent.com/proxy/uC3C_aQbLdW5dP87gTl0O4Cn5zk-dCY2Do7-fMeTtvM5N8xbskTJp6UgLYNJSlD3bXckidcOn81whshPnpzHjqxYTCnBhc_JfZGKIxMyU4SSQamHYA" width="200" height="150"/></td>
+		<% if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>
+		<td><img src="<%=request.getContextPath()%>/noimage.gif" width="200" height="150"/></td>
 		<%} else{ %>
 		<td><img src="<%=donation.getImageURL() %>" width="200" height="150"/></td>
 		<%} %>	
