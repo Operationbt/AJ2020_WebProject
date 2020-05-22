@@ -30,7 +30,7 @@ try{
 %>
 		<tr>
 		<% if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>
-		<td><img src="<%=request.getContextPath()%>/noimage.gif" width="200" height="150"/></td>
+		<td><img src="<%=request.getContextPath()%>/images/noimage.gif" width="200" height="150"/></td>
 		<%} else{ %>
 		<td><img src="<%=donation.getImageURL() %>" width="200" height="150"/></td>
 		<%} %>	
