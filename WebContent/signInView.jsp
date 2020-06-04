@@ -29,6 +29,7 @@
 			</div>
 		</div>
 	</form>
+	<a href="signUpView.jsp" class="btn btn-secondary" role="button">Sign Up</a>
 </div>
 </body>
 </html>

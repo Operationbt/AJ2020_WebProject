@@ -38,7 +38,10 @@ try{
 	
 	UserDataTableDAO dao2=UserDataTableDAO.getInstance();
 	UserDataBean pastData2=dao2.select(conn, session_userID);
-	UserDataBean UserData=new UserDataBean(pastData2.getId(),pastData2.getPassword(),pastData2.getMoney()-newMoney,pastData2.getIsAdmin());
+	
+	//UserData 생성자 수정한 것에 맞춰서 우선 빨간줄 제거했음
+	//[todo] - UserData DAO랑 DTO에 필요로 하는 코드를 작성하는게 가독성이 더 좋을 것 같아요
+	UserDataBean UserData = new UserDataBean(pastData2.getId(), pastData2.getPassword(), pastData2.getMoney()-newMoney, pastData2.getIsAdmin(), pastData2.getName(), pastData2.getEmail(), pastData2.getPhone(), pastData2.getRegisterDate());
 	dao2.editMoney(conn, UserData);
 	
 	//donationList 안 거치고 바로 donationPage에서 업데이트한 dList 얻기 위해서

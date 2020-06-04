@@ -25,15 +25,16 @@ public class SignUpAction implements Action{
 
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
-//			String name = request.getParameter("memberName");
-//			String email = request.getParameter("memberEmail") + "@" + request.getParameter("memberEmail2");
-//			String phone = request.getParameter("memberPhone");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email1") + "@" + request.getParameter("email2");
+			String phone = request.getParameter("phone");
 //			String address = request.getParameter("memberAddress");
-//			Date registerDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+			Date registerDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 			
-			UserDataBean member = new UserDataBean(id, password);
+			UserDataBean member = new UserDataBean(id, password, 0, 0, name, email, phone, registerDate);
 			dao.insert(conn, member);
 			
+			System.out.println("Sign Up Success");
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {

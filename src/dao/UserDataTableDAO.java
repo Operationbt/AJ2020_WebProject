@@ -1,4 +1,5 @@
 package dao;
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,13 +10,14 @@ import java.util.List;
 import dto.UserDataBean;
 /*
 >>### userdata_tb
->>user_id char(20) not null : �쑀�� �븘�씠�뵒瑜� ���옣
-
->>user_password char(20) not null : �쑀�� 鍮꾨�踰덊샇瑜� ���옣
-
->>user_money int null : 湲곕��뿉 �븘�슂�븳 �옱�솕瑜� ���옣
-
->>user_isAdmin tinyint null : 愿�由ъ옄 沅뚰븳�씤吏� �뙋蹂�. 0�씠硫� �씪諛� �궗�슜�옄, 1�씠硫� 愿�由ъ옄
+>>user_id char(20) not null : 유저 아이디를 저장
+>>user_password char(20) not null : 유저 비밀번호를 저장
+>>user_money int 0 : 기부에 필요한 재화를 저장
+>>user_isAdmin tinyint 0 : 관리자 권한인지 판별. 0이면 일반 사용자, 1이면 관리자
+>>user_name varchar(45) null : 유저 이름
+>>user_email varchar(45) null : 유저 이메일
+>>user_phone varchar(45) null : 유저 전화번호
+>>user_date DATE null : 회원가입 날짜
  */
 public class UserDataTableDAO {
 	private UserDataTableDAO() { 
@@ -30,12 +32,16 @@ public class UserDataTableDAO {
 	public int insert(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into userdata_tb values (?,?,?,?)";
+			String sql = "insert into userdata_tb values (?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pe.getId());
 			pstmt.setString(2, pe.getPassword());
 			pstmt.setInt(3, pe.getMoney());
 			pstmt.setInt(4, pe.getIsAdmin());
+			pstmt.setString(5, pe.getName());
+			pstmt.setString(6, pe.getEmail());
+			pstmt.setString(7, pe.getPhone());
+			pstmt.setDate(8, pe.getRegisterDate());
 			return pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null) {
@@ -118,7 +124,7 @@ public class UserDataTableDAO {
 			}
 		}
 	}
-	// edit Author
+	// edit Admin
 	public int editIsAdmin(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -191,8 +197,11 @@ public class UserDataTableDAO {
 		String password = rs.getString("user_password");
 		int money = rs.getInt("user_money");
 		int isAdmin = rs.getInt("user_isAdmin");
-		
-		UserDataBean pe = new UserDataBean(id, password, money, isAdmin);
+		String name = rs.getString("user_name");
+		String email = rs.getString("user_email");
+		String phone = rs.getString("user_phone");
+		Date registerDate = rs.getDate("user_date");
+		UserDataBean pe = new UserDataBean(id, password, money, isAdmin, name, email, phone, registerDate);
 		return pe;
 	}
 	

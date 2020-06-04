@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: teamcoffeedb
+-- Host: localhost    Database: teamcoffeedb
 -- ------------------------------------------------------
 -- Server version	8.0.20
 
@@ -25,8 +25,12 @@ DROP TABLE IF EXISTS `userdata_tb`;
 CREATE TABLE `userdata_tb` (
   `user_id` char(20) NOT NULL,
   `user_password` char(20) NOT NULL,
-  `user_money` int DEFAULT NULL,
-  `user_isAdmin` tinyint DEFAULT NULL,
+  `user_money` int DEFAULT '0',
+  `user_isAdmin` tinyint DEFAULT '0',
+  `user_name` varchar(45) DEFAULT NULL,
+  `user_email` varchar(45) DEFAULT NULL,
+  `user_phone` varchar(45) DEFAULT NULL,
+  `user_date` date DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,6 +41,7 @@ CREATE TABLE `userdata_tb` (
 
 LOCK TABLES `userdata_tb` WRITE;
 /*!40000 ALTER TABLE `userdata_tb` DISABLE KEYS */;
+INSERT INTO `userdata_tb` VALUES ('admin','admin',970000,1,NULL,NULL,NULL,NULL),('baek','1234',2500,0,NULL,NULL,NULL,NULL),('hihi','1234',300000,0,NULL,NULL,NULL,NULL),('newnew','1234',0,0,'백지훈','operationbt@naver.com','01072398302','2020-06-05'),('test','test',65000,0,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `userdata_tb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-15 16:17:04
+-- Dump completed on 2020-06-05  4:22:07
