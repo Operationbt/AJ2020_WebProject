@@ -4,23 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<title>Sign In</title>
 </head>
 <body>
-<%-- 복붙해서 부트스트랩 CSS가 적혀있음 --%>
-<%-- 아이디, 비번 입력 -> 로그인 버튼 클릭 -> DB와 검증  --%>
+<%-- 폼 양식 확인하는 로직 짜야됨  --%>
 <div class="container">
-	<form name="signIn" action="signInProcess.jsp" method="post">
+	<form name="signIn" action="SignInAction.do" method="post">
 		<div class="form-group row">
 			<label class="col-sm-2">아이디</label>
 			<div class="col-sm-3">
-				<input type="text" name="id" class="form-control">
+				<input type="text" name="userID" class="form-control">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2">비밀번호</label>
 			<div class="col-sm-3">
-				<input type="password" name="password" class="form-control">
+				<input type="password" name="userPW" class="form-control">
 			</div>
 		</div>
 		<div class="form-group row">

@@ -162,6 +162,30 @@ public class UserDataTableDAO {
 		}
 	}
 	
+	//id,pw를 DB에 있는것과 비교. 로그인 체크
+	public boolean signIn(Connection conn, String id, String password) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "select * from userdata_tb where user_id=? and user_password=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				//id,pw가 DB와 일치할 때
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public UserDataBean createFromResultSet(ResultSet rs) throws SQLException {
 		String id = rs.getString("user_id");
 		String password = rs.getString("user_password");

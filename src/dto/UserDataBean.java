@@ -16,6 +16,14 @@ public class UserDataBean implements java.io.Serializable{
 	public UserDataBean() {
 		this(null, null, 0, 0);
 	}
+	
+	//회원가입시 입력하는 파라미터들로만 생성
+	public UserDataBean(String id, String password) {
+		this();
+		this.id = id;
+		this.password = password;
+		//이름, 이메일, 연락처 등등
+	}
 
 	public UserDataBean(String id, String password, int money, int isAdmin) {
 		super();
