@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="no-referrer"/>
 <title>Coffee Main Page</title>
 </head>
 <body>
@@ -25,7 +26,7 @@ if(isSignIn){	//현재 로그인 상태면
 	<%-- 마이페이지/로그아웃 버튼 --%>
 	<div style="float: right">
 		<p><%=session_userID%>님 반갑습니다!</p>
-		<a href="myPage.jsp?id=<%=session_userID%>" role="button">MyPage</a>	<%-- BUG:주소창에 id= 다음 DB에 있는 아이디 입력하면 로그인 한 아이디 아닌데도 정보 열람 가능 FIX:myPage에서 세션 이용하도록 해서 해결--%>
+		<a href="myPage.jsp?id=<%=session_userID%>" role="button">MyPage</a>	<%-- BUG : 주소창에 id= 다음 DB에 있는 아이디 입력하면 로그인 한 아이디 아닌데도 정보 열람 가능--%>
 		<button onClick="location.href='signOut.jsp'">로그아웃</button>
 		<button type="button" onclick="location.href='addProjectForm.jsp'">모금 프로젝트 신청</button>
 	</div>
@@ -44,7 +45,7 @@ if(isSignIn){	//현재 로그인 상태면
 %>
 
 <%-- 전체 사용자에게 동일하게 보여주는 부분 (로그인 상관 no) --%>
-
+<a href="ConfirmProjectForm.jsp">Go to temp</a>
 <%-- 메뉴바  홈, 카테고리 --%>
 
 <%-- 개설된 프로젝트 제목과 작은 설명 보여주는 공간 --%>

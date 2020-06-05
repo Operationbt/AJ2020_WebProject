@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="referrer" content="no-referrer"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -27,10 +28,11 @@ try{
 <table border=1>
 <%
 	for(ProjectDataBean donation:dList) {
-%>
+	if(donation.isApproval()==true){ out.println(donation.isApproval());
+	%>
 		<tr>
-		<% if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>
-		<td><img src="<%=request.getContextPath()%>/images/noimage.gif" width="200" height="150"/></td>
+		<%if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>
+		<td width="200" height="150" align="center">이미지없음</td>
 		<%} else{ %>
 		<td><img src="<%=donation.getImageURL() %>" width="200" height="150"/></td>
 		<%} %>	
@@ -41,7 +43,7 @@ try{
 		<td>모인 금액:<%=donation.getCurrent() %></td>
 		<td>기한:<%=donation.getDeadline() %></td>
 		</tr>
-<%} %>
+<%}} %>
 </table>
 	<%
 }catch(SQLException e){
@@ -54,7 +56,6 @@ try{
 		se.printStackTrace();
 	}
 }
-
 %>
 </body>
 </html>
