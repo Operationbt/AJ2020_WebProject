@@ -7,16 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.UserDataBean;
-/*
->>### userdata_tb
->>user_id char(20) not null : �쑀�� �븘�씠�뵒瑜� ���옣
 
->>user_password char(20) not null : �쑀�� 鍮꾨�踰덊샇瑜� ���옣
-
->>user_money int null : 湲곕��뿉 �븘�슂�븳 �옱�솕瑜� ���옣
-
->>user_isAdmin tinyint null : 愿�由ъ옄 沅뚰븳�씤吏� �뙋蹂�. 0�씠硫� �씪諛� �궗�슜�옄, 1�씠硫� 愿�由ъ옄
- */
 public class UserDataTableDAO {
 	private UserDataTableDAO() { 
 	}
@@ -30,11 +21,12 @@ public class UserDataTableDAO {
 	public int insert(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into userdata_tb values (?,?,?,?)";
+			String sql = "insert into userdata_tb values (?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pe.getId());
 			pstmt.setString(2, pe.getPassword());
 			pstmt.setInt(3, pe.getMoney());
+			pstmt.setInt(4, pe.getScheduledMoney());
 			pstmt.setInt(4, pe.getIsAdmin());
 			return pstmt.executeUpdate();
 		} finally {
@@ -64,12 +56,13 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set user_password=? user_money=? user_isAdmin=? where user_id=?";
+			String sql = "update userdata_tb set user_password=? user_money=? user_scheduledMoney=? isAdmin=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pe.getPassword());
 			pstmt.setInt(2, pe.getMoney());
-			pstmt.setInt(3, pe.getIsAdmin());
-			pstmt.setString(4, pe.getId());
+			pstmt.setInt(3, pe.getScheduledMoney());
+			pstmt.setInt(4, pe.getIsAdmin());
+			pstmt.setString(5, pe.getId());
 			return pstmt.executeUpdate();
 		} finally {
 			if (rs != null) {
@@ -99,6 +92,8 @@ public class UserDataTableDAO {
 			}
 		}
 	}
+	
+	
 	// edit Money
 	public int editMoney(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
@@ -118,12 +113,31 @@ public class UserDataTableDAO {
 			}
 		}
 	}
+	public int applyMoney(Connection conn, UserDataBean pe) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "update userdata_tb set user_scheduledMoney=? where user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pe.getScheduledMoney());
+			pstmt.setString(2, pe.getId());
+			return pstmt.executeUpdate();
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
 	// edit Author
 	public int editIsAdmin(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set user_isAdmin=? where user_id=?";
+			String sql = "update userdata_tb set isAdmin=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pe.getIsAdmin());
 			pstmt.setString(2, pe.getId());
@@ -166,9 +180,10 @@ public class UserDataTableDAO {
 		String id = rs.getString("user_id");
 		String password = rs.getString("user_password");
 		int money = rs.getInt("user_money");
+		int schMoney=rs.getInt("user_scheduledMoney");
 		int isAdmin = rs.getInt("user_isAdmin");
 		
-		UserDataBean pe = new UserDataBean(id, password, money, isAdmin);
+		UserDataBean pe = new UserDataBean(id, password, money,schMoney, isAdmin);
 		return pe;
 	}
 	

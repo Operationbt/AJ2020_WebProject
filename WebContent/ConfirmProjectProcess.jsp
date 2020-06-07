@@ -15,12 +15,15 @@
 </head>
 <body>
 <%
+List<ProjectDataBean> pList=(List<ProjectDataBean>)application.getAttribute("dList");
+%>
+<%
 
 int pid=Integer.parseInt(request.getParameter("pid"));
-boolean ap=Boolean.parseBoolean(request.getParameter("isApproval"));
+//boolean ap=Boolean.parseBoolean(request.getParameter("isApproval"));
 System.out.println(pid);
-System.out.println(ap);
-ProjectDataBean pe=new ProjectDataBean(pid, null, null, null, null, null, null, 0, 0, 0, ap);
+//System.out.println(ap);
+ProjectDataBean pe=new ProjectDataBean(pid, null, null, null, null, null, null, 0, 0, 0, true);
 
 %>
 

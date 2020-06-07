@@ -29,7 +29,7 @@ String newContent = request.getParameter("content");
 String newImage = request.getParameter("imageURL");
 
 
-ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, now, newContent, newImage, deadline, newGoal, 0, 0, false);
+ProjectDataBean pe = new ProjectDataBean(1, newWriter, newTitle, now, newContent, newImage, deadline, newGoal, 0, 0, false);
 out.println("<br>" + pe + "<br>");
 %>
 

@@ -17,7 +17,7 @@
 String id = request.getParameter("id");
 String password = request.getParameter("password");
 
-UserDataBean pe = new UserDataBean(id, password, 0, 0);
+UserDataBean pe = new UserDataBean(id, password, 0,0, 0);
 
 out.println("<br>" + pe + "<br>");
 %>

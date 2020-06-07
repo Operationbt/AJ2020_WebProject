@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ page import="java.util.*" %>
-    <%@ page import="dto.ProjectDataBean" %>
+    <%@ page import="dto.ProjectDataBean" %><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +11,19 @@
 <body>
 
 <%
-List<ProjectDataBean> dList=(List<ProjectDataBean>)application.getAttribute("dList");
+List<ProjectDataBean> pList=(List<ProjectDataBean>)application.getAttribute("dList");
 %>
 <a href="index.jsp">Go Home</a>
 
-<form action="ConfirmProjectProcess.jsp">
+
 <table border=1>
 <%
-	for(ProjectDataBean donation:dList) {
+	for(ProjectDataBean donation:pList) {
 	if(donation.isApproval()==false){ out.println(donation.isApproval());
 	%>
 		<tr>
-		<td><input type="checkbox" name="isApproval" value="true"></td>
-		<td><input type="text" name="pid" value="<%=donation.getPid() %>"></td>
-		
+		<td><a href="ConfirmProjectProcess.jsp?pid=<%=donation.getPid()%>" class="btn btn-secondary" role="button">Apply</a></td>
+		<td>${donation.getPid() }</td>
 		<%if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>
 		<td width="200" height="150" align="center">이미지없음</td>
 		<%} else{ %>
@@ -34,13 +33,13 @@ List<ProjectDataBean> dList=(List<ProjectDataBean>)application.getAttribute("dLi
 		<td><%=donation.getWriter() %></td>
 		<td>신청일:<%=donation.getDate() %></td>
 		<td>목표금액:<%=donation.getGoal() %></td>
-		<td>모인 금액:<%=donation.getCurrent() %></td>
 		<td>기한:<%=donation.getDeadline() %></td>
+		
 		
 		</tr>
 <%}} %>
 </table>
-<input type="submit" value="Apply">
-</form>
+
+
 </body>
 </html>

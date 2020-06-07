@@ -5,7 +5,7 @@
 <%@ page import="dto.ProjectDataBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
-<%@ page import="java.sql.Date" %>
+<%@ page import="java.sql.Date" %><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ try{
 <table border=1>
 <%
 	for(ProjectDataBean donation:dList) {
-	if(donation.isApproval()==true){ out.println(donation.isApproval());
+	if(donation.isApproval()==true){ 
 	%>
 		<tr>
 		<%if(donation.getImageURL() == null||donation.getImageURL().length() == 0) {%>

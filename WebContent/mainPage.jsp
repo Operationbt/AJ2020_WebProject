@@ -46,6 +46,7 @@ if(isSignIn){	//현재 로그인 상태면
 
 <%-- 전체 사용자에게 동일하게 보여주는 부분 (로그인 상관 no) --%>
 <a href="ConfirmProjectForm.jsp">Go to temp</a>
+<br><a href="userManager.jsp">User</a>
 <%-- 메뉴바  홈, 카테고리 --%>
 
 <%-- 개설된 프로젝트 제목과 작은 설명 보여주는 공간 --%>

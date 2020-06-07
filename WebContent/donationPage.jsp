@@ -3,6 +3,7 @@
 <%@ page import="dto.ProjectDataBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
@@ -54,7 +55,9 @@ d-<%=leftDay%>
 	</tr><%} %>
 	
 	<tr>
-	<td><%= dList.get(pid-1000).getContent() %></td>
+	<td><pre><%= dList.get(pid-1000).getContent() %></pre></td>
+	
+	
 	</tr>
 </table>
 </div>

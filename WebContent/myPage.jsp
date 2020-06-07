@@ -39,6 +39,7 @@ try{
 }
 %>
 <h2>현재 금액: <%=UserInfo.getMoney()%>원</h2>
+<h3>입급예정액:<%=UserInfo.getScheduledMoney()%>(우리은행 0000-00000-0000)</h3>
 
 <%--충전하기 새로 창 띄워서 할수 있으면 하기 --%>
 

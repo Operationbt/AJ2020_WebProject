@@ -38,7 +38,7 @@ try{
 	
 	UserDataTableDAO dao2=UserDataTableDAO.getInstance();
 	UserDataBean pastData2=dao2.select(conn, session_userID);
-	UserDataBean UserData=new UserDataBean(pastData2.getId(),pastData2.getPassword(),pastData2.getMoney()-newMoney,pastData2.getIsAdmin());
+	UserDataBean UserData=new UserDataBean(pastData2.getId(),pastData2.getPassword(),pastData2.getMoney()-newMoney,pastData2.getScheduledMoney(),pastData2.getIsAdmin());
 	dao2.editMoney(conn, UserData);
 	
 	//donationList 안 거치고 바로 donationPage에서 업데이트한 dList 얻기 위해서

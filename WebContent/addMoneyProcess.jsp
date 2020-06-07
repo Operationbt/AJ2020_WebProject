@@ -28,8 +28,8 @@ if(session_userID == null || session_userID.equals("")){
 		conn=ConnectionProvider.getConnection();
 		UserDataTableDAO dao = UserDataTableDAO.getInstance();
 		UserDataBean pastData = dao.select(conn, session_userID);
-		UserDataBean userData = new UserDataBean(pastData.getId(), pastData.getPassword(), pastData.getMoney() + newMoney, 0);
-		dao.editMoney(conn, userData);
+		UserDataBean userData = new UserDataBean(pastData.getId(), pastData.getPassword(), pastData.getMoney(), pastData.getScheduledMoney() + newMoney, 0);
+		dao.applyMoney(conn, userData);
 		response.sendRedirect("myPage.jsp");
 		
 	}catch(SQLException e){
