@@ -30,6 +30,8 @@
 
 >>user_money int 0 : 기부에 필요한 재화를 저장
 
+>>user_scheduledMoney int null : user_money로 넣기 전에 보관되는 재화
+
 >>user_isAdmin tinyint 0 : 관리자 권한인지 판별. 0이면 일반 사용자, 1이면 관리자
 
 >>user_name varchar(45) null : 유저 이름
