@@ -37,6 +37,14 @@ public class UserDataBean implements java.io.Serializable{
 		this.email = email;
 		this.phone = phone;
 	}
+	
+	public UserDataBean(String id, String password, int money, int isAdmin) {
+		this();
+		this.id = id;
+		this.password = password;
+		this.money = money;
+		this.isAdmin = isAdmin;
+	}
 
 	public UserDataBean(String id, String password, int money, int isAdmin, String name, String email, String phone,
 			Date registerDate) {
