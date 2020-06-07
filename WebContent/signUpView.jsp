@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <title>회원가입</title>
 </head>
 <body>
@@ -36,7 +37,7 @@ function confirm() {
 
 <%-- 복붙해서 부트스트랩 CSS가 적혀있음 --%>
 <div class="container">
-	<form name="signUp" action="signUpProcess.jsp" method="post">
+	<form name="signUp" action="SignUpAction.do" method="post">
 		<p>길이는 20자 이하로 제한됩니다.</p>
 		<div class="form-group row">
 			<label class="col-sm-2">아이디</label>
@@ -50,10 +51,33 @@ function confirm() {
 				<input type="password" name="password" class="form-control">
 			</div>
 		</div>
-				<div class="form-group row">
+		<div class="form-group row">
 			<label class="col-sm-2">비밀번호 재확인</label>
 			<div class="col-sm-3">
 				<input type="password" name="passwordCheck" class="form-control">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2">이름</label>
+			<div class="col-sm-3">
+				<input type="text" name="name" class="form-control">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2">이메일</label>
+			<div class="col-sm-10">
+				<input type="text" name="email1" maxlength="45">@
+				<select name="email2">
+					<option>naver.com</option>
+					<option>daum.net</option>
+					<option>gmail.com</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2">전화번호</label>
+			<div class="col-sm-3">
+				<input type="text" name="phone" class="form-control">
 			</div>
 		</div>
 		<div class="form-group row">

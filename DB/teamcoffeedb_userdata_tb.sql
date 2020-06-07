@@ -25,9 +25,13 @@ DROP TABLE IF EXISTS `userdata_tb`;
 CREATE TABLE `userdata_tb` (
   `user_id` char(20) NOT NULL,
   `user_password` char(20) NOT NULL,
-  `user_money` int DEFAULT NULL,
+  `user_money` int DEFAULT '0',
   `user_scheduledMoney` int DEFAULT NULL,
-  `user_isAdmin` tinyint DEFAULT NULL,
+  `user_isAdmin` tinyint DEFAULT '0',
+  `user_name` varchar(45) DEFAULT NULL,
+  `user_email` varchar(45) DEFAULT NULL,
+  `user_phone` varchar(45) DEFAULT NULL,
+  `user_date` date DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +42,7 @@ CREATE TABLE `userdata_tb` (
 
 LOCK TABLES `userdata_tb` WRITE;
 /*!40000 ALTER TABLE `userdata_tb` DISABLE KEYS */;
-INSERT INTO `userdata_tb` VALUES ('32182609','1234',0,0,0),('baek','0000',2000,0,0),('hello','hello',33000,0,0),('test','0000',5000,100,0);
+INSERT INTO `userdata_tb` VALUES ('admin','admin',970000,0,1,NULL,NULL,NULL,NULL),('baek','1234',2500,0,0,NULL,NULL,NULL,NULL),('hihi','1234',300000,0,0,NULL,NULL,NULL,NULL),('newnew','1234',0,0,0,'백지훈','operationbt@naver.com','01072398302','2020-06-05'),('test','0000',5000,100,0,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `userdata_tb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-07 15:07:31
+-- Dump completed on 2020-06-05  4:22:07
