@@ -15,6 +15,7 @@ public class SignInAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("SignInAction execute");
 		HttpSession session = request.getSession(true);
 		
 		Connection conn = null;
@@ -27,11 +28,15 @@ public class SignInAction implements Action{
 			String pw = request.getParameter("userPW");
 
 			boolean isSuccess = dao.signIn(conn, id, pw);
+			
 			if(isSuccess) {	//로그인 성공
+				boolean isAdmin = dao.isAdmin(conn, id);
 				session.setMaxInactiveInterval(60 * 60);
 				session.setAttribute("userID", id);
+				session.setAttribute("userAdmin", isAdmin);
 				//session.setAttribute("userPW", pw); //비밀번호까지 세션에 저장할 이유가?
 				System.out.println("Sign In Session Success");
+
 			}
 			else { //로그인 실패
 				throw new NotFoundException("Sign In Not Match ID=" + id);

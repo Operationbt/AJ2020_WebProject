@@ -10,9 +10,6 @@
 <body>
 
 <%-- 전체 사용자에게 동일하게 보여주는 부분 (로그인 상관 no) --%>
-<a href="ConfirmProjectForm.jsp">Go to temp</a>
-<br><a href="userManager.jsp">User</a>
-
 
 <%-- [메뉴바]  홈 이동, 카테고리, 로그인, 로그아웃, 회원가입 --%>
 <jsp:include page="menuView.jsp" />

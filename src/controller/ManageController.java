@@ -1,4 +1,5 @@
 package controller;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -8,13 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.SignInAction;
-import action.SignOutAction;
-import action.SignUpAction;
+import action.ApplyMoneyAction;
 
-public class SignController extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+public class ManageController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,25 +24,22 @@ public class SignController extends HttpServlet {
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		
-		System.out.println("HttpServlet Command : " + command + " req : " + req.getRequestURI());
 		resp.setContentType("text/html; charset=utf-8");
 		req.setCharacterEncoding("utf-8");
 		
 		Action action = null;
-		if(command.equals("/sign/SignInAction")) {
-			action = new SignInAction();
+		if(command.equals("/manage/ApplyMoneyAction")) {
+			action = new ApplyMoneyAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../index.jsp");
-		}
-		else if(command.equals("/sign/SignOutAction")) {
-			action = new SignOutAction();
+			RequestDispatcher rd = req.getRequestDispatcher("listView.jsp");
+			rd.forward(req, resp);
+		}/*
+		else if(command.equals("/DetailViewAction.do")) {
+			action = new FindPeriodicElementAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../index.jsp");
-		}
-		else if(command.equals("/sign/SignUpAction")) {
-			action = new SignUpAction();
-			action.execute(req, resp);
-			resp.sendRedirect("signInView.jsp"); //회원가입 하면 바로 로그인 페이지로 이동
-		}
+			RequestDispatcher rd = req.getRequestDispatcher("detailView.jsp");
+			rd.forward(req, resp);
+		}*/
 	}
+
 }

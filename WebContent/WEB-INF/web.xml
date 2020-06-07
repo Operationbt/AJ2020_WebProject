@@ -5,11 +5,22 @@
 	   <servlet-class>controller.SignController</servlet-class>
 	   <load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+	   <servlet-name>ManageController</servlet-name>
+	   <servlet-class>controller.ManageController</servlet-class>
+	   <load-on-startup>2</load-on-startup>
+	</servlet>
+
 	
 	<servlet-mapping>
 	   <servlet-name>SignController</servlet-name>
-	   <url-pattern>*.do</url-pattern>
+	   <url-pattern>/sign/*</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+	   <servlet-name>ManageController</servlet-name>
+	   <url-pattern>/manage/*</url-pattern>
+	</servlet-mapping>
+
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

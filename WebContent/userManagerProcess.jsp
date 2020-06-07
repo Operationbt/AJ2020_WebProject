@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="jdbc.ConnectionProvider" %>
 <%@ page import="dao.UserDataTableDAO" %>
 <%@ page import="dto.UserDataBean" %>
@@ -8,20 +8,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%
-String id=request.getParameter("id"); 
+String id = request.getParameter("id"); 
+int scheduledMoney = Integer.parseInt(request.getParameter("schMoney"));
 
-Connection conn=null;
+Connection conn = null;
 	try{
-		conn=ConnectionProvider.getConnection();
+		conn = ConnectionProvider.getConnection();
 		UserDataTableDAO dao = UserDataTableDAO.getInstance();
-		UserDataBean pastData = dao.select(conn, id);
-		UserDataBean userData = new UserDataBean(id, pastData.getPassword(), pastData.getMoney()+pastData.getScheduledMoney(),0, 0);
-		dao.editMoney(conn, userData);
+		//UserDataBean pastData = dao.select(conn, id);
+		//UserDataBean userData = new UserDataBean(id, pastData.getPassword(), pastData.getMoney()+pastData.getScheduledMoney(),0, 0);
+		dao.applyMoney(conn, id, scheduledMoney);
 		response.sendRedirect("userManager.jsp");
 		
 	}catch(SQLException e){

@@ -119,7 +119,7 @@ public class UserDataTableDAO {
 	}
 	
 	
-	// edit Money
+	// edit Money 유저데이터로 검색해서 금액 변경
 	public int editMoney(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -138,8 +138,54 @@ public class UserDataTableDAO {
 			}
 		}
 	}
-
-	public int applyMoney(Connection conn, UserDataBean pe) throws SQLException {
+	
+	// edit Money 아이디로 검색해서 금액 변경
+	public int editMoney(Connection conn, String id, int money) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "update userdata_tb set user_money=? where user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, money);
+			pstmt.setString(2, id);
+			return pstmt.executeUpdate();
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	// 사용자의 입금 예정금액 승인
+	public int applyMoney(Connection conn, String id, int scheduledMoney) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		UserDataBean user = select(conn, id);
+		int nowMoney = user.getMoney();
+		
+		try {
+			String sql = "update userdata_tb set user_money=?, user_scheduledMoney=? where user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, nowMoney + scheduledMoney);	//현재금액 + 예정금액
+			pstmt.setInt(2, 0);	//예정금액은 0원 //예정금액 중 일부만 승인하는 메소드를 나중에 만들어도 좋을듯
+			pstmt.setString(3, id);
+			return pstmt.executeUpdate();
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	//금액 추가 -> 입금 예정 금액 추가
+	public int addMoney(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -160,7 +206,7 @@ public class UserDataTableDAO {
 	
 	// edit Author
 
-	// edit Admin
+	// edit Admin 관리자 권한 변경
 	public int editIsAdmin(Connection conn, UserDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -216,6 +262,30 @@ public class UserDataTableDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				//id,pw가 DB와 일치할 때
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
+	//해당 아이디가 관리자 권한 있는지 체크
+	public boolean isAdmin(Connection conn, String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "select * from userdata_tb where user_id=? and user_isAdmin=1";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				//관리자 권한이면 true
 				return true;
 			}
 			else {

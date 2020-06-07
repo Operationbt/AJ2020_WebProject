@@ -29,7 +29,7 @@ if(session_userID == null || session_userID.equals("")){
 		UserDataTableDAO dao = UserDataTableDAO.getInstance();
 		UserDataBean pastData = dao.select(conn, session_userID);
 		UserDataBean userData = new UserDataBean(pastData.getId(), pastData.getPassword(), pastData.getMoney(), pastData.getScheduledMoney() + newMoney, 0);
-		dao.applyMoney(conn, userData);
+		dao.addMoney(conn, userData);
 		response.sendRedirect("myPage.jsp");
 		
 	}catch(SQLException e){

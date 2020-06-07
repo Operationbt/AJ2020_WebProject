@@ -10,7 +10,7 @@
 <body>
 <%-- 폼 양식 확인하는 로직 짜야됨  --%>
 <div class="container">
-	<form name="signIn" action="SignInAction.do" method="post">
+	<form name="signIn" action="sign/SignInAction" method="post">
 		<div class="form-group row">
 			<label class="col-sm-2">아이디</label>
 			<div class="col-sm-3">

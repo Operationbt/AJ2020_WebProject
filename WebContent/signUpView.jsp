@@ -37,7 +37,7 @@ function confirm() {
 
 <%-- 복붙해서 부트스트랩 CSS가 적혀있음 --%>
 <div class="container">
-	<form name="signUp" action="SignUpAction.do" method="post">
+	<form name="signUp" action="/sign/SignUpAction" method="post">
 		<p>길이는 20자 이하로 제한됩니다.</p>
 		<div class="form-group row">
 			<label class="col-sm-2">아이디</label>
