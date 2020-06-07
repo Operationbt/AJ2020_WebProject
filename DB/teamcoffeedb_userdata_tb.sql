@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: teamcoffeedb
+-- Host: localhost    Database: teamcoffeedb
 -- ------------------------------------------------------
 -- Server version	8.0.20
 
@@ -26,6 +26,7 @@ CREATE TABLE `userdata_tb` (
   `user_id` char(20) NOT NULL,
   `user_password` char(20) NOT NULL,
   `user_money` int DEFAULT NULL,
+  `user_scheduledMoney` int DEFAULT NULL,
   `user_isAdmin` tinyint DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -37,6 +38,7 @@ CREATE TABLE `userdata_tb` (
 
 LOCK TABLES `userdata_tb` WRITE;
 /*!40000 ALTER TABLE `userdata_tb` DISABLE KEYS */;
+INSERT INTO `userdata_tb` VALUES ('32182609','1234',0,0,0),('baek','0000',2000,0,0),('hello','hello',33000,0,0),('test','0000',5000,100,0);
 /*!40000 ALTER TABLE `userdata_tb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-15 16:17:04
+-- Dump completed on 2020-06-07 15:07:31
