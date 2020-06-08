@@ -12,6 +12,11 @@
 	   <load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet>
+	   <servlet-name>CommentController</servlet-name>
+	   <servlet-class>controller.CommentController</servlet-class>
+	   <load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet>
 	  	<servlet-name>Controller</servlet-name>
 	  	<servlet-class>controller.Controller</servlet-class>
   	</servlet>
@@ -23,6 +28,10 @@
 	<servlet-mapping>
 	   <servlet-name>ManageController</servlet-name>
 	   <url-pattern>/manage/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	   <servlet-name>CommentController</servlet-name>
+	   <url-pattern>/comment/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>

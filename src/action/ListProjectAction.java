@@ -20,8 +20,8 @@ public class ListProjectAction implements Action{
 		Connection conn=null;
 		try{
 			conn=ConnectionProvider.getConnection();
-			ProjectDataTableDAO dao=ProjectDataTableDAO.getInstance();
-			List<ProjectDataBean> dList=dao.selectList(conn);
+			ProjectDataTableDAO dao = ProjectDataTableDAO.getInstance();
+			List<ProjectDataBean> dList = dao.selectList(conn);
 			request.setAttribute("dList",dList);
 			
 			System.out.println("dList.size()=" + dList.size());	
