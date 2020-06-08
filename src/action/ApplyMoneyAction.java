@@ -17,13 +17,13 @@ public class ApplyMoneyAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		System.out.println("ApplyMoneyAction excute");
-		
+		String id = request.getParameter("id");
 		Connection conn = null;
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			UserDataTableDAO dao = UserDataTableDAO.getInstance();
-
+			dao.applyMoney(conn, id);
 	
 		} catch (NotFoundException e) {
 			System.out.println("Member Not Found");

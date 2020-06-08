@@ -160,19 +160,39 @@ public class UserDataTableDAO {
 	}
 	
 	// 사용자의 입금 예정금액 승인
-	public int applyMoney(Connection conn, String id, int scheduledMoney) throws SQLException {
+	public int applyMoney(Connection conn, String id) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		UserDataBean user = select(conn, id);
 		int nowMoney = user.getMoney();
+		int nowSchMoney = user.getScheduledMoney();
 		
 		try {
 			String sql = "update userdata_tb set user_money=?, user_scheduledMoney=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, nowMoney + scheduledMoney);	//현재금액 + 예정금액
+			pstmt.setInt(1, nowMoney + nowSchMoney);	//현재금액 + 현재대기금액
 			pstmt.setInt(2, 0);	//예정금액은 0원 //예정금액 중 일부만 승인하는 메소드를 나중에 만들어도 좋을듯
 			pstmt.setString(3, id);
+			return pstmt.executeUpdate();
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	public int applyMoney(Connection conn, UserDataBean pe) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "update userdata_tb set user_scheduledMoney=? where user_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pe.getScheduledMoney());
+			pstmt.setString(2, pe.getId());
 			return pstmt.executeUpdate();
 		} finally {
 			if (rs != null) {
