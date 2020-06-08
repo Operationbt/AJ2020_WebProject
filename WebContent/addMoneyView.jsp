@@ -17,6 +17,13 @@
 			</div>
 			<div class="form-group row">
 			<div class="col-sm-offset-2 col-sm-10"><input type="submit" value="М≥∙Л²╦"></div>
+=======
+			<label class="col-sm-2">цФюЭгр ╠щ╬вю╩ ют╥бго╫ц©ю</label>
+			<div class="col-sm-3"><input type="text" value="0" name="Amount" class="form-control">©Ь</div>
+			</div>
+			<div class="form-group row">
+			<div class="col-sm-offset-2 col-sm-10"><input type="submit" value="х╝юн"></div>
+>>>>>>> MVC
 			</div>
 </form>
 </div>

@@ -14,7 +14,6 @@ function confirm() {
 	var id = signUp.id;
 	var p1 = signUp.password;
 	var p2 = signUp.passwordCheck;
-
 	//값 비교 하려면 value 꼭 사용! p1 == p2 처럼 삽질 안하게 조심
 	if(!id.value || !p1.value || !p2.value){
 		alert("양식을 모두 채워주세요.");
