@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="container">
-<<<<<<< HEAD
 <a class="navbar-brand" href="../index.jsp">Home</a>
 <div style="padding-top: 50px">
 	<table class="table table-bordered">
@@ -20,17 +19,7 @@
 					<td>${user.getId()}</td>
 					<td>${user.getMoney()}</td>
 					<td>${user.getScheduledMoney()}</td>
-					<td><a href="#" onclick="depositConfirm2('${user.getId()}', '${user.getScheduledMoney()}')">Confirm</a></td>
-=======
-<a class="navbar-brand" href="index.jsp">Home</a>
-<div style="padding-top: 50px">
-	<table class="table table-bordered">
-		<c:forEach var="user" items="${uList}">
-			<c:if test="${user.getScheduledMoney() != 0}">
-				<tr>
-					<td>${user.getId()}</td><td>${user.getScheduledMoney()}</td>
-					<td><a href="#" onclick="depositConfirm('${user.getId()}')">Confirm</a></td>
->>>>>>> MVC
+					<td><a href="#" onclick="depositConfirm('${user.getId()}', '${user.getScheduledMoney()}')">Confirm</a></td>
 				</tr>
 			</c:if>
 		</c:forEach>
@@ -38,20 +27,12 @@
 </div>
 </div>
 <script type="text/javascript">
-<<<<<<< HEAD
 	function depositConfirm(id, scheduledMoney){
 		if (confirm(id + "ë‹˜ì˜ walletì— " + scheduledMoney +  "ì›ì„ ì¶”ê°€í•©ë‹ˆë‹¤.") == true)
 			location.href = "ApplyMoneyAction?id=" + id;
 		else
 			return;
 	}
-=======
-	function depositConfirm(id){
-		if (confirm(id+"ÃæÀü ½ÂÀÎ")==true) location.href="UserManageAction.do?id="+id;
-	else
-		return;
-		}
->>>>>>> MVC
 </script>
 </body>
 </html>

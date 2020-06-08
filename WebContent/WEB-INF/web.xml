@@ -2,7 +2,6 @@
 <web-app>
 
 	<servlet>
-<<<<<<< HEAD
 	   <servlet-name>SignController</servlet-name>
 	   <servlet-class>controller.SignController</servlet-class>
 	   <load-on-startup>1</load-on-startup>
@@ -26,13 +25,6 @@
 	   <url-pattern>/manage/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-=======
-	  	<servlet-name>Controller</servlet-name>
-	  	<servlet-class>controller.Controller</servlet-class>
-  	</servlet>
-
-	<servlet-mapping>
->>>>>>> MVC
 		<servlet-name>Controller</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
