@@ -17,7 +17,7 @@
 		<c:forEach var="donation" items="${dList}">
 			<c:if test="${donation.isApproval() == false}">
 				<tr>
-					<td><a href="ConfirmProjectAction.do?pid=${donation.getPid()}" class="btn btn-secondary" role="button">Approve</a></td>
+					<td><a href="#" onclick="ApproveConfirm('${donation.getTitle()}','${donation.getPid() }')" class="btn btn-secondary">Approve</a></td>
 					<c:choose>
 						<c:when test="${donation.getImageURL() == null || donation.getImageURL().length() == 0}">
 							<td width="200" height="150" align="center">이미지없음</td>
@@ -38,5 +38,12 @@
 	</table>
 </div>
 </div>
+<script type="text/javascript">
+	function ApproveConfirm(name,pid){
+		if (confirm(name+"승인하겠습니까?")==true) location.href="ConfirmProjectAction.do?pid="+pid;
+	else
+		return;
+		}
+</script>
 </body>
 </html>
