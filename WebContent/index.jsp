@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Index</title>
 </head>
 <body>
-<%response.sendRedirect("mainPage.jsp"); %>
+<jsp:forward page="ListViewAction.do" />
 </body>
 </html>

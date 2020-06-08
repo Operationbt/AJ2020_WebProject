@@ -124,14 +124,16 @@ public class UserDataTableDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "update userdata_tb set user_money=? where user_id=?";
+			String sql = "update userdata_tb set user_money=?, user_scheduledMoney=? where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pe.getMoney());
-			pstmt.setString(2, pe.getId());
+			pstmt.setInt(2, pe.getScheduledMoney());			
+			pstmt.setString(3, pe.getId());
 			return pstmt.executeUpdate();
 		} finally {
 			if (rs != null) {
 				rs.close();
+				System.out.println("rs!=null");
 			}
 			if (pstmt != null) {
 				pstmt.close();
