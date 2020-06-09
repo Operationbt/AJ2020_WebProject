@@ -14,6 +14,7 @@ public class ConfirmProjectAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("ConfirmProjectAction execute");
 		int pid=Integer.parseInt(request.getParameter("pid"));
 		ProjectDataBean pe=new ProjectDataBean(pid, null, null, null, null, null, null, 0, 0, 0,0, true);
 		Connection conn = null;

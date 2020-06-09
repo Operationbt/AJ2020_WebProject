@@ -45,7 +45,6 @@
 							<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
 						</c:otherwise>
 					</c:choose>
-					<td>${donation.getCategory()}</td>
 					<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
 					<td>${donation.getWriter()}</td>
 					<td>신청일:${donation.getDate()}</td>

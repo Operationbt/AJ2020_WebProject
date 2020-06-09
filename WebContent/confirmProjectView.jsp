@@ -40,7 +40,7 @@
 </div>
 <script type="text/javascript">
 	function ApproveConfirm(name,pid){
-		if (confirm(name+"승인하겠습니까?")==true) location.href="ConfirmProjectAction.do?pid="+pid;
+		if (confirm(name+"승인하겠습니까?")==true) location.href="ConfirmProjectAction?pid="+pid;
 	else
 		return;
 		}
