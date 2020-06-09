@@ -28,12 +28,12 @@
 									<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
 								</c:otherwise>
 							</c:choose>
-							<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
-							<td>${donation.getWriter()}</td>
-							<td>신청일:${donation.getDate()}</td>
-							<td>목표금액:${donation.getGoal()}</td>
-							<td>모인 금액:${donation.getCurrent()}</td>
-							<td>기한:${donation.getDeadline()}</td>
+							<td width="300"><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a>
+							<br><font size="2" color="666666">${donation.getWriter()}</font></td>
+							<td width="150">${donation.getDate()} ~ <b>${donation.getDeadline()}</b></td>
+							<td>${donation.getGoal()} 원 목표</td>
+							<td>모인 금액: ${donation.getCurrent()}</td>
+							
 						</tr>
 					</c:if>
 					<c:if test="${donation.getCategory() eq cat }">
@@ -47,12 +47,11 @@
 									<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
 								</c:otherwise>
 							</c:choose>
-							<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
-							<td>${donation.getWriter()}</td>
-							<td>신청일:${donation.getDate()}</td>
-							<td>목표금액:${donation.getGoal()}</td>
-							<td>모인 금액:${donation.getCurrent()}</td>
-							<td>기한:${donation.getDeadline()}</td>
+							<td width="300"><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a>
+							<br><font size="2" color="666666">${donation.getWriter()}</font></td>
+							<td width="150">${donation.getDate()} ~ <b>${donation.getDeadline()}</b></td>
+							<td>${donation.getGoal()} 원 목표</td>
+							<td>모인 금액: ${donation.getCurrent()}</td>
 						</tr>
 					</c:if>
 				</c:if>

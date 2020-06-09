@@ -22,8 +22,8 @@
 			<a class="navbar-brand" href="index.jsp"><font color="FFFFFF">Home</font></a>
 		</div>
 		<c:if test="${userID == null}">
-			<a href="signInView.jsp" class="btn btn-secondary" role="button">Sign In</a>
-			<a href="signUpView.jsp" class="btn btn-secondary" role="button">Sign Up</a>
+			<a href="signInView.jsp" class="btn btn-light" role="button">Sign In</a>
+			<a href="signUpView.jsp" class="btn btn-light" role="button">Sign Up</a>
 		</c:if>
 		<c:if test="${userID != null}">
 			<c:if test="${userAdmin == false }">
