@@ -33,6 +33,44 @@ public class ProjCommentDAO {
 		return instance;
 	}
 	
+	//댓글 작성
+	public int insert(Connection conn, ProjCommentDataBean cmt) throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "insert into comment_tb(comment_writer, comment_content, comment_date, comment_pid) values (?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cmt.getWriter());
+			pstmt.setString(2, cmt.getContent());
+			pstmt.setDate(3, cmt.getDate());
+			pstmt.setInt(4, cmt.getPid());
+			
+			return pstmt.executeUpdate();
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	//댓글 삭제
+	public int delete(Connection conn, int num) throws SQLException {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from comment_tb where comment_num=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			return pstmt.executeUpdate();
+			
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
 	public List<ProjCommentDataBean> selectList(Connection conn, int comment_pid) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

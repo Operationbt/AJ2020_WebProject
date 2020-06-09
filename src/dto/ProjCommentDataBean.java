@@ -21,6 +21,15 @@ public class ProjCommentDataBean implements java.io.Serializable{
 		this.content = content;
 		this.pid = pid;
 	}
+	
+	//댓글 작성시 num필요 없음
+	public ProjCommentDataBean(String writer, Date date, String content, int pid) {
+		this();
+		this.writer = writer;
+		this.date = date;
+		this.content = content;
+		this.pid = pid;
+	}
 
 	public int getNum() {
 		return num;

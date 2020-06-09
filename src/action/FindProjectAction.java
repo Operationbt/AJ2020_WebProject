@@ -30,8 +30,6 @@ public class FindProjectAction implements Action{
 			//예외처리 필요..
 			request.setAttribute("project", project);
 			
-			System.out.println("project=" + project.getContent());
-			
 			// D-day 구하는 부분 -뭔가 문제 있음.. 새벽에 하면 오차있고.. 다시 한 번 확인해보자!
 			long theday = project.getDeadline().getTime();
 			//long theday = new java.util.Date(project.getDeadline().getTime()).getTime();

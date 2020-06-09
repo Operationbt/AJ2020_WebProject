@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `comment_tb`;
 CREATE TABLE `comment_tb` (
   `comment_num` int NOT NULL AUTO_INCREMENT,
   `comment_writer` varchar(45) DEFAULT NULL,
-  `comment_date` date DEFAULT NULL,
   `comment_content` varchar(1000) DEFAULT NULL,
+  `comment_date` date DEFAULT NULL,
   `comment_pid` int DEFAULT NULL,
   PRIMARY KEY (`comment_num`),
   KEY `comment_pid_idx` (`comment_pid`),
   CONSTRAINT `comment_pid` FOREIGN KEY (`comment_pid`) REFERENCES `projectdata_tb` (`proj_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `comment_tb` (
 
 LOCK TABLES `comment_tb` WRITE;
 /*!40000 ALTER TABLE `comment_tb` DISABLE KEYS */;
-INSERT INTO `comment_tb` VALUES (1,'abc',NULL,'hello',1000),(2,'test',NULL,'test',1000),(3,'abc',NULL,'abcabc',1001),(4,'admin',NULL,'안녕하세요',1000);
+INSERT INTO `comment_tb` VALUES (30,'admin','강아지 귀여워','2020-06-08',1000),(31,'admin','더워','2020-06-09',1001),(34,'baek','삭제테스트1','2020-06-09',1001),(37,'baek','후원합니다','2020-06-09',1000),(39,'baek','삭제테스트2','2020-06-09',1001);
 /*!40000 ALTER TABLE `comment_tb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-09  5:43:22
+-- Dump completed on 2020-06-09 22:00:33

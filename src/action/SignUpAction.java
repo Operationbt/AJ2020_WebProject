@@ -16,12 +16,11 @@ public class SignUpAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-
+		System.out.println("SignUpAction execute");
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			UserDataTableDAO dao = UserDataTableDAO.getInstance();
-			
 
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
@@ -36,7 +35,7 @@ public class SignUpAction implements Action{
 			
 			System.out.println("Sign Up Success");
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			if(conn != null) {
 				try {

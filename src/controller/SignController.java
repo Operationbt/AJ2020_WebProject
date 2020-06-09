@@ -45,7 +45,7 @@ public class SignController extends HttpServlet {
 		else if(command.equals("/sign/SignUpAction")) {
 			action = new SignUpAction();
 			action.execute(req, resp);
-			resp.sendRedirect("signInView.jsp"); //회원가입 하면 바로 로그인 페이지로 이동
+			resp.sendRedirect("../signInView.jsp"); //회원가입 하면 바로 로그인 페이지로 이동
 		}
 	}
 }

@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.DeleteCommentAction;
 import action.ShowCommentListAction;
 import action.SignInAction;
+import action.WriteCommentAction;
 
 public class CommentController extends HttpServlet {
 
@@ -24,24 +26,41 @@ public class CommentController extends HttpServlet {
 		String RequestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
-		
+
 		System.out.println("HttpServlet Command : " + command + " req : " + req.getRequestURI());
 		resp.setContentType("text/html; charset=utf-8");
 		req.setCharacterEncoding("utf-8");
 		
 		Action action = null;
-		if(command.equals("../comment/AddCommentAction")) {
-			action = new SignInAction();
+		if(command.equals("/comment/WriteCommentAction")) {
+			action = new WriteCommentAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../index.jsp");
+			
+			Integer pid = (Integer)req.getAttribute("pid");
+			System.out.println("now pid:" + pid.toString());
+			
+			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
+		}
+		else if(command.equals("/comment/DeleteCommentAction")) {
+			action = new DeleteCommentAction();
+			action.execute(req, resp);
+			System.out.println("삭제끝");
+			
+			Integer pid = (Integer)req.getAttribute("pid");
+			System.out.println("now pid:" + pid.toString());
+			
+			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
 		}
 		else if(command.equals("../comment/ShowCommentListAction")) {
 			action = new ShowCommentListAction();
 			action.execute(req, resp);
-			RequestDispatcher rd = req.getRequestDispatcher("../projCommentView.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("../projectDetail.jsp");
 			rd.forward(req,  resp);	
 			
 			//resp.sendRedirect("../index.jsp");
+		}
+		else {
+			System.out.println("No Matching Command!");
 		}
 	}
 }
