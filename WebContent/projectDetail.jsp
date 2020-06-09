@@ -16,30 +16,33 @@
 }
 </style>
 <body>
+<%
+	String userID = (String)session.getAttribute("userID");
+%>
 <div class="container">
 	<div class="col-md-12">
 		<button type="button" class="btn btn-primary" name="home"  onclick="location.href='index.jsp'">Home</button>
 	</div>
 </div>
 
-<div class="container" style="padding-top: 50px">
-<h1>${project.getTitle()}</h1>
-<h4>프로젝트 기간:${project.getDate()} ~ ${project.getDeadline()}</h4>
-<span style="background-color:yellow">
-	<c:choose>
-		<c:when test="${leftDay >= 0}">
-			d-${leftDay}
-		</c:when>
-		<c:otherwise>
-			종료
-		</c:otherwise>
-	</c:choose>
-</span>
-<br>
-후원자 현황: ${project.getSponsor()}명
-<br>
-모금 현황: ${project.getCurrent()}원
-<h3>프로젝트 소개</h3>
+<div class="container" style="padding-top: 50px"> <!-- 프로젝트 제목, 기간, 후원 현황 등등 머릿말-->
+	<h1>${project.getTitle()}</h1>
+	<h4>프로젝트 기간:${project.getDate()} ~ ${project.getDeadline()}</h4>
+	<span style="background-color:yellow">
+		<c:choose>
+			<c:when test="${leftDay >= 0}">
+				d-${leftDay}
+			</c:when>
+			<c:otherwise>
+				종료
+			</c:otherwise>
+		</c:choose>
+	</span>
+	<br>
+	후원자 현황: ${project.getSponsor()}명
+	<br>
+	모금 현황: ${project.getCurrent()}원
+	<h3>프로젝트 소개</h3>
 
 <div>	<!-- 프로젝트 첨부 이미지 -->
 	<c:if test="${project.getImageURL() != null || project.getImageURL().length() != 0}">
@@ -52,7 +55,12 @@
 </div>
 
 
-<a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary" role="button">후원하기</a>
+<c:choose>
+	<c:when test="${leftDay<0 }">기한 종료</c:when>
+	<c:when test="${userID==null }">후원하려면 로그인하세요</c:when>
+	<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary" role="button">후원하기</a></c:when>
+</c:choose>
+
 
 
 <div class="commentArea">
@@ -63,7 +71,7 @@
 			<form name="addComment" action="comment/WriteCommentAction" method="post">
 				<input type="hidden" name="commentPID" value="${project.getPid()}">
 				<input type="hidden" name="commentWriter" value="${userID}">
-				<textarea name = "commentContent" cols="50" rows="5" placeholder="여러분의 후원 후기를 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
+				<textarea name = "commentContent" cols="50" rows="5" placeholder="여러분의 후원 후기 및 의견을 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
 				<input type="submit" class="btn btn-primary" value="등록">
 			</form>
 		</c:if>

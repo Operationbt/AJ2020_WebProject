@@ -20,6 +20,17 @@
 			</tr>
 			
 			<tr align="center">
+				<td width="150">카테고리</td>
+				<td>
+				<select name="category">
+				<option value="0">전체(All)</option>
+				<option value="1">아동(Child)</option>
+				<option value="2">장애인(Disabled)</option>
+				<option value="3">동물(Animal)</option>
+				<option value="4">환경(Environment)</option>
+				<option value="5">가족(Family)</option>
+				</select></td></tr> 
+			<tr align="center">
 				<td width="150">프로젝트 제목</td>
 				<td width="450"><input type="text" name="title"></td>
 			</tr>
@@ -36,7 +47,6 @@
 		</table>
 		<br>
 		<div>
-
 		프로젝트 소개<br>
 		<textarea name = "content" cols="100" rows="30" placeholder="프로젝트 진행 계기, 상세 내용 및 계획을 작성해주세요.">
 		</textarea>
@@ -48,7 +58,7 @@
 		</div>
 		<br>
 		<div>
-			<input type="submit" value="프로젝트 개설 신청하기">
+		<input type="submit" value="프로젝트 개설 신청하기">
 		</div>
 	</form>
 </div>
