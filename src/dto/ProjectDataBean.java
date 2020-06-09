@@ -27,14 +27,15 @@ public class ProjectDataBean implements java.io.Serializable{
 	private int goal;
 	private int current;
 	private int sponsor;
+	private int category;
 	private boolean approval;
 	
 	public ProjectDataBean() {
-		this(0, null, null, null, null, null, null, 0, 0, 0, false);
+		this(0, null, null, null, null, null, null, 0, 0, 0,0, false);
 	}
 	
 	public ProjectDataBean(int pid, String writer, String title, Date date, String content, String imageURL,
-			Date deadline, int goal, int current, int sponsor, boolean approval) {
+			Date deadline, int goal, int current, int sponsor, int category,boolean approval) {
 		super();
 		this.pid = pid;
 		this.writer = writer;
@@ -46,6 +47,7 @@ public class ProjectDataBean implements java.io.Serializable{
 		this.goal = goal;
 		this.current = current;
 		this.sponsor = sponsor;
+		this.category=category;
 		this.approval = approval;
 	}
 
@@ -127,6 +129,14 @@ public class ProjectDataBean implements java.io.Serializable{
 
 	public void setSponsor(int sponsor) {
 		this.sponsor = sponsor;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
 	}
 
 	public boolean isApproval() {

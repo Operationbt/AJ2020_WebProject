@@ -16,34 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `userdata_tb`
+-- Table structure for table `comment_tb`
 --
 
-DROP TABLE IF EXISTS `userdata_tb`;
+DROP TABLE IF EXISTS `comment_tb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `userdata_tb` (
-  `user_id` char(20) NOT NULL,
-  `user_password` char(20) NOT NULL,
-  `user_money` int DEFAULT '0',
-  `user_scheduledMoney` int DEFAULT NULL,
-  `user_isAdmin` tinyint DEFAULT '0',
-  `user_name` varchar(45) DEFAULT NULL,
-  `user_email` varchar(45) DEFAULT NULL,
-  `user_phone` varchar(45) DEFAULT NULL,
-  `user_date` date DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `comment_tb` (
+  `comment_num` int NOT NULL AUTO_INCREMENT,
+  `comment_writer` varchar(45) DEFAULT NULL,
+  `comment_content` varchar(1000) DEFAULT NULL,
+  `comment_date` date DEFAULT NULL,
+  `comment_pid` int DEFAULT NULL,
+  PRIMARY KEY (`comment_num`),
+  KEY `comment_pid_idx` (`comment_pid`),
+  CONSTRAINT `comment_pid` FOREIGN KEY (`comment_pid`) REFERENCES `projectdata_tb` (`proj_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `userdata_tb`
+-- Dumping data for table `comment_tb`
 --
 
-LOCK TABLES `userdata_tb` WRITE;
-/*!40000 ALTER TABLE `userdata_tb` DISABLE KEYS */;
-INSERT INTO `userdata_tb` VALUES ('admin','admin',944998,0,1,NULL,NULL,NULL,NULL),('baek','1234',12000,0,0,NULL,NULL,NULL,NULL),('hihi','1234',300000,NULL,0,NULL,NULL,NULL,NULL),('newnew','1234',0,NULL,0,'백지훈','operationbt@naver.com','01072398302','2020-06-05'),('test','0000',65400,100,0,NULL,NULL,NULL,NULL),('zzz','123',0,0,0,'dfsdf','sdgf@naver.com','123','2020-06-09');
-/*!40000 ALTER TABLE `userdata_tb` ENABLE KEYS */;
+LOCK TABLES `comment_tb` WRITE;
+/*!40000 ALTER TABLE `comment_tb` DISABLE KEYS */;
+INSERT INTO `comment_tb` VALUES (30,'admin','강아지 귀여워','2020-06-08',1000),(31,'admin','더워','2020-06-09',1001),(34,'baek','삭제테스트1','2020-06-09',1001),(37,'baek','후원합니다','2020-06-09',1000),(39,'baek','삭제테스트2','2020-06-09',1001),(43,'baek','마감되서 아쉽다','2020-06-09',1004);
+/*!40000 ALTER TABLE `comment_tb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-09 23:19:45
+-- Dump completed on 2020-06-09 23:19:46

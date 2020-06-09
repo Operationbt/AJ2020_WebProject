@@ -31,7 +31,7 @@ public class SignInAction implements Action{
 			
 			if(isSuccess) {	//로그인 성공
 				boolean isAdmin = dao.isAdmin(conn, id);
-				session.setMaxInactiveInterval(60 * 60);
+				//session.setMaxInactiveInterval(60 * 60); //불편해서 뺌
 				session.setAttribute("userID", id);
 				session.setAttribute("userAdmin", isAdmin);
 				//session.setAttribute("userPW", pw); //비밀번호까지 세션에 저장할 이유가?

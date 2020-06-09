@@ -26,9 +26,10 @@ public class ProjectDataTableDAO {
 	public int insert(Connection conn, ProjectDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into projectdata_tb values (?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into projectdata_tb values (?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pe.getPid());
+			
 			pstmt.setString(2, pe.getWriter());
 			pstmt.setString(3, pe.getTitle());
 			pstmt.setDate(4, pe.getDate());
@@ -40,7 +41,9 @@ public class ProjectDataTableDAO {
 			pstmt.setInt(8, pe.getGoal());
 			pstmt.setInt(9, pe.getCurrent());
 			pstmt.setInt(10, pe.getSponsor());
-			pstmt.setBoolean(11, pe.isApproval());
+			pstmt.setInt(11, pe.getCategory());
+			pstmt.setBoolean(12, pe.isApproval());
+		
 			return pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null) {
@@ -195,9 +198,10 @@ public class ProjectDataTableDAO {
 		int goal=rs.getInt("proj_goal");
 		int currentMoney=rs.getInt("proj_current");
 		int sponsor=rs.getInt("proj_sponsor");
+		int category=rs.getInt("proj_category");
 		boolean ap=rs.getBoolean("proj_approval");
 		
-		ProjectDataBean pe = new ProjectDataBean(id, writer, title, date, content, image, deadline, goal, currentMoney, sponsor, ap);
+		ProjectDataBean pe = new ProjectDataBean(id, writer, title, date, content, image, deadline, goal, currentMoney, sponsor, category, ap);
 		return pe;
 	}
 }

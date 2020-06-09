@@ -19,10 +19,13 @@ public class ListProjectAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		Connection conn=null;
 		try{
+			String cat=request.getParameter("cat");
+			System.out.println("cat="+cat);
 			conn=ConnectionProvider.getConnection();
 			ProjectDataTableDAO dao=ProjectDataTableDAO.getInstance();
 			List<ProjectDataBean> dList=dao.selectList(conn);
 			request.setAttribute("dList",dList);
+			request.setAttribute("cat", cat);
 			
 			System.out.println("dList.size()=" + dList.size());	
 

@@ -3,12 +3,15 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProjCommentDAO;
 import dao.ProjectDataTableDAO;
+import dto.ProjCommentDataBean;
 import dto.ProjectDataBean;
 import jdbc.ConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.sql.Date;
 
 public class FindProjectAction implements Action{
@@ -21,15 +24,13 @@ public class FindProjectAction implements Action{
 		
 		try{
 			conn=ConnectionProvider.getConnection();
-			ProjectDataTableDAO dao=ProjectDataTableDAO.getInstance();
-			ProjectDataBean project =dao.select(conn, pid);
+			ProjectDataTableDAO dao = ProjectDataTableDAO.getInstance();
+			ProjectDataBean project = dao.select(conn, pid);
 			
-			//¿¹¿ÜÃ³¸® ÇÊ¿ä..
+			//ì˜ˆì™¸ì²˜ë¦¬ í•„ìš”..
 			request.setAttribute("project", project);
 			
-			System.out.println("project=" + project.getContent());
-			
-			// D-day ±¸ÇÏ´Â ºÎºĞ -¹º°¡ ¹®Á¦ ÀÖÀ½.. »õº®¿¡ ÇÏ¸é ¿ÀÂ÷ÀÖ°í.. ´Ù½Ã ÇÑ ¹ø È®ÀÎÇØº¸ÀÚ!
+			// D-day êµ¬í•˜ëŠ” ë¶€ë¶„ -ë­”ê°€ ë¬¸ì œ ìˆìŒ.. ìƒˆë²½ì— í•˜ë©´ ì˜¤ì°¨ìˆê³ .. ë‹¤ì‹œ í•œ ë²ˆ í™•ì¸í•´ë³´ì!
 			long theday = project.getDeadline().getTime();
 			//long theday = new java.util.Date(project.getDeadline().getTime()).getTime();
 			long today = new java.util.Date().getTime();
@@ -41,8 +42,13 @@ public class FindProjectAction implements Action{
 			else{
 			    leftDay = (int)Math.floor(leftTime/(1000*60*60*24))+1; 
 			}
-
 			request.setAttribute("leftDay", leftDay);
+			
+			
+			//ëŒ“ê¸€ ëª©ë¡ ë¶ˆëŸ¬ì˜¤ê¸°
+			ProjCommentDAO cmt_dao = ProjCommentDAO.getInstance();
+			List<ProjCommentDataBean> cList = cmt_dao.selectList(conn, pid);
+			request.setAttribute("cList", cList);
 
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -1,4 +1,5 @@
 package controller;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -8,14 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.DeleteCommentAction;
+import action.ShowCommentListAction;
 import action.SignInAction;
-import action.SignOutAction;
-import action.SignUpAction;
+import action.WriteCommentAction;
 
-public class SignController extends HttpServlet {
+public class CommentController extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
@@ -26,26 +26,41 @@ public class SignController extends HttpServlet {
 		String RequestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
-		
+
 		System.out.println("HttpServlet Command : " + command + " req : " + req.getRequestURI());
 		resp.setContentType("text/html; charset=utf-8");
 		req.setCharacterEncoding("utf-8");
 		
 		Action action = null;
-		if(command.equals("/sign/SignInAction")) {
-			action = new SignInAction();
+		if(command.equals("/comment/WriteCommentAction")) {
+			action = new WriteCommentAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../index.jsp");
+			
+			Integer pid = (Integer)req.getAttribute("pid");
+			System.out.println("now pid:" + pid.toString());
+			
+			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
 		}
-		else if(command.equals("/sign/SignOutAction")) {
-			action = new SignOutAction();
+		else if(command.equals("/comment/DeleteCommentAction")) {
+			action = new DeleteCommentAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../index.jsp");
+			System.out.println("삭제끝");
+			
+			Integer pid = (Integer)req.getAttribute("pid");
+			System.out.println("now pid:" + pid.toString());
+			
+			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
 		}
-		else if(command.equals("/sign/SignUpAction")) {
-			action = new SignUpAction();
+		else if(command.equals("../comment/ShowCommentListAction")) {
+			action = new ShowCommentListAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../signInView.jsp"); //회원가입 하면 바로 로그인 페이지로 이동
+			RequestDispatcher rd = req.getRequestDispatcher("../projectDetail.jsp");
+			rd.forward(req,  resp);	
+			
+			//resp.sendRedirect("../index.jsp");
+		}
+		else {
+			System.out.println("No Matching Command!");
 		}
 	}
 }

@@ -16,8 +16,6 @@
 	//out.print(isAdmin.booleanValue());
 	//<c:out value="${isAdmin}" default="-"/>
 %>
-<c:out value="아이디:${userID}" default="아이디"/>
-<c:out value="권한:${userAdmin}" default="권한"/>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<div class="container">
 		<div class="navbar-header">
@@ -28,8 +26,11 @@
 			<a href="signUpView.jsp" class="btn btn-secondary" role="button">Sign Up</a>
 		</c:if>
 		<c:if test="${userID != null}">
-			<font color="#fffffff">${userID} 님 반갑습니다!</font>
+			<c:if test="${userAdmin == false }">
+				<font color="#fffffff">${userID} 님 반갑습니다!</font>
+			</c:if>
 			<c:if test="${userAdmin == true }">
+				<font color="#ff6666">${userID} 님 반갑습니다!</font> <!-- 관리자는 이름에 하이라이트 -->
 				<a href="manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">대기중인 프로젝트</a>
 				<a href="manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
 			</c:if>

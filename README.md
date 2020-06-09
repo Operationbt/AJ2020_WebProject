@@ -1,12 +1,6 @@
 ># AJ2020_WebProject
 ># 후원사이트 프로젝트
 
-#깃연동을 새로 했더니 안고친거까지 전부 수정된상태로 올라가서 실제로는 뭐뭐 수정했는지 모르실거같아요...
-dao에서 ProjectDataTableDAO, dto에서 ProjectDataBean, action에서 ListProjectAction.java이랑AddProjectAction, DonateAction 이정도인거같고
-jsp에서는 AddProjectView.jsp,category.jsp,confirmProject.jsp, donationList.jsp, mainPage.jsp, projectDetail.jsp
-이정도 고친거같아요
-
-
 >## 빌드 도움말
 > 이클립스 프로젝트를 만들고 빌드 path에서 라이브러리로 mysql-connector-java-8.0.20.jar를 추가해줘야함
 
