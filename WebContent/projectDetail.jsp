@@ -54,13 +54,13 @@
 	<pre>${project.getContent()}</pre>
 </div>
 
-
+<div style="padding-top:10px">
 <c:choose>
 	<c:when test="${leftDay<0 }">기한 종료</c:when>
-	<c:when test="${userID==null }">후원하려면 로그인하세요</c:when>
-	<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary" role="button">후원하기</a></c:when>
+	<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-primary btn-lg" role="button">후원하려면 로그인하세요</a></c:when>
+	<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg" role="button">후원하기</a></c:when>
 </c:choose>
-
+</div>
 
 
 <div class="commentArea">
