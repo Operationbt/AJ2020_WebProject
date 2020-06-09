@@ -13,6 +13,7 @@
 <a class="navbar-brand" href="../index.jsp">Home</a>
 <div style="padding-top: 50px">
 	<table class="table table-bordered">
+		<tr><td>UserID</td><td>보유금액</td><td>입금 예정 금액</td><td></td></tr>
 		<c:forEach var="user" items="${uList}">
 			<c:if test="${user.getScheduledMoney() != 0}">	<%--입금 대기금액이 0원이 아닌 유저만 보이게 --%>
 				<tr>
