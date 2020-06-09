@@ -28,7 +28,6 @@ public class ManageController extends HttpServlet{
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		
-		System.out.println("HttpServlet Command : " + command + " req : " + req.getRequestURI());
 		resp.setContentType("text/html; charset=utf-8");
 		req.setCharacterEncoding("utf-8");
 		

@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,7 +15,12 @@
 	border: 3px outset gray;
 	background-color: white;
 }
+
+pre {
+	white-space: pre-wrap;
+}
 </style>
+
 <body>
 <%
 	String userID = (String)session.getAttribute("userID");
@@ -56,13 +62,13 @@
 		<pre>${project.getContent()}</pre>
 	</div>
 	
-	
+	<div style="padding-top:10px">
 	<c:choose>
-		<c:when test="${leftDay<0 }">기한 종료</c:when>
-		<c:when test="${userID==null }">후원하려면 로그인하세요</c:when>
-		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary" role="button">후원하기</a></c:when>
+		<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg disabled" role="button">기한 종료</a></c:when>
+		<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-primary btn-lg" role="button">후원하려면 로그인하세요</a></c:when>
+	<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg" role="button">후원하기</a></c:when>
 	</c:choose>
-	
+	</div>
 	
 	
 	<div class="commentArea">
@@ -113,18 +119,14 @@
 <script type="text/javascript">
 function writeComment() {
 	var form = document.addComment;
-
 	form.submit();
 }
-
 function delteComment(num, pid) {
 	if(confirm("댓글을 삭제하시겠습니까?") == true)
 		location.href = "comment/DeleteCommentAction?num=" + num + "&pid=" + pid;
 }
-
 function editComment() {
 	
 }
 </script>
 </body>
-</html>
