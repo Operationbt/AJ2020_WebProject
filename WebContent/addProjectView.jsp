@@ -34,15 +34,13 @@
 				<td width="150">프로젝트 제목</td>
 				<td width="450"><input type="text" name="title"></td>
 			</tr>
-			
 			<tr align="center">
 				<td width="150">마감기한</td>
-				<td width="450"><input type="date" min="2020-05-22" max="2022-05-22" name="deadline"></td>
+				<td width="450"><input type="date" min="2020-05-22" max="2022-05-22" placeholder="yyyy-mm-dd" name="deadline"></td>
 			</tr>
-				
 			<tr align="center">
 				<td width="150">모금 목표 금액</td>
-				<td width="450"><input type="text" name="goal">원</td>
+				<td width="450"><input type="number" name="goal">원</td>
 			</tr>	
 		</table>
 		<br>

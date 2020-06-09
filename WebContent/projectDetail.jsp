@@ -45,8 +45,9 @@
 		모금 현황: ${project.getCurrent()}원
 		<h3>프로젝트 소개</h3>
 	</div>
+	
 	<div>	<!-- 프로젝트 첨부 이미지 -->
-		<c:if test="${project.getImageURL() != null || project.getImageURL().length() == 0}">
+		<c:if test="${not empty project.getImageURL()}">
 			<img src="${project.getImageURL()}" width="1000"/>
 		</c:if>
 	</div>

@@ -19,7 +19,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.jsp">Home</a>
+			<a class="navbar-brand" href="ListViewAction.do">Home</a>
 		</div>
 		<c:if test="${userID == null}">
 			<a href="signInView.jsp" class="btn btn-secondary" role="button">Sign In</a>
@@ -31,7 +31,7 @@
 			</c:if>
 			<c:if test="${userAdmin == true }">
 				<font color="#ff6666">${userID} 님 반갑습니다!</font> <!-- 관리자는 이름에 하이라이트 -->
-				<a href="manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">대기중인 프로젝트</a>
+				<a href="manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">프로젝트 관리</a>
 				<a href="manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
 			</c:if>
 			<a href="addProjectView.jsp" class="btn btn-secondary" role="button">모금 프로젝트 신청 &raquo;</a>
