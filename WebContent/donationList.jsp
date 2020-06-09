@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,53 +12,53 @@
 <title>donationList(authorized)</title>
 </head>
 <body>
-
 <div class="container">
-<div style="padding-top: 50px">
-	<table class="table table-bordered">
-		<c:forEach var="donation" items="${dList}">
-			<c:if test="${donation.isApproval() == true}">
-			<c:if test="${cat eq 0  or cat eq null}">
-			<tr>
-					<c:choose>
-						<c:when test="${donation.getImageURL() == null || donation.getImageURL().length() == 0}">
-							<td width="200" height="150" align="center">이미지없음</td>
-						</c:when>
-						<c:otherwise>
-							<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
-						</c:otherwise>
-					</c:choose>
-					
-					<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
-					<td>${donation.getWriter()}</td>
-					<td>신청일:${donation.getDate()}</td>
-					<td>목표금액:${donation.getGoal()}</td>
-					<td>모인 금액:${donation.getCurrent()}</td>
-					<td>기한:${donation.getDeadline()}</td>
-				</tr>
-			</c:if>
-			<c:if test="${donation.getCategory() eq cat }">
-				<tr>
-					<c:choose>
-						<c:when test="${donation.getImageURL() == null || donation.getImageURL().length() == 0}">
-							<td width="200" height="150" align="center">이미지없음</td>
-						</c:when>
-						<c:otherwise>
-							<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
-						</c:otherwise>
-					</c:choose>
-					<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
-					<td>${donation.getWriter()}</td>
-					<td>신청일:${donation.getDate()}</td>
-					<td>목표금액:${donation.getGoal()}</td>
-					<td>모인 금액:${donation.getCurrent()}</td>
-					<td>기한:${donation.getDeadline()}</td>
-				</tr>
-			</c:if></c:if>
-		</c:forEach>
-	</table>
+	<div style="padding-top: 50px">
+		<table class="table table-bordered">
+			<c:forEach var="donation" items="${dList}">
+				<c:if test="${donation.isApproval() == true}">
+					<c:if test="${cat eq 0  or cat eq null}">
+						<tr>
+							<td><p style="font-size: 20px; font-weight: bolder;"><fmt:formatNumber value="${donation.getCurrent() div donation.getGoal() * 100}" pattern="0.00"/>%<p></td>
+							<c:choose>
+								<c:when test="${donation.getImageURL() == null || donation.getImageURL().length() == 0}">
+									<td><img src="images/default.jpg" width="200" height="150"/></td>
+								</c:when>
+								<c:otherwise>
+									<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
+								</c:otherwise>
+							</c:choose>
+							<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
+							<td>${donation.getWriter()}</td>
+							<td>신청일:${donation.getDate()}</td>
+							<td>목표금액:${donation.getGoal()}</td>
+							<td>모인 금액:${donation.getCurrent()}</td>
+							<td>기한:${donation.getDeadline()}</td>
+						</tr>
+					</c:if>
+					<c:if test="${donation.getCategory() eq cat }">
+						<tr>
+							<td><p style="font-size: 20px; font-weight: bolder;"><fmt:formatNumber value="${donation.getCurrent() div donation.getGoal() * 100}" pattern="0.00"/>%<p></td>
+							<c:choose>
+								<c:when test="${donation.getImageURL() == null || donation.getImageURL().length() == 0}">
+									<td><img src="images/default.jpg" width="200" height="150"/></td>
+								</c:when>
+								<c:otherwise>
+									<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
+								</c:otherwise>
+							</c:choose>
+							<td><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
+							<td>${donation.getWriter()}</td>
+							<td>신청일:${donation.getDate()}</td>
+							<td>목표금액:${donation.getGoal()}</td>
+							<td>모인 금액:${donation.getCurrent()}</td>
+							<td>기한:${donation.getDeadline()}</td>
+						</tr>
+					</c:if>
+				</c:if>
+			</c:forEach>
+		</table>
+	</div>
 </div>
-</div>
-
 </body>
 </html>

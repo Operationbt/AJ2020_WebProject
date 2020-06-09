@@ -14,17 +14,16 @@
 	border: 3px outset gray;
 	background-color: white;
 }
+pre {
+	white-space: pre-wrap;
+}
 </style>
+
 <body>
 <%
 	String userID = (String)session.getAttribute("userID");
 %>
-<div class="container">
-	<div class="col-md-12">
-		<button type="button" class="btn btn-primary" name="home"  onclick="location.href='index.jsp'">Home</button>
-	</div>
-</div>
-
+<jsp:include page="menuView.jsp" />
 <div class="container" style="padding-top: 50px"> 
 	<div>	<!-- 프로젝트 제목, 기간, 후원 현황 등등 머릿말-->
 		<h1>${project.getTitle()}</h1>
@@ -45,8 +44,9 @@
 		모금 현황: ${project.getCurrent()}원
 		<h3>프로젝트 소개</h3>
 	</div>
+	
 	<div>	<!-- 프로젝트 첨부 이미지 -->
-		<c:if test="${project.getImageURL() != null || project.getImageURL().length() == 0}">
+		<c:if test="${not empty project.getImageURL()}">
 			<img src="${project.getImageURL()}" width="1000"/>
 		</c:if>
 	</div>
@@ -55,13 +55,13 @@
 		<pre>${project.getContent()}</pre>
 	</div>
 	
-	
+	<div style="padding-top:10px">
 	<c:choose>
-		<c:when test="${leftDay<0 }">기한 종료</c:when>
-		<c:when test="${userID==null }">후원하려면 로그인하세요</c:when>
-		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary" role="button">후원하기</a></c:when>
+		<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg disabled" role="button">기한 종료</a></c:when>
+		<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-primary btn-lg" role="button">후원하려면 로그인하세요</a></c:when>
+	<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg" role="button">후원하기</a></c:when>
 	</c:choose>
-	
+	</div>
 	
 	
 	<div class="commentArea">
@@ -112,18 +112,14 @@
 <script type="text/javascript">
 function writeComment() {
 	var form = document.addComment;
-
 	form.submit();
 }
-
 function delteComment(num, pid) {
 	if(confirm("댓글을 삭제하시겠습니까?") == true)
 		location.href = "comment/DeleteCommentAction?num=" + num + "&pid=" + pid;
 }
-
 function editComment() {
 	
 }
 </script>
 </body>
-</html>
