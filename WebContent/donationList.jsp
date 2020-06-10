@@ -31,7 +31,7 @@
 							<td width="300"><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a>
 							<br><font size="2" color="666666">${donation.getWriter()}</font></td>
 							<td width="150">${donation.getDate()} ~ ${donation.getDeadline()}</td>
-							<td>${donation.getGoal()} 원 목표</td>
+							<td width="150px">${donation.getGoal()} 원 목표</td>
 							<td>모인 금액: ${donation.getCurrent()}</td>
 						</tr>
 					</c:if>
@@ -49,7 +49,7 @@
 							<td width="300"><a href="DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a>
 							<br><font size="2" color="666666">${donation.getWriter()}</font></td>
 							<td width="150">${donation.getDate()} ~ ${donation.getDeadline()}</td>
-							<td>${donation.getGoal()} 원 목표</td>
+							<td width="150px">${donation.getGoal()} 원 목표</td>
 							<td>모인 금액: ${donation.getCurrent()}</td>
 						</tr>
 					</c:if>
