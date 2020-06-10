@@ -32,7 +32,7 @@ try{
 	ProjectDataBean pastData=dao.select(conn, pid2);
 	ProjectDataBean ProjectData=new ProjectDataBean(pastData.getPid(),pastData.getWriter(),pastData.getTitle(),pastData.getDate(),
 			pastData.getContent(),pastData.getImageURL(),
-			pastData.getDeadline(),pastData.getGoal(),pastData.getCurrent()+newMoney,pastData.getSponsor()+1,false);
+			pastData.getDeadline(),pastData.getGoal(),pastData.getCurrent()+newMoney,pastData.getSponsor()+1,pastData.getCategory(),false);
 	dao.editCurrent(conn, ProjectData);
 	dao.editSponsor(conn, ProjectData);
 	

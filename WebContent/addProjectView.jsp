@@ -23,7 +23,7 @@
 				<td width="150">카테고리</td>
 				<td>
 				<select name="category">
-				<option value="0">전체(All)</option>
+				<option value="10">전체(All)</option>
 				<option value="1">아동(Child)</option>
 				<option value="2">장애인(Disabled)</option>
 				<option value="3">동물(Animal)</option>
