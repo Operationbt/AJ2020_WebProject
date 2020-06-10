@@ -12,9 +12,9 @@
 <a class="navbar-brand" href="index.jsp">Home</a>
 <form name="addMoneyForm" action="AddMoneyAction.do" method="post">
 	<div class="form-group row">
-		<label class="col-sm-2">충전할 금액을 입력하시오</label>
-		<div class="col-sm-3">
-			<input type="text" value="0" name="Amount" class="form-control">원
+		<label class="col-sm-3">충전할 금액을 입력하세요</label>
+		<div class="col-sm-2">
+			<input type="text" value="0" name="Amount" class="form-control" onkeyPress="return onlyNumber(event)">
 		</div>
 	</div>
 	<div class="form-group row">
@@ -25,4 +25,13 @@
 </form>
 </div>
 </body>
+<script type="text/javascript">
+function onlyNumber(evt){
+	var charCode=(evt.which) ? evt.which:event.keyCode;
+	var _value=event.srcElement.value;
+	if((event.keyCode <48) || (event.keyCode >57)){
+		if(event.keyCode !=46) return false;
+	}
+}
+</script>
 </html>

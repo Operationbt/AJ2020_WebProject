@@ -1,4 +1,3 @@
-  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +14,6 @@
 	border: 3px outset gray;
 	background-color: white;
 }
-
 pre {
 	white-space: pre-wrap;
 }
@@ -25,12 +23,7 @@ pre {
 <%
 	String userID = (String)session.getAttribute("userID");
 %>
-<div class="container">
-	<div class="col-md-12">
-		<button type="button" class="btn btn-primary" name="home"  onclick="location.href='index.jsp'">Home</button>
-	</div>
-</div>
-
+<jsp:include page="menuView.jsp" />
 <div class="container" style="padding-top: 50px"> 
 	<div>	<!-- 프로젝트 제목, 기간, 후원 현황 등등 머릿말-->
 		<h1>${project.getTitle()}</h1>
@@ -130,3 +123,4 @@ function editComment() {
 }
 </script>
 </body>
+

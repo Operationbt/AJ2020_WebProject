@@ -16,14 +16,14 @@
 	//out.print(isAdmin.booleanValue());
 	//<c:out value="${isAdmin}" default="-"/>
 %>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-primary bg-info">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="ListViewAction.do">Home</a>
+			<a class="navbar-brand" href="index.jsp"><font color="FFFFFF">Home</font></a>
 		</div>
 		<c:if test="${userID == null}">
-			<a href="signInView.jsp" class="btn btn-secondary" role="button">Sign In</a>
-			<a href="signUpView.jsp" class="btn btn-secondary" role="button">Sign Up</a>
+			<a href="signInView.jsp" class="btn btn-light" role="button">Sign In</a>
+			<a href="signUpView.jsp" class="btn btn-light" role="button">Sign Up</a>
 		</c:if>
 		<c:if test="${userID != null}">
 			<c:if test="${userAdmin == false }">
@@ -34,9 +34,9 @@
 				<a href="manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">프로젝트 관리</a>
 				<a href="manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
 			</c:if>
-			<a href="addProjectView.jsp" class="btn btn-secondary" role="button">모금 프로젝트 신청 &raquo;</a>
-			<a href="MyPageViewAction.do" class="btn btn-secondary" role="button">MyPage &raquo;</a>
-			<a href="sign/SignOutAction" class="btn btn-secondary" role="button">Sign Out</a>
+			<a href="addProjectView.jsp" class="btn btn-light" role="button">모금 프로젝트 신청 &raquo;</a>
+			<a href="MyPageViewAction.do" class="btn btn-light" role="button">MyPage &raquo;</a>
+			<a href="sign/SignOutAction" class="btn btn-light" role="button">Sign Out</a>
 		</c:if>
 
 	</div>
