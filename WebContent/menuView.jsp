@@ -16,7 +16,7 @@
 	//out.print(isAdmin.booleanValue());
 	//<c:out value="${isAdmin}" default="-"/>
 %>
-<nav class="navbar navbar-expand navbar-primary bg-info">
+<nav class="navbar navbar-expand navbar-primary bg-info">	<!-- #17a2b8 이게 info 색상입니다 -->
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.jsp"><font color="FFFFFF">Home</font></a>
