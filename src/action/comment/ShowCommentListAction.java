@@ -1,4 +1,4 @@
-package action;
+package action.comment;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,6 +13,7 @@ import dao.ProjCommentDAO;
 import dao.ProjectDataTableDAO;
 
 import jdbc.ConnectionProvider;
+import action.*;
 
 public class ShowCommentListAction implements Action{
 

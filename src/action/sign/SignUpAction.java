@@ -1,4 +1,4 @@
-package action;
+package action.sign;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import jdbc.ConnectionProvider;
 import dto.UserDataBean;
 import dao.UserDataTableDAO;
+import action.*;
 
 public class SignUpAction implements Action{
 

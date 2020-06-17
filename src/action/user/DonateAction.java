@@ -1,4 +1,4 @@
-package action;
+package action.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +13,7 @@ import jdbc.ConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import action.*;
 
 public class DonateAction implements Action {
 
@@ -36,8 +37,8 @@ public class DonateAction implements Action {
 			
 			UserDataTableDAO dao2=UserDataTableDAO.getInstance();
 			UserDataBean pastData2=dao2.select(conn, session_userID);
-			//UserData »ý¼ºÀÚ ¼öÁ¤ÇÑ °Í¿¡ ¸ÂÃç¼­ ¿ì¼± »¡°£ÁÙ Á¦°ÅÇßÀ½
-			//[todo] - UserData DAO¶û DTO¿¡ ÇÊ¿ä·Î ÇÏ´Â ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â°Ô °¡µ¶¼ºÀÌ ´õ ÁÁÀ» °Í °°¾Æ¿ä
+			//UserData ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ç¼­ ï¿½ì¼± ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//[todo] - UserData DAOï¿½ï¿½ DTOï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Úµå¸¦ ï¿½Û¼ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½
 			UserDataBean UserData = new UserDataBean(pastData2.getId(), pastData2.getPassword(), pastData2.getMoney()-newMoney, 
 													 pastData2.getScheduledMoney(), pastData2.getIsAdmin(), pastData2.getName(), 
 													 pastData2.getEmail(), pastData2.getPhone(), pastData2.getRegisterDate());

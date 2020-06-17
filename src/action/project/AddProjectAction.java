@@ -1,4 +1,4 @@
-package action;
+package action.project;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import action.*;
 
 
 public class AddProjectAction implements Action {

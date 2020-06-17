@@ -7,6 +7,6 @@
 <title>Index</title>
 </head>
 <body>
-<jsp:forward page="ListViewAction.do" />
+<jsp:forward page="project/ListViewAction" />
 </body>
 </html>

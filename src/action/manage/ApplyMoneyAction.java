@@ -1,4 +1,4 @@
-package action;
+package action.manage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDataTableDAO;
 import jdbc.ConnectionProvider;
+import action.*;
 
 //매니저 컨트롤러(관리자 기능) 액션 - 대기중인 금액 승인해주는 거
 public class ApplyMoneyAction implements Action {

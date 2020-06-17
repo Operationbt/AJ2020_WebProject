@@ -1,4 +1,4 @@
-package action;
+package action.project;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.Date;
+import action.*;
 
 public class FindProjectAction implements Action{
 

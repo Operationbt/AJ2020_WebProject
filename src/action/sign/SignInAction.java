@@ -1,4 +1,4 @@
-package action;
+package action.sign;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDataTableDAO;
 import jdbc.ConnectionProvider;
+import action.*;
 
 public class SignInAction implements Action{
 

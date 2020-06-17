@@ -15,7 +15,7 @@
 	</div>
 </div>
 	<div class="container">
-		<form name="donate" action="DonateAction.do?pid=${project.getPid()}" method="post">
+		<form name="donate" action="./DonateAction?pid=${project.getPid()}" method="post">
 		<div class="form-group">
 			<label class="col-sm-2">기부할 금액</label>
 			<div class="col-sm-3"><input type="text" value="0" name="donationAmount">원</div>

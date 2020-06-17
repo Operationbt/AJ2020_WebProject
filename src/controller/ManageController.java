@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.ApplyMoneyAction;
-import action.ConfirmProjectAction;
-import action.ListProjectAction;
-import action.UserManageAction;
-import action.UserManageViewAction;
+import action.manage.*;
+import action.project.ListProjectAction;
+
 
 public class ManageController extends HttpServlet{
 	
@@ -28,6 +26,7 @@ public class ManageController extends HttpServlet{
 		String contextPath = req.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
 		
+        System.out.println("HttpServlet Command : " + command + " req : " + req.getRequestURI());
 		resp.setContentType("text/html; charset=utf-8");
 		req.setCharacterEncoding("utf-8");
 		
@@ -45,7 +44,7 @@ public class ManageController extends HttpServlet{
 		} else if (command.contentEquals("/manage/ConfirmProjectAction")) {
 			action = new ConfirmProjectAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../ListViewAction.do");
+			resp.sendRedirect("../project/ListViewAction");
 			//RequestDispatcher rd = req.getRequestDispatcher("/ListViewAction.do");
 			//rd.forward(req, resp); 
 		} else if (command.contentEquals("/manage/UserManageViewAction")) {

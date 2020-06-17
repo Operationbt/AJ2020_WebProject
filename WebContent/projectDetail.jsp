@@ -27,7 +27,7 @@ pre {
 %>
 <div class="container">
 	<div class="col-md-12">
-		<button type="button" class="btn btn-primary" name="home"  onclick="location.href='index.jsp'">Home</button>
+		<button type="button" class="btn btn-primary" name="home"  onclick="location.href='../index.jsp'">Home</button>
 	</div>
 </div>
 
@@ -64,8 +64,8 @@ pre {
 	<div style="padding-top:10px">
 	<c:choose>
 		<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg disabled" role="button">기한 종료</a></c:when>
-		<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-primary btn-lg" role="button">후원하려면 로그인하세요</a></c:when>
-	<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg" role="button">후원하기</a></c:when>
+		<c:when test="${userID==null }"><a href="../signInView.jsp" class = "btn btn-primary btn-lg" role="button">후원하려면 로그인하세요</a></c:when>
+	<c:when test="${userID!=null }"><a href="../user/DonateViewAction?pid=${project.getPid()}" class="btn btn-secondary btn-lg" role="button">후원하기</a></c:when>
 	</c:choose>
 	</div>
 	
@@ -75,7 +75,7 @@ pre {
 		<div class="writeComment">	<!-- 댓글 작성 -->
 			<c:if test="${userID != null}">
 				<c:out value="아이디:${userID}"/>
-				<form name="addComment" action="comment/WriteCommentAction" method="post">
+				<form name="addComment" action="../comment/WriteCommentAction" method="post">
 					<input type="hidden" name="commentPID" value="${project.getPid()}">
 					<input type="hidden" name="commentWriter" value="${userID}">
 					<textarea name = "commentContent" cols="50" rows="5" placeholder="여러분의 후원 후기 및 의견을 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
@@ -122,7 +122,7 @@ function writeComment() {
 }
 function delteComment(num, pid) {
 	if(confirm("댓글을 삭제하시겠습니까?") == true)
-		location.href = "comment/DeleteCommentAction?num=" + num + "&pid=" + pid;
+		location.href = "../comment/DeleteCommentAction?num=" + num + "&pid=" + pid;
 }
 function editComment() {
 	

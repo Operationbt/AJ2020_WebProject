@@ -12,7 +12,7 @@
 <h1>프로젝트 개설 신청</h1>
 
 <div class="container">
-	<form name="addProjectForm" action="AddProjectAction.do" method="post">
+	<form name="addProjectForm" action="project/AddProjectAction" method="post">
 		<table class="table table-bordered">
 			<tr align="center">
 				<td width="150">주체명</td>
@@ -23,7 +23,7 @@
 				<td width="150">카테고리</td>
 				<td>
 				<select name="category">
-				<option value="0">전체(All)</option>
+				<option value="10">전체(All)</option>
 				<option value="1">아동(Child)</option>
 				<option value="2">장애인(Disabled)</option>
 				<option value="3">동물(Animal)</option>
@@ -34,15 +34,13 @@
 				<td width="150">프로젝트 제목</td>
 				<td width="450"><input type="text" name="title"></td>
 			</tr>
-			
 			<tr align="center">
 				<td width="150">마감기한</td>
-				<td width="450"><input type="date" min="2020-05-22" max="2022-05-22" name="deadline"></td>
+				<td width="450"><input type="date" min="2020-05-22" max="2022-05-22" placeholder="yyyy-mm-dd" name="deadline"></td>
 			</tr>
-				
 			<tr align="center">
 				<td width="150">모금 목표 금액</td>
-				<td width="450"><input type="text" name="goal">원</td>
+				<td width="450"><input type="number" name="goal">원</td>
 			</tr>	
 		</table>
 		<br>

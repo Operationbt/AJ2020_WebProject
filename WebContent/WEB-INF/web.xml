@@ -17,8 +17,14 @@
 	   <load-on-startup>3</load-on-startup>
 	</servlet>
 	<servlet>
-	  	<servlet-name>Controller</servlet-name>
-	  	<servlet-class>controller.Controller</servlet-class>
+	   <servlet-name>UserController</servlet-name>
+	   <servlet-class>controller.UserController</servlet-class>
+	   <load-on-startup>4</load-on-startup>
+	</servlet>
+	<servlet>
+	  	<servlet-name>ProjectController</servlet-name>
+	  	<servlet-class>controller.ProjectController</servlet-class>
+	  	<load-on-startup>5</load-on-startup>
   	</servlet>
 	
 	<servlet-mapping>
@@ -34,8 +40,13 @@
 	   <url-pattern>/comment/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>Controller</servlet-name>
-		<url-pattern>*.do</url-pattern>
+	   <servlet-name>UserController</servlet-name>
+	   <url-pattern>/user/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProjectController</servlet-name>
+		<url-pattern>/project/*</url-pattern>
+		<load-on-startup>5</load-on-startup>
 	</servlet-mapping>
 	
 	<welcome-file-list>

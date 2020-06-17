@@ -1,4 +1,4 @@
-package action;
+package action.manage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +10,7 @@ import jdbc.ConnectionProvider;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import action.*;
 
 public class UserManageViewAction implements Action{
 

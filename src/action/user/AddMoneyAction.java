@@ -1,4 +1,4 @@
-package action;
+package action.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +10,7 @@ import jdbc.ConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+import action.*;
 
 public class AddMoneyAction implements Action{
 

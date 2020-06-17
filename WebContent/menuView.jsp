@@ -16,14 +16,14 @@
 	//out.print(isAdmin.booleanValue());
 	//<c:out value="${isAdmin}" default="-"/>
 %>
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-primary bg-info">	<!-- #17a2b8 이게 info 색상입니다 -->
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.jsp">Home</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"><font color="FFFFFF">Home</font></a>
 		</div>
 		<c:if test="${userID == null}">
-			<a href="signInView.jsp" class="btn btn-secondary" role="button">Sign In</a>
-			<a href="signUpView.jsp" class="btn btn-secondary" role="button">Sign Up</a>
+            <a href="signInView.jsp" class="btn btn-light" role="button">Sign In</a>
+            <a href="signUpView.jsp" class="btn btn-light" role="button">Sign Up</a>
 		</c:if>
 		<c:if test="${userID != null}">
 			<c:if test="${userAdmin == false }">
@@ -31,12 +31,12 @@
 			</c:if>
 			<c:if test="${userAdmin == true }">
 				<font color="#ff6666">${userID} 님 반갑습니다!</font> <!-- 관리자는 이름에 하이라이트 -->
-				<a href="manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">대기중인 프로젝트</a>
-				<a href="manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
+				<a href="${pageContext.request.contextPath}/manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">대기중인 프로젝트</a>
+				<a href="${pageContext.request.contextPath}/manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
 			</c:if>
-			<a href="addProjectView.jsp" class="btn btn-secondary" role="button">모금 프로젝트 신청 &raquo;</a>
-			<a href="MyPageViewAction.do" class="btn btn-secondary" role="button">MyPage &raquo;</a>
-			<a href="sign/SignOutAction" class="btn btn-secondary" role="button">Sign Out</a>
+            <a href="${pageContext.request.contextPath}/addProjectView.jsp" class="btn btn-light" role="button">모금 프로젝트 신청 &raquo;</a>
+            <a href="${pageContext.request.contextPath}/user/MyPageViewAction" class="btn btn-light" role="button">MyPage &raquo;</a>
+            <a href="${pageContext.request.contextPath}/sign/SignOutAction" class="btn btn-light" role="button">Sign Out</a>
 		</c:if>
 
 	</div>

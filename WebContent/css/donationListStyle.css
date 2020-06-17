@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+/*
+
+bootstrap info color = #17a2b8;
+
+*/
+
+.MainDonateList{
+
+	font-family: NanumBarunGothic,dotum,Sans-serif;
+
+	font-size: 14px;
+
+	line-height: 19px;
+
+	color: #202020;
+
+	-webkit-font-smoothing: antialiased;
+
+	box-sizing: border-box;
+
+	width: 1140px;
+
+	clear: both;
+
+	margin: 40px auto -24px;
+
+}
+
+.card{font-size: 14px;
+
+line-height: 19px;
+
+-webkit-font-smoothing: antialiased;
+
+box-sizing: border-box;
+
+text-decoration: none;
+
+color: inherit;
+
+float: left;
+
+position: relative;
+
+width: 267px;
+
+height: 381px;
+
+margin: 0 0 24px 24px;
+
+background-color: #fff;
+
+font-family: NanumSquareWebFont,dotum,Sans-serif;}
+
+.card_img{
+
+	vertical-align: top;
+
+}
+
+.card_content{
+
+	box-sizing: border-box;
+
+	padding: 21px 20px 0;
+
+}
+
+.card_title{
+
+	overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    display: -webkit-box;
+
+    height: 50px;
+
+    line-height: 25px;
+
+    word-wrap: break-word;
+
+    word-break: break-all;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    font-size: 17px;
+
+    letter-spacing: -.5px;
+
+    color: #333;
+
+}
+
+.card_organization{
+
+	overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    margin-top: 8px;
+
+    font-family: NanumBarunGothic,dotum,Sans-serif;
+
+    font-size: 15px;
+
+    color: #828282;
+
+}
+
+
+
+.card_bar{
+
+	height: 5px;
+
+	margin-top: 24px;
+
+	background-color: #e8e8e8; 
+
+}
+
+.card_bar_collection{
+
+	display: inline-block;
+
+    height: 100%;
+
+    /* background-color: #10c838; */
+
+    background-color: #17a2b8;
+
+    text-align: right;
+
+    vertical-align: top;
+
+}
+
+.card_percent{
+
+	display: inline-block;
+
+    margin-top: 15px;
+
+    font-size: 17px;
+
+    letter-spacing: -.2px;
+
+    /* color: #00ab33; */
+
+    color: #17a2b8;
+
+}
+
+.card_money{
+
+	float: right;
+
+    margin-top: 15px;
+
+    font-size: 17px;
+
+    color: #333;
+
+}

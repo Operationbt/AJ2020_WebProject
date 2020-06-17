@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.SignInAction;
-import action.SignOutAction;
-import action.SignUpAction;
+import action.sign.*;
 
 public class SignController extends HttpServlet {
 

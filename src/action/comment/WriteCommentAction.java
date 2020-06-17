@@ -1,36 +1,41 @@
-package action;
+package action.comment;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ProjCommentDAO;
+import dao.ProjectDataTableDAO;
 import dto.ProjCommentDataBean;
+import dto.ProjectDataBean;
 import jdbc.ConnectionProvider;
+import action.*;
 
-public class DeleteCommentAction implements Action{
+public class WriteCommentAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("DeleteCommentAction execute");
+		System.out.println("WriteCommentAction execute");
 		Connection conn = null;
 		
-		int num = Integer.parseInt(request.getParameter("num"));
-		int pid = Integer.parseInt(request.getParameter("pid"));
-		
-		System.out.println("pid=" + pid);
+		String writer = request.getParameter("commentWriter");
+		String content = request.getParameter("commentContent");
+		Date date = new Date(Calendar.getInstance().getTime().getTime());
+		int pid = Integer.parseInt(request.getParameter("commentPID"));
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			ProjCommentDAO dao = ProjCommentDAO.getInstance();
-			dao.delete(conn, num);
-			
+			ProjCommentDataBean cmt = new ProjCommentDataBean(writer, date, content, pid);
+			dao.insert(conn, cmt);
 			
 			request.setAttribute("pid", pid);
+			
 		} catch (NotFoundException e) {
 			System.out.println("Member Not Found");
 			e.printStackTrace();
@@ -47,5 +52,4 @@ public class DeleteCommentAction implements Action{
 		}
 	}
 
-	
 }

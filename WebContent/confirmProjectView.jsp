@@ -26,7 +26,7 @@
 							<td><img src="${donation.getImageURL()}" width="200" height="150"/></td>
 						</c:otherwise>
 					</c:choose>
-					<td><a href="../DetailViewAction.do?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
+					<td><a href="../project/DetailViewAction?pid=${donation.getPid()}"><b>${donation.getTitle()}</b></a></td>
 					<td>${donation.getWriter()}</td>
 					<td>신청일:${donation.getDate()}</td>
 					<td>목표금액:${donation.getGoal()}</td>
@@ -40,7 +40,7 @@
 </div>
 <script type="text/javascript">
 	function ApproveConfirm(name,pid){
-		if (confirm(name+"승인하겠습니까?")==true) location.href="ConfirmProjectAction.do?pid="+pid;
+        if (confirm(name+"승인하겠습니까?")==true) location.href="ConfirmProjectAction?pid="+pid;
 	else
 		return;
 		}

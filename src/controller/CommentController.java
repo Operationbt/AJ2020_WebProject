@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.DeleteCommentAction;
-import action.ShowCommentListAction;
-import action.SignInAction;
-import action.WriteCommentAction;
+import action.comment.*;
+
 
 public class CommentController extends HttpServlet {
 
@@ -39,7 +37,7 @@ public class CommentController extends HttpServlet {
 			Integer pid = (Integer)req.getAttribute("pid");
 			System.out.println("now pid:" + pid.toString());
 			
-			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
+			resp.sendRedirect("../project/DetailViewAction?pid=" + pid);
 		}
 		else if(command.equals("/comment/DeleteCommentAction")) {
 			action = new DeleteCommentAction();
@@ -49,8 +47,9 @@ public class CommentController extends HttpServlet {
 			Integer pid = (Integer)req.getAttribute("pid");
 			System.out.println("now pid:" + pid.toString());
 			
-			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
+			resp.sendRedirect("../project/DetailViewAction?pid=" + pid);
 		}
+		/*
 		else if(command.equals("../comment/ShowCommentListAction")) {
 			action = new ShowCommentListAction();
 			action.execute(req, resp);
@@ -59,6 +58,7 @@ public class CommentController extends HttpServlet {
 			
 			//resp.sendRedirect("../index.jsp");
 		}
+		*/
 		else {
 			System.out.println("No Matching Command!");
 		}
