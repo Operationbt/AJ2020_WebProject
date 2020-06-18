@@ -9,6 +9,9 @@
 <body>
 <%-- [메뉴바]  홈 이동, 카테고리, 로그인, 로그아웃, 회원가입 --%>
 <jsp:include page="menuView.jsp" />
+
+		<jsp:include page="slide.jsp" />
+
 <div class="container">
 	<div style="padding-top:30px">
 		<jsp:include page="category.jsp"/>

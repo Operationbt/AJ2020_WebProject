@@ -16,10 +16,10 @@
 	//out.print(isAdmin.booleanValue());
 	//<c:out value="${isAdmin}" default="-"/>
 %>
-<nav class="navbar navbar-expand navbar-primary bg-info">	<!-- #17a2b8 이게 info 색상입니다 -->
+<nav class="navbar navbar-expand navbar-primary bg-light">	<!-- #17a2b8 이게 info 색상입니다 -->
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.jsp"><font color="FFFFFF">Home</font></a>
+			<a class="navbar-brand" href="index.jsp"><font color="#000000">Home</font></a>
 		</div>
 		<c:if test="${userID == null}">
 			<a href="signInView.jsp" class="btn btn-light" role="button">Sign In</a>
