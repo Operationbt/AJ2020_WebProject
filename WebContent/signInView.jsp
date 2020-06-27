@@ -19,7 +19,7 @@
 </style>
 <%-- 폼 양식 확인하는 로직 짜야됨  --%>
 
-<%String status=request.getParameter("status"); %>
+<%String status=(String)session.getAttribute("status"); %>
 <div class="container">
  <div class="jumbotron" style="padding-top: 0px; width:400px; margin-left:300px; margin-top:50px;">
 	<form class="form-center" name="signIn" action="sign/SignInAction" method="post" onsubmit="return checkForm()" >
@@ -35,12 +35,15 @@
 		<div class="form-group row">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input type="submit" class="btn btn-primary" value="로그인">
+				
+				<% if(status.equals("failed") ){ out.println("<font color='red'>사용자 정보 불일치</font>"); }%>
+				<% if(status == null) {out.println("???");} %>
 			</div>
 		</div>
 		아직 아이디가 없으신가요? <a href="signUpView.jsp">가입하기</a><br>
 		<a href="index.jsp">Home</a>으로 돌아가기
 	</form>
-	${error }
+	
 	
 	
 	</div>

@@ -35,7 +35,9 @@ public class SignController extends HttpServlet {
 		if(command.equals("/sign/SignInAction")) {
 			action = new SignInAction();
 			action.execute(req, resp);
-			resp.sendRedirect("../index.jsp");
+			if((req.getSession().getAttribute("status")).equals("failed")) {
+			resp.sendRedirect("../signInView.jsp");
+			}else {resp.sendRedirect("../index.jsp");}
 		}
 		else if(command.equals("/sign/SignOutAction")) {
 			action = new SignOutAction();
