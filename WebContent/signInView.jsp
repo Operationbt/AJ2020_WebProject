@@ -36,8 +36,8 @@
 			<div class="col-sm-offset-2 col-sm-10">
 				<input type="submit" class="btn btn-primary" value="로그인">
 				
-				<% if(status.equals("failed") ){ out.println("<font color='red'>사용자 정보 불일치</font>"); }%>
-				<% if(status == null) {out.println("???");} %>
+				<% if(status!= null && status.equals("failed") ){ out.println("<font color='red'>사용자 정보 불일치</font>"); }%>
+				
 			</div>
 		</div>
 		아직 아이디가 없으신가요? <a href="signUpView.jsp">가입하기</a><br>

@@ -50,10 +50,8 @@ function confirm() {
 	<h3 style="text-align: center;">회원가입</h3>
 		<p>길이는 20자 이하로 제한됩니다.</p>
 		<div class="form-group row">
-			
-		
-				<input type="text" name="id" class="form-control"placeholder="아이디">
-			
+				<input type="text" name="id" class="form-control"placeholder="아이디" width="300px">
+				<%--<a href="sign/SignUpCheckAction"><input type="button" value="중복확인"></a> --%>
 		</div>
 		<div class="form-group row">
 			

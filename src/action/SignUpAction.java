@@ -13,7 +13,7 @@ import dto.UserDataBean;
 import dao.UserDataTableDAO;
 
 public class SignUpAction implements Action{
-
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("SignUpAction execute");
@@ -21,7 +21,6 @@ public class SignUpAction implements Action{
 		try {
 			conn = ConnectionProvider.getConnection();
 			UserDataTableDAO dao = UserDataTableDAO.getInstance();
-
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			String name = request.getParameter("name");
