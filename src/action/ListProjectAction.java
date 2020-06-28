@@ -28,7 +28,7 @@ public class ListProjectAction implements Action{
 			List<ProjectDataBean> dList = dao.selectList(conn);
 			request.setAttribute("dList",dList);
 			request.setAttribute("cat", cat);
-			
+			request.setAttribute("today", new java.util.Date().getTime());
 			System.out.println("dList.size()=" + dList.size());	
 
 		}catch(SQLException e){
