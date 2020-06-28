@@ -52,16 +52,6 @@ footer{ position:fixed;
 %>
 <jsp:include page="menuView.jsp" />
 
-<!-- 후기 작성하려면 프로젝트 작성자와 id일치하는지 검사하는 로직 추가해야함 -->
-<c:if test="${project.getWriter() == userID }">
-	<c:if test="${leftDay < 0}"> <!-- 마감된 프로젝트만 후기를 작성할 수 있다 -->
-		<c:if test="${review == null }"> <!-- 아직 후기가 없을 때만 작성 가능 -->
-			<a href="WriteReviewView.jsp?pid=${project.getPid()}">후기 작성</a>
-		</c:if>
-	</c:if>
-</c:if>
-
-
 <div class="container"> 
 	<div class="col-md-10" style="margin-left:70px; margin-top:50px;">	<!-- 프로젝트 제목, 기간, 후원 현황 등등 머릿말-->
 		<h2>${project.getTitle()}</h2>
@@ -83,7 +73,7 @@ footer{ position:fixed;
 	</div>
 	<div class="col-md-10" style="margin-left:70px; padding-top:30px">	<!-- 프로젝트 첨부 이미지 -->
 		<h6>프로젝트 소개</h6>
-		<c:if test="${project.getImageURL() != null || project.getImageURL().length() == 0}">
+		<c:if test="${project.getImageURL() != null && project.getImageURL().length() != 0}">
 			<img src="${project.getImageURL()}" width="100%"/>
 		</c:if>
 	
@@ -95,14 +85,23 @@ footer{ position:fixed;
 		<c:choose>
 			<c:when test="${leftDay<0 }">
 				<a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button">기한 종료</a>
-				<c:if test="${review != null }"> <!-- 작성된 후기가 있을 때만 버튼 활성화  -->
-					<a href="/CoffeeWebProject/review/ShowReviewAction?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 보기</a>
-				</c:if>
+				<c:choose>
+					<c:when test="${review != null }">	<!-- 작성된 후기가 있을 때 -->
+						<a href="/CoffeeWebProject/review/ShowReviewAction?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 보기</a>
+					</c:when>
+					<c:otherwise>	<!-- 아직 후기가 없을 때-->
+						<c:if test="${project.getWriter() == userID }"> <!-- 후기 작성하려면 프로젝트 작성자와 id일치해야함 -->
+							<a href="WriteReviewView.jsp?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 작성</a>
+						</c:if>
+					</c:otherwise>
+				</c:choose>
 			</c:when>
 			<c:when test="${userID==null }">
 				<a href="/CoffeeWebProject/signInView.jsp" class = "btn btn-primary btn-lg btn-block" role="button">후원하려면 로그인하세요</a>
 			</c:when>
-		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a></c:when>
+			<c:when test="${userID!=null }">
+				<a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a>
+			</c:when>
 		</c:choose>
 		</div>
 	</div>

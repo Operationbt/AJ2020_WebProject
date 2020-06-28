@@ -43,7 +43,7 @@ img { display: block; margin: 0px auto; }
 	</div>
 	<div class="col-md-10" style="margin-left:70px; padding-top:30px">	<!-- 후기 첨부 이미지 -->
 		<h6>프로젝트 후기</h6>
-		<c:if test="${review.getImageURL() != null || review.getImageURL().length() == 0}">
+		<c:if test="${review.getImageURL() != null && review.getImageURL().length() != 0}">
 			<img src="${review.getImageURL()}" width="100%"/>
 		</c:if>
 	
