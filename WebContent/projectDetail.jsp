@@ -35,14 +35,17 @@ pre {
 
 img { display: block; margin: 0px auto; }
 	
-footer{ position:fixed; 
-  right:150px;
-  left:150px; 
-  bottom:0px; 
-  height:50px; 
-  width:70%;
-  background:white; opacity: 1.0;
-  color: white; }
+footer{
+	position:fixed;
+	left:150px;
+	right:150px; 
+	bottom:0px; 
+	height:50px; 
+	width:70%;
+	background:white; opacity: 1.0;
+	color: white;
+	margin: 0 auto;
+}
 	
 </style>
 
@@ -72,7 +75,6 @@ footer{ position:fixed;
 		모금 현황 : ${project.getCurrent()}원
 	</div>
 	<div class="col-md-10" style="margin-left:70px; padding-top:30px">	<!-- 프로젝트 첨부 이미지 -->
-		<h6>프로젝트 소개</h6>
 		<c:if test="${project.getImageURL() != null && project.getImageURL().length() != 0}">
 			<img src="${project.getImageURL()}" width="100%"/>
 		</c:if>
@@ -82,27 +84,29 @@ footer{ position:fixed;
 		</div>
 
 		<div style="padding-top:10px; width:50%; margin-left:25%">
-		<c:choose>
-			<c:when test="${leftDay<0 }">
-				<a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button">기한 종료</a>
-				<c:choose>
-					<c:when test="${review != null }">	<!-- 작성된 후기가 있을 때 -->
-						<a href="/CoffeeWebProject/review/ShowReviewAction?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 보기</a>
-					</c:when>
-					<c:otherwise>	<!-- 아직 후기가 없을 때-->
-						<c:if test="${project.getWriter() == userID }"> <!-- 후기 작성하려면 프로젝트 작성자와 id일치해야함 -->
-							<a href="WriteReviewView.jsp?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 작성</a>
-						</c:if>
-					</c:otherwise>
-				</c:choose>
-			</c:when>
-			<c:when test="${userID==null }">
-				<a href="/CoffeeWebProject/signInView.jsp" class = "btn btn-primary btn-lg btn-block" role="button">후원하려면 로그인하세요</a>
-			</c:when>
-			<c:when test="${userID!=null }">
-				<a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a>
-			</c:when>
-		</c:choose>
+			<c:choose>
+				<c:when test="${leftDay<0 }">
+					<%-- <a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button">기한 종료</a> --%>
+					<c:choose>
+						<c:when test="${review != null }">	<!-- 작성된 후기가 있을 때 -->
+							<a href="/CoffeeWebProject/review/ShowReviewAction?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 보기</a>
+						</c:when>
+						<c:otherwise>	<!-- 아직 후기가 없을 때-->
+							<c:if test="${project.getWriter() == userID }"> <!-- 후기 작성하려면 프로젝트 작성자와 id일치해야함 -->
+								<a href="WriteReviewView.jsp?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 작성</a>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
+				<%-- 
+				<c:when test="${userID==null }">
+					<a href="/CoffeeWebProject/signInView.jsp" class = "btn btn-primary btn-lg btn-block" role="button">후원하려면 로그인하세요</a>
+				</c:when>
+				<c:when test="${userID!=null }">
+					<a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a>
+				</c:when>
+				--%>
+			</c:choose>
 		</div>
 	</div>
 
@@ -150,16 +154,14 @@ footer{ position:fixed;
 		</div>
 	</div>
 </div>
-<footer align="center">
+<br>
 
-<c:choose>
-		<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button" height="50px">기한 종료</a></c:when>
-		<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하려면 로그인하세요</a></c:when>
-		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하기</a></c:when>
-</c:choose>
-		
-
-	
+<footer>
+	<c:choose>
+			<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button" height="50px">기한 종료</a></c:when>
+			<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하려면 로그인하세요</a></c:when>
+			<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하기</a></c:when>
+	</c:choose>
 </footer>
 <script type="text/javascript">
 function writeComment() {

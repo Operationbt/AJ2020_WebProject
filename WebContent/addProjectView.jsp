@@ -23,7 +23,7 @@
 					<td>
 					<select name="category">
 					<option value="10">전체(All)</option>
-					<option value="1">아동(Child)</option>
+					<option value="1">아동(Child)/노인(Elder)</option>
 					<option value="2">장애인(Disabled)</option>
 					<option value="3">동물(Animal)</option>
 					<option value="4">환경(Environment)</option>

@@ -52,5 +52,8 @@ img { display: block; margin: 0px auto; }
 		</div>
 	</div>
 </div>
+<br>
+<br>
+<br>
 </body>
 </html>
