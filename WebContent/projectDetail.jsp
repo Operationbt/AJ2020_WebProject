@@ -34,7 +34,16 @@ pre {
 
 
 img { display: block; margin: 0px auto; }
-		
+	
+footer{ position:fixed; 
+  right:150px;
+  left:150px; 
+  bottom:0px; 
+  height:50px; 
+  width:70%;
+  background:white; opacity: 1.0;
+  color: white; }
+	
 </style>
 
 <body>
@@ -98,8 +107,6 @@ img { display: block; margin: 0px auto; }
 		</div>
 	</div>
 
-	
-	
 	<div class="commentArea">
 		<div class="col-md-10" style="margin-left:70px;">
 			<br>
@@ -144,7 +151,17 @@ img { display: block; margin: 0px auto; }
 		</div>
 	</div>
 </div>
+<footer align="center">
 
+<c:choose>
+		<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button" height="50px">기한 종료</a></c:when>
+		<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하려면 로그인하세요</a></c:when>
+		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하기</a></c:when>
+</c:choose>
+		
+
+	
+</footer>
 <script type="text/javascript">
 function writeComment() {
 	var form = document.addComment;
