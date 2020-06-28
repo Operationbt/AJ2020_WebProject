@@ -41,3 +41,31 @@
 >>user_phone varchar(45) null : 유저 전화번호
 
 >>user_date DATE null : 회원가입 날짜
+
+>>### userdata_tb
+>>comment_num int not null : 댓글 번호 (기본키)
+
+>>comment_writer varchar(45) null : 댓글 작성자
+
+>>comment_date date null : 댓글 작성 날짜
+
+>>comment_content varchar(1000) null : 댓글 내용
+
+>>comment_pid int null : 댓글의 프로젝트id (외래키)
+
+>>### review_tb
+>>review_id int not null : 후기 글번호 (기본키)
+
+>>review_writer varchar(45) null : 후기 작성자
+
+>>review_title varchar(45) null : 후기 제목
+
+>>review_date datetime null :  후기 작성 날짜
+
+>>review_content text(10000) null : 후기 내용
+
+>>review_image varchar(255) null : 첨부 이미지 URL주소
+
+>>review_approval tinyint 1 : 후기 허용
+
+>>review_pid int null : 후기의 프로젝트id (외래키)

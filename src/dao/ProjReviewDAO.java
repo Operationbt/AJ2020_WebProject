@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import dto.ProjReviewDataBean;
 
 /*
->>### revire_tb
+>>### review_tb
 >>review_id int not null : 후기 글번호 (기본키)
 
 >>review_writer varchar(45) null : 후기 작성자

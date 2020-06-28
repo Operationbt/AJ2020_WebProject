@@ -14,11 +14,11 @@ import dto.ProjCommentDataBean;
 >>### userdata_tb
 >>comment_num int not null : 댓글 번호 (기본키)
 
->>comment_writer int null : 댓글 작성자
+>>comment_writer varchar(45) null : 댓글 작성자
 
->>comment_date int null : 댓글 작성 날짜
+>>comment_date date null : 댓글 작성 날짜
 
->>comment_content int null : 댓글 내용
+>>comment_content varchar(1000) null : 댓글 내용
 
 >>comment_pid int null : 댓글의 프로젝트id (외래키)
 */
