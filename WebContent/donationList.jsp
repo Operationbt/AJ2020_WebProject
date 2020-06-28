@@ -13,7 +13,7 @@
 <link href="${pageContext.request.contextPath}/css/donationListStyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="MainDonateList">
+<div class="MainDonateList" style="width:1200px";>
 	<!-- 리스트에서 각각의 프로젝트 카드 생성 -->
 	<c:forEach var="donation" items="${dList}">
 		<c:if test="${donation.isApproval() == true}">

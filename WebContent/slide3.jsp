@@ -8,18 +8,21 @@
 <head>
 <style type="text/css">	
 	/* banner */
-	.banner {position: relative; width: 1000px; height: 310px; top: 0px;  margin-left:10px auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 1000px; height: 310px; top: 0px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
 	.banner ul li {float: left; width: 1000px; height: 310px; margin:0; padding:0;}
 .banner .btn_prev { left:0px;}
 .banner .btn_next { right:10px;}
 .banner .btn_prev,.product_con .btn_next { position:absolute;top:100px;}
+/*
+.container-fluid{width:100%; background:menu;}
+.container-fluid .container{width:1100px; margin:0 auto;}
+*/
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
-
 	<div class="container">
 		<div class="banner">
 			<ul>
@@ -31,7 +34,6 @@
 			</ul>
 		</div>
 	</div>
-
 <script language="JavaScript">
 
 	$(document).ready(function() {

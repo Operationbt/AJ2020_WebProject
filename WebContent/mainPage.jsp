@@ -10,7 +10,7 @@
 <%-- [메뉴바]  홈 이동, 카테고리, 로그인, 로그아웃, 회원가입 --%>
 <jsp:include page="menuView.jsp" />
 
-		<jsp:include page="slide3.jsp" />
+<jsp:include page="slide3.jsp" />
 
 <div class="container">
 	<div style="padding-top:30px">
