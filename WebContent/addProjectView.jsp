@@ -69,6 +69,7 @@
 </div>
 </body>
 <script type="text/javascript">
+
 // 마감기한을 오늘 날짜 이후로 설정하게 하는 부분
 var today = new Date();
 var dd = today.getDate();
@@ -80,9 +81,12 @@ var yyyy = today.getFullYear();
     if(mm<10){
         mm='0'+mm
     } 
+
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("datefield").setAttribute("min", today);
 //--------------------------------------------------------------
+
+
 function checkForm(){
 	if((!document.addProjectForm.writer.value) ||(!document.addProjectForm.category.value) ||(!document.addProjectForm.title.value) ||(!document.addProjectForm.deadline.value) 
 			||(!document.addProjectForm.goal.value)||(!document.addProjectForm.content.value)) {
