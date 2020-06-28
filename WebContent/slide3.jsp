@@ -24,7 +24,7 @@
 		<div class="banner">
 			<ul>
 				<c:forEach var="donation" items="${dList}">
-					<c:if test="${donation.getThumImageURL() != null || donation.getThumImageURL().length() == 0}"> <!-- 배너 썸네일 있는거만 -->
+					<c:if test="${donation.getThumImageURL() != null && donation.getThumImageURL().length() != 0}"> <!-- 배너 썸네일 있는거만 -->
 						<li><a href="DetailViewAction.do?pid=${donation.getPid()}"><img src="${donation.getThumImageURL()}" width="1000" height="310px"></a></li>
 					</c:if>
 				</c:forEach>
