@@ -19,11 +19,11 @@
 <nav class="navbar navbar-expand navbar-primary bg-light">	<!-- #17a2b8 이게 info 색상입니다 -->
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.jsp"><font color="#000000">Home</font></a>
+			<a class="navbar-brand" href="/CoffeeWebProject/index.jsp"><font color="#000000">Home</font></a>
 		</div>
 		<c:if test="${userID == null}">
-			<a href="signInView.jsp" class="btn btn-light" role="button">Sign In</a>
-			<a href="signUpView.jsp" class="btn btn-light" role="button">Sign Up</a>
+			<a href="/CoffeeWebProject/signInView.jsp" class="btn btn-light" role="button">Sign In</a>
+			<a href="/CoffeeWebProject/signUpView.jsp" class="btn btn-light" role="button">Sign Up</a>
 		</c:if>
 		<c:if test="${userID != null}">
 			<c:if test="${userAdmin == false }">
@@ -31,12 +31,12 @@
 			</c:if>
 			<c:if test="${userAdmin == true }">
 				<font color="#ff6666">${userID} 님 반갑습니다!</font> <!-- 관리자는 이름에 하이라이트 -->
-				<a href="manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">프로젝트 관리</a>
-				<a href="manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
+				<a href="/CoffeeWebProject/manage/ConfirmProjectViewAction" class="btn btn-secondary" role="button">프로젝트 관리</a>
+				<a href="/CoffeeWebProject/manage/UserManageViewAction" class="btn btn-secondary" role="button">유저 관리</a>
 			</c:if>
-			<a href="addProjectView.jsp" class="btn btn-light" role="button">모금 프로젝트 신청 &raquo;</a>
-			<a href="MyPageViewAction.do" class="btn btn-light" role="button">MyPage &raquo;</a>
-			<a href="sign/SignOutAction" class="btn btn-light" role="button">Sign Out</a>
+			<a href="/CoffeeWebProject/addProjectView.jsp" class="btn btn-light" role="button">모금 프로젝트 신청 &raquo;</a>
+			<a href="/CoffeeWebProject/MyPageViewAction.do" class="btn btn-light" role="button">MyPage &raquo;</a>
+			<a href="/CoffeeWebProject/sign/SignOutAction" class="btn btn-light" role="button">Sign Out</a>
 		</c:if>
 
 	</div>

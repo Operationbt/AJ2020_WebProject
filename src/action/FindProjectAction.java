@@ -4,8 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ProjCommentDAO;
+import dao.ProjReviewDAO;
 import dao.ProjectDataTableDAO;
 import dto.ProjCommentDataBean;
+import dto.ProjReviewDataBean;
 import dto.ProjectDataBean;
 import jdbc.ConnectionProvider;
 
@@ -49,6 +51,12 @@ public class FindProjectAction implements Action{
 			ProjCommentDAO cmt_dao = ProjCommentDAO.getInstance();
 			List<ProjCommentDataBean> cList = cmt_dao.selectList(conn, pid);
 			request.setAttribute("cList", cList);
+			
+			//후기 가져오기
+			ProjReviewDAO revire_dao = ProjReviewDAO.getInstance();
+			ProjReviewDataBean review = revire_dao.select(conn, pid);
+			request.setAttribute("review", review);
+			
 
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -11,6 +11,7 @@ import java.util.List;
 
 import dto.ProjCommentDataBean;
 import dto.ProjReviewDataBean;
+import dto.ProjectDataBean;
 
 /*
 >>### review_tb
@@ -124,6 +125,33 @@ public class ProjReviewDAO {
 	}	
 	
 	//후기 가져오기
+	public ProjReviewDataBean select(Connection conn, int review_pid) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT review_id, review_writer, review_title, review_date, review_content, review_image, review_approval, review_pid FROM review_tb" + 
+					" join projectdata_tb" + 
+					" on review_tb.review_pid = ? and review_tb.review_pid = projectdata_tb.proj_id";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, review_pid);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return createFromResultSet(rs);
+			}
+			else {
+				return null;
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	//https://happybean.naver.com/donations/H000000169949/postscripts 모금 소식으로 여러개를 쓸 수도 있는듯
 	public List<ProjReviewDataBean> selectList(Connection conn, int review_pid) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

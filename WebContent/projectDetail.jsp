@@ -44,11 +44,12 @@ img { display: block; margin: 0px auto; }
 <jsp:include page="menuView.jsp" />
 
 <!-- 후기 작성하려면 프로젝트 작성자와 id일치하는지 검사하는 로직 추가해야함 -->
-${project.getWriter()}<br>
-${project.getPid()}<br>
-${userID}<br>
 <c:if test="${project.getWriter() == userID }">
-	<a href="WriteReviewView.jsp?pid=${project.getPid()}">후기 작성</a>
+	<c:if test="${leftDay < 0}"> <!-- 마감된 프로젝트만 후기를 작성할 수 있다 -->
+		<c:if test="${review == null }"> <!-- 아직 후기가 없을 때만 작성 가능 -->
+			<a href="WriteReviewView.jsp?pid=${project.getPid()}">후기 작성</a>
+		</c:if>
+	</c:if>
 </c:if>
 
 
@@ -83,9 +84,16 @@ ${userID}<br>
 
 		<div style="padding-top:10px; width:50%; margin-left:25%">
 		<c:choose>
-			<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button">기한 종료</a></c:when>
-			<c:when test="${userID==null }"><a href="../signInView.jsp" class = "btn btn-primary btn-lg btn-block" role="button">후원하려면 로그인하세요</a></c:when>
-		<c:when test="${userID!=null }"><a href="../user/DonateViewAction?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a></c:when>
+			<c:when test="${leftDay<0 }">
+				<a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button">기한 종료</a>
+				<c:if test="${review != null }"> <!-- 작성된 후기가 있을 때만 버튼 활성화  -->
+					<a href="/CoffeeWebProject/review/ShowReviewAction?pid=${project.getPid()}" class="btn btn-primary btn-lg btn-block" role="button">후기 보기</a>
+				</c:if>
+			</c:when>
+			<c:when test="${userID==null }">
+				<a href="/CoffeeWebProject/signInView.jsp" class = "btn btn-primary btn-lg btn-block" role="button">후원하려면 로그인하세요</a>
+			</c:when>
+		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a></c:when>
 		</c:choose>
 		</div>
 	</div>
@@ -93,50 +101,48 @@ ${userID}<br>
 	
 	
 	<div class="commentArea">
-	<div class="col-md-10" style="margin-left:70px;">
-		<br>
-		<div class="writeComment">	<!-- 댓글 작성 -->
-			<c:if test="${userID != null}">
-				<c:out value="아이디:${userID}"/>
-				<form name="addComment" action="../comment/WriteCommentAction" method="post">
-					<input type="hidden" name="commentPID" value="${project.getPid()}">
-					<input type="hidden" name="commentWriter" value="${userID}">
-					<textarea name = "commentContent" cols="120" rows="5" placeholder="여러분의 후원 후기 및 의견을 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
-					<input type="submit" class="btn btn-primary" value="등록" style="margin-left:92%";>
-				</form>
-			</c:if>
-		</div>
-		<div class="showComment" style="margin-bottom:40px;">	<!-- 댓글 목록 -->
-			<p>총 "${cList.size()}" 개의 댓글이 있습니다.</p>
-			<c:if test="${cList != null}">
-				<table class="table table-bordered" width="100%">
-			        <c:forEach var="comment" items="${cList}">
-			            <tr>
-			                <!-- 댓글 작성자, 작성날짜 -->
-			                <td width="20%" style="text-align:center">${comment.getWriter()}<br>${comment.getDate()}</td>
-	
-			                <!-- 댓글 내용 -->
-			                <td width="70%">${comment.getContent()}</td>
-			                
-			                <!-- 버튼 -->
-			                <c:if test="${comment.getWriter() == userID}">
-				                <td width="10%">
-				                    <div id="btn" style="text-align:center;">
-					                    <!-- 댓글 작성자만 수정, 삭제 가능하도록 -->    
-					                    
+		<div class="col-md-10" style="margin-left:70px;">
+			<br>
+			<div class="writeComment">	<!-- 댓글 작성 -->
+				<c:if test="${userID != null}">
+					<c:out value="아이디:${userID}"/>
+					<form name="addComment" action="/CoffeeWebProject/comment/WriteCommentAction" method="post">
+						<input type="hidden" name="commentPID" value="${project.getPid()}">
+						<input type="hidden" name="commentWriter" value="${userID}">
+						<textarea name = "commentContent" cols="120" rows="5" placeholder="여러분의 후원 후기 및 의견을 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
+						<input type="submit" class="btn btn-primary" value="등록" style="margin-left:92%";>
+					</form>
+				</c:if>
+			</div>
+			<div class="showComment" style="margin-bottom:40px;">	<!-- 댓글 목록 -->
+				<p>총 "${cList.size()}" 개의 댓글이 있습니다.</p>
+				<c:if test="${cList != null}">
+					<table class="table table-bordered" width="100%">
+				        <c:forEach var="comment" items="${cList}">
+				            <tr>
+				                <!-- 댓글 작성자, 작성날짜 -->
+				                <td width="20%" style="text-align:center">${comment.getWriter()}<br>${comment.getDate()}</td>
+		
+				                <!-- 댓글 내용 -->
+				                <td width="70%">${comment.getContent()}</td>
+				                
+				                <!-- 버튼 -->
+				                <c:if test="${comment.getWriter() == userID}"> <!-- 댓글 작성자만 수정, 삭제 가능하도록 -->   
+					                <td width="10%">
+					                    <div id="btn" style="text-align:center;">
 					                    	<!-- 댓글 수정도 함부로 못하게 할지 -->
 					                        <!-- <a href="#" onclick="">[수정]</a><br>  -->   
 											<a href="#" onclick="delteComment(${comment.getNum()}, ${project.getPid()})">[삭제]</a>     
-				                    </div>
-				                </td>
-			                </c:if>
-			            </tr>
-			        </c:forEach>
-			       </table>
-	    	</c:if>
+					                    </div>
+					                </td>
+				                </c:if>
+				            </tr>
+				        </c:forEach>
+					</table>
+		    	</c:if>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <script type="text/javascript">
@@ -146,7 +152,7 @@ function writeComment() {
 }
 function delteComment(num, pid) {
 	if(confirm("댓글을 삭제하시겠습니까?") == true)
-		location.href = "../comment/DeleteCommentAction?num=" + num + "&pid=" + pid;
+		location.href = "/CoffeeWebProject/comment/DeleteCommentAction?num=" + num + "&pid=" + pid;
 }
 function editComment() {
 	

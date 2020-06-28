@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-
+import action.FindProjectAction;
+import action.ShowReviewAction;
 import action.WriteCommentAction;
 import action.WriteReviewAction;
 import dto.ProjReviewDataBean;
@@ -59,6 +60,13 @@ public class ReviewController extends HttpServlet{
 			Integer pid = (Integer)req.getAttribute("pid");
 			System.out.println("review pid:" + pid.toString());
 			resp.sendRedirect("../DetailViewAction.do?pid=" + pid);
+		}
+		//후기 보기
+		else if (command.equals("/review/ShowReviewAction")) { 
+			action = new ShowReviewAction();
+			action.execute(req, resp);
+			RequestDispatcher rd = req.getRequestDispatcher("../showReviewView.jsp");
+			rd.forward(req,  resp);	
 		}
 		else {
 			System.out.println("No Matching Command!");
