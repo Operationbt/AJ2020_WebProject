@@ -34,7 +34,16 @@ pre {
 
 
 img { display: block; margin: 0px auto; }
-		
+	
+footer{ position:fixed; 
+  right:150px;
+  left:150px; 
+  bottom:0px; 
+  height:50px; 
+  width:70%;
+  background:white; opacity: 1.0;
+  color: white; }
+	
 </style>
 
 <body>
@@ -81,18 +90,12 @@ ${userID}<br>
 			<p><pre>${project.getContent()}</pre>
 		</div>
 
-		<div style="padding-top:10px; width:50%; margin-left:25%">
-		<c:choose>
-			<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button">기한 종료</a></c:when>
-			<c:when test="${userID==null }"><a href="../signInView.jsp" class = "btn btn-primary btn-lg btn-block" role="button">후원하려면 로그인하세요</a></c:when>
-		<c:when test="${userID!=null }"><a href="../user/DonateViewAction?pid=${project.getPid()}" class="btn btn-secondary btn-lg btn-block" role="button">후원하기</a></c:when>
-		</c:choose>
-		</div>
-	</div>
+	
+
 
 	
 	
-	<div class="commentArea">
+	<div class="commentArea" style="clear:both">
 	<div class="col-md-10" style="margin-left:70px;">
 		<br>
 		<div class="writeComment">	<!-- 댓글 작성 -->
@@ -101,12 +104,12 @@ ${userID}<br>
 				<form name="addComment" action="../comment/WriteCommentAction" method="post">
 					<input type="hidden" name="commentPID" value="${project.getPid()}">
 					<input type="hidden" name="commentWriter" value="${userID}">
-					<textarea name = "commentContent" cols="120" rows="5" placeholder="여러분의 후원 후기 및 의견을 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
+					<textarea name = "commentContent" cols="80" rows="5" placeholder="여러분의 후원 후기 및 의견을 댓글로 남겨주세요.&#13;&#10;주제와 무관한 댓글, 악플은 삭제될 수 있습니다." maxlength="1000"></textarea>
 					<input type="submit" class="btn btn-primary" value="등록" style="margin-left:92%";>
 				</form>
 			</c:if>
 		</div>
-		<div class="showComment" style="margin-bottom:40px;">	<!-- 댓글 목록 -->
+		<div class="showComment" style="margin-bottom:40px; clear:both;">	<!-- 댓글 목록 -->
 			<p>총 "${cList.size()}" 개의 댓글이 있습니다.</p>
 			<c:if test="${cList != null}">
 				<table class="table table-bordered" width="100%">
@@ -138,7 +141,17 @@ ${userID}<br>
 	</div>
 </div>
 </div>
+<footer align="center">
 
+<c:choose>
+		<c:when test="${leftDay<0 }"><a href="#" class="btn btn-secondary btn-lg btn-block disabled" role="button" height="50px">기한 종료</a></c:when>
+		<c:when test="${userID==null }"><a href="signInView.jsp" class = "btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하려면 로그인하세요</a></c:when>
+		<c:when test="${userID!=null }"><a href="DonateViewAction.do?pid=${project.getPid()}" class="btn btn-success btn-lg btn-block" style="height:50px" role="button">후원하기</a></c:when>
+</c:choose>
+		
+
+	
+</footer>
 <script type="text/javascript">
 function writeComment() {
 	var form = document.addComment;
