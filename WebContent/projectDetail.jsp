@@ -44,7 +44,7 @@ img { display: block; margin: 0px auto; }
 <jsp:include page="menuView.jsp" />
 
 <!-- 후기 작성하려면 프로젝트 작성자와 id일치하는지 검사하는 로직 추가해야함 -->
-<a href="writeReviewView.jsp?pid=${project.getPid()}">후기 작성</a>
+<a href="WriteReviewView.jsp?pid=${project.getPid()}">후기 작성</a>
 
 <div class="container"> 
 	<div class="col-md-10" style="margin-left:70px; margin-top:50px;">	<!-- 프로젝트 제목, 기간, 후원 현황 등등 머릿말-->
