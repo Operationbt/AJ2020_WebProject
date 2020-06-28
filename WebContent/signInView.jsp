@@ -21,31 +21,25 @@
 
 <%String status=(String)session.getAttribute("status"); %>
 <div class="container">
- <div class="jumbotron" style="padding-top: 0px; width:400px; margin-left:300px; margin-top:50px;">
-	<form class="form-center" name="signIn" action="sign/SignInAction" method="post" onsubmit="return checkForm()" >
-		<h3 style="text-align: center;"> 로그인</h3>
-		<div class="form-group row" align="center">
+	<div class="jumbotron" style="padding-top: 0px; width:400px; margin-left:300px; margin-top:50px;">
+		<form class="form-center" name="signIn" action="sign/SignInAction" method="post" onsubmit="return checkForm()" >
+			<h3 style="text-align: center;"> 로그인</h3>
+			<div class="form-group row" align="center">
 				<input type="text" name="userID" class="form-control" placeholder="아이디">
-			
-		</div>
-		<div class="form-group row">
-				<input type="password" name="userPW" class="form-control" placeholder="비밀번호">
-			
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-offset-2 col-sm-10">
-				<input type="submit" class="btn btn-primary" value="로그인">
-				
-				<% if(status!= null && status.equals("failed") ){ out.println("<font color='red'>사용자 정보 불일치</font>"); }%>
-				
 			</div>
-		</div>
-		아직 아이디가 없으신가요? <a href="signUpView.jsp">가입하기</a><br>
-		<a href="index.jsp">Home</a>으로 돌아가기
-	</form>
-	
-	
-	
+			<div class="form-group row">
+				<input type="password" name="userPW" class="form-control" placeholder="비밀번호">
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" class="btn btn-primary" value="로그인">
+		
+					<% if(status!= null && status.equals("failed") ){ out.println("<font color='red'>사용자 정보 불일치</font>"); }%>
+				</div>
+			</div>
+			아직 아이디가 없으신가요? <a href="signUpView.jsp">가입하기</a><br>
+			<a href="index.jsp">Home</a>으로 돌아가기
+		</form>
 	</div>
 </div>
 

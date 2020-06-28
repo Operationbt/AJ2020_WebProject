@@ -30,10 +30,8 @@ public class AddProjectAction implements Action {
 		int newGoal = Integer.parseInt(request.getParameter("goal"));
 		String newContent = request.getParameter("content");
 		String newImage = request.getParameter("imageURL");
-		int cat=Integer.parseInt(request.getParameter("category"));
-		ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, now, newContent, newImage, deadline, newGoal, 0, 0,cat, false);
-		
-		System.out.println(pe.getContent());
+		int cat = Integer.parseInt(request.getParameter("category"));
+		ProjectDataBean pe = new ProjectDataBean(0, newWriter, newTitle, now, newContent, newImage, deadline, newGoal, 0, 0, cat, false, null);
 	
 		Connection conn = null;
 		try{

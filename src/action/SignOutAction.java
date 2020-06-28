@@ -16,6 +16,7 @@ public class SignOutAction implements Action{
 			session.removeAttribute("userID");
 			session.removeAttribute("userPW");
 			session.removeAttribute("userAdmin");
+			session.removeAttribute("status");
 			System.out.println("Session Removed");
 		} catch (NullPointerException e) {
 			e.printStackTrace();

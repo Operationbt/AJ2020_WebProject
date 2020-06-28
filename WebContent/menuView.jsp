@@ -27,7 +27,7 @@
 		</c:if>
 		<c:if test="${userID != null}">
 			<c:if test="${userAdmin == false }">
-				<font color="#fffffff">${userID} 님 반갑습니다!</font>
+				<font color="#000000">${userID} 님 반갑습니다!</font>
 			</c:if>
 			<c:if test="${userAdmin == true }">
 				<font color="#ff6666">${userID} 님 반갑습니다!</font> <!-- 관리자는 이름에 하이라이트 -->

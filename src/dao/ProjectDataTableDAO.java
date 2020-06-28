@@ -26,7 +26,7 @@ public class ProjectDataTableDAO {
 	public int insert(Connection conn, ProjectDataBean pe) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into projectdata_tb values (?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into projectdata_tb values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pe.getPid());
 			
@@ -43,6 +43,7 @@ public class ProjectDataTableDAO {
 			pstmt.setInt(10, pe.getSponsor());
 			pstmt.setInt(11, pe.getCategory());
 			pstmt.setBoolean(12, pe.isApproval());
+			pstmt.setString(13, pe.getThumImageURL());
 		
 			return pstmt.executeUpdate();
 		} finally {

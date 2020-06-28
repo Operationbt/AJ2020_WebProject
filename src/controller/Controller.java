@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("projectDetail.jsp");
 			rd.forward(request,  response);	
 		} else if (command.equals("/DonateViewAction.do")) { // go to donationForm page
-			action = new FindProjectAction(); // return donation project(=>project)
+			action = new DonateViewAction(); // return donation project(=>project)
 			action.execute(request, response);
 			RequestDispatcher rd = request.getRequestDispatcher("donationForm.jsp");
 			rd.forward(request, response);

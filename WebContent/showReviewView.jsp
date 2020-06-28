@@ -36,13 +36,13 @@ img { display: block; margin: 0px auto; }
 <div class="container"> 
 	<div class="col-md-10" style="margin-left:70px; margin-top:50px;">	<!-- 후기 제목, 기간, 후원 현황 등등 머릿말-->
 		<h2>${review.getTitle()}</h2>
+		<h4>작성일 : ${review.getDate()}</h4>
 		<h5>프로젝트 기간 : ${project.getDate()} ~ ${project.getDeadline()}</h5>
 		총 후원자 : ${project.getSponsor()}명
 		<br>
 		총 모금액 : ${project.getCurrent()}원
 	</div>
 	<div class="col-md-10" style="margin-left:70px; padding-top:30px">	<!-- 후기 첨부 이미지 -->
-		<h6>프로젝트 후기</h6>
 		<c:if test="${review.getImageURL() != null && review.getImageURL().length() != 0}">
 			<img src="${review.getImageURL()}" width="100%"/>
 		</c:if>
