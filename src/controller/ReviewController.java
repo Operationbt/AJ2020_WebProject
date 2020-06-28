@@ -38,17 +38,17 @@ public class ReviewController extends HttpServlet{
 		Action action = null;
 		
 		//테스트 오브젝트
-		String writer = "writer";  
-		String title = "title";
-		
-		Timestamp date = Timestamp.valueOf(LocalDateTime.now());
-		System.out.println("date:" + date);
-		
-		String content = "content"; 
-		String imageURL = "imageURL";
-		int pidi = 1000;   
-		ProjReviewDataBean test = new ProjReviewDataBean(writer, title, date, content, imageURL, pidi);
-		req.setAttribute("test", test);
+//		String writer = "writer";  
+//		String title = "title";
+//		
+//		Timestamp date = Timestamp.valueOf(LocalDateTime.now());
+//		System.out.println("date:" + date);
+//		
+//		String content = "content"; 
+//		String imageURL = "imageURL";
+//		int pidi = 1000;   
+//		ProjReviewDataBean test = new ProjReviewDataBean(writer, title, date, content, imageURL, pidi);
+//		req.setAttribute("test", test);
 		//
 		
 		//후기 작성
