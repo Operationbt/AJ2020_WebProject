@@ -15,28 +15,28 @@
 
 
 <div class="w3-display-container mySlides">
-  <a href="DetailViewAction.do?pid=1000"><img src="images/image6.jpg" style="width:100%" height="410px">
+  <a href="DetailViewAction.do?pid=1000"><img src="images/dog.jpg" style="width:100%" height="410px">
   <div class="w3-display-middle w3-large w3-container w3-padding-16 ">
     <p><font color="FFFFFF" size="5"><b>유기견 보호소 살펴보기</b></font></p>
   </div></a>
 </div>
 
 <div class="w3-display-container mySlides">
-  <a href="DetailViewAction.do?pid=1001"><img src="images/image5.png" style="width:100%" height="410px">
+  <a href="DetailViewAction.do?pid=1001"><img src="images/virus.jpg" style="width:100%" height="410px">
   <div class="w3-display-middle w3-large w3-container w3-padding-16">
     <p><font color="FFFFFF" size="5"><b>코로나 관련 도움 주기</b></font></p>
   </div></a>
 </div>
 
 <div class="w3-display-container mySlides">
-  <img src="images/image4.jpg" style="width:100%" height="410px">
+  <img src="images/forestss.jpg" style="width:100%" height="410px">
   <div class="w3-display-middle w3-large w3-container w3-padding-16">
-   <p><font color="FFFFFF" size="5"><b>환경 지키기</b></font></p>
+   <p><font color="FFFFFF" size="5"><b>환경 보호하기</b></font></p>
   </div>
 </div>
 
 <div class="w3-display-container mySlides">
-  <a href="infomation.jsp"><img src="images/image1.jfif" style="width:100%" height="410px">
+  <a href="infomation.jsp"><img src="images/image1.png" style="width:100%" height="410px">
   <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
   	<p><font color="FFFFFF" size="5"><b>사이트 소개</b></font></p>
   </div></a>
@@ -77,6 +77,7 @@ function carousel() {
   myIndex++;
   if (myIndex > x.length) {myIndex = 1}    
   x[myIndex-1].style.display = "block";  
+
   setTimeout(carousel, 5000); // Change image every 5 seconds
 }
 </script>

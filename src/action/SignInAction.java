@@ -17,7 +17,7 @@ public class SignInAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("SignInAction execute");
 		HttpSession session = request.getSession(true);
-		
+		String status="";
 		Connection conn = null;
 		
 		try {
@@ -36,18 +36,14 @@ public class SignInAction implements Action{
 				session.setAttribute("userAdmin", isAdmin);
 				//session.setAttribute("userPW", pw); //비밀번호까지 세션에 저장할 이유가?
 				System.out.println("Sign In Session Success");
-
+				session.setAttribute("status", "success");
 			}
-			else { //로그인 실패
-				throw new NotFoundException("Sign In Not Match ID=" + id);
-			}			
+			else {
+				session.setAttribute("status", "failed");
+			}		
 		} catch (NotFoundException e) {
 			System.out.println("Member Not Found");
-			try {
-				response.sendRedirect("signInView.jsp?status=failed");
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			session.setAttribute("status", "failed");
 		} catch (SQLException e) {
 			throw new ServiceException("Member DB Error", e);
 		} finally {

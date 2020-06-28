@@ -8,28 +8,58 @@
 <title>Sign In</title>
 </head>
 <body>
+<style>
+.form-center {
+  margin-top: 100px;
+  padding: 20px 20px 0;
+  left:50%;
+  right:50%;
+  top:100px;
+}
+</style>
 <%-- 폼 양식 확인하는 로직 짜야됨  --%>
+
+<%String status=(String)session.getAttribute("status"); %>
 <div class="container">
-	<form name="signIn" action="sign/SignInAction" method="post">
-		<div class="form-group row">
-			<label class="col-sm-2">아이디</label>
-			<div class="col-sm-3">
-				<input type="text" name="userID" class="form-control">
-			</div>
+ <div class="jumbotron" style="padding-top: 0px; width:400px; margin-left:300px; margin-top:50px;">
+	<form class="form-center" name="signIn" action="sign/SignInAction" method="post" onsubmit="return checkForm()" >
+		<h3 style="text-align: center;"> 로그인</h3>
+		<div class="form-group row" align="center">
+				<input type="text" name="userID" class="form-control" placeholder="아이디">
+			
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2">비밀번호</label>
-			<div class="col-sm-3">
-				<input type="password" name="userPW" class="form-control">
-			</div>
+				<input type="password" name="userPW" class="form-control" placeholder="비밀번호">
+			
 		</div>
 		<div class="form-group row">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input type="submit" class="btn btn-primary" value="로그인">
+				
+				<% if(status!= null && status.equals("failed") ){ out.println("<font color='red'>사용자 정보 불일치</font>"); }%>
+				
 			</div>
 		</div>
+		아직 아이디가 없으신가요? <a href="signUpView.jsp">가입하기</a><br>
+		<a href="index.jsp">Home</a>으로 돌아가기
 	</form>
-	<a href="signUpView.jsp" class="btn btn-secondary" role="button">Sign Up</a>
+	
+	
+	
+	</div>
 </div>
+
+
+
+<script type="text/javascript">
+function checkForm(){
+	if((!document.signIn.userID.value) ||(!document.signIn.userPW.value)) {
+		alert("빈 칸을 채워주세요");
+		return false;
+	}
+}
+</script>
+ <!-- 로긴폼 -->
+
 </body>
 </html>

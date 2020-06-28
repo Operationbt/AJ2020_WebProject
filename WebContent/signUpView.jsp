@@ -8,6 +8,15 @@
 <title>회원가입</title>
 </head>
 <body>
+<style>
+.form-center {
+  margin-top: 100px;
+  padding: 20px 20px 0;
+  left:50%;
+  right:50%;
+  top:100px;
+}
+</style>
 <script type="text/javascript">
 function confirm() {
 	var checkForm = document.signUp;
@@ -36,55 +45,49 @@ function confirm() {
 
 <%-- 복붙해서 부트스트랩 CSS가 적혀있음 --%>
 <div class="container">
-	<form name="signUp" action="sign/SignUpAction" method="post">
+<div class="jumbotron" style="padding-top: 0px; width:600px; margin-left:300px; margin-top:50px;">
+	<form class="form-center" name="signUp" action="sign/SignUpAction" method="post">
+	<h3 style="text-align: center;">회원가입</h3>
 		<p>길이는 20자 이하로 제한됩니다.</p>
 		<div class="form-group row">
-			<label class="col-sm-2">아이디</label>
-			<div class="col-sm-3">
-				<input type="text" name="id" class="form-control">
-			</div>
+				<input type="text" name="id" class="form-control"placeholder="아이디" width="300px">
+				<%--<a href="sign/SignUpCheckAction"><input type="button" value="중복확인"></a> --%>
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2">비밀번호</label>
-			<div class="col-sm-3">
-				<input type="password" name="password" class="form-control">
-			</div>
+			
+				<input type="password" name="password" class="form-control"placeholder="비밀번호">
+		</div>
+		
+		<div class="form-group row">
+			
+			
+				<input type="password" name="passwordCheck" class="form-control"placeholder="비밀번호확인">
+			
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2">비밀번호 재확인</label>
-			<div class="col-sm-3">
-				<input type="password" name="passwordCheck" class="form-control">
-			</div>
+				<input type="text" name="name" class="form-control"placeholder="이름">
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2">이름</label>
-			<div class="col-sm-3">
-				<input type="text" name="name" class="form-control">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-sm-2">이메일</label>
-			<div class="col-sm-10">
-				<input type="text" name="email1" maxlength="45">@
+			
+				<input type="text" name="email1" maxlength="45" placeholder="이메일">@
 				<select name="email2">
 					<option>naver.com</option>
 					<option>daum.net</option>
 					<option>gmail.com</option>
 				</select>
-			</div>
+			
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2">전화번호</label>
-			<div class="col-sm-3">
-				<input type="text" name="phone" class="form-control">
-			</div>
+				<input type="text" name="phone" class="form-control"placeholder="전화번호">
+			
 		</div>
 		<div class="form-group row">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input type="button" class="btn btn-primary" onclick="confirm()" value="회원가입">
 			</div>
-		</div>
+		</div><a href="index.jsp">Home</a>으로 돌아가기
 	</form>
+	</div>
 </div>
 </body>
 </html>
