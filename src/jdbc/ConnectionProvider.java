@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 	// JDBC driver name and database URL
-	private static final String PROPERTIES = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
+	private static final String PROPERTIES = "?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true"; // MySQL Connector J 8.0
 	private static final String DB_SCHEMAS = "teamcoffeedb";
 	private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; // deprecated "com.mysql.jdbc.Driver";  
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/" + DB_SCHEMAS + PROPERTIES; 
