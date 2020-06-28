@@ -1,10 +1,15 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
+import dto.ProjCommentDataBean;
 import dto.ProjReviewDataBean;
 
 /*
@@ -118,4 +123,46 @@ public class ProjReviewDAO {
 		}
 	}	
 	
+	//후기 가져오기
+	public List<ProjReviewDataBean> selectList(Connection conn, int review_pid) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT review_id, review_writer, review_title, review_date, review_content, review_image, review_approval, review_pid FROM review_tb" + 
+					" join projectdata_tb" + 
+					" on review_tb.review_pid = ? and review_tb.review_pid = projectdata_tb.proj_id";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, review_pid);
+			
+			rs = pstmt.executeQuery();
+			List<ProjReviewDataBean> pList = new ArrayList<>();
+			while (rs.next()) {
+				pList.add(createFromResultSet(rs));
+			}
+			return pList;
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+		}
+	}
+	
+	public ProjReviewDataBean createFromResultSet(ResultSet rs) throws SQLException {
+		
+		int id = rs.getInt("review_id");       
+		String writer = rs.getString("review_writer");  
+		String title = rs.getString("review_title");    
+		Timestamp date = rs.getTimestamp("review_date");
+		String content = rs.getString("review_content"); 
+		String imageURL = rs.getString("review_image"); 
+		boolean approval = rs.getBoolean("review_approval");
+		int pid = rs.getInt("review_pid");  
+		
+		ProjReviewDataBean comment = new ProjReviewDataBean(id, writer, title, date, content, imageURL, approval, pid);
+
+		return comment;
+	}
 }
