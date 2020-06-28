@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,46 +19,46 @@
 
 </head>
 <body>
+
 	<div class="container">
 		<div class="banner">
 			<ul>
-				
-				<li><a href="DetailViewAction.do?pid=1001"><img src="images/image1.jpg" width="1000" height="310px"></a></li>
-				<li><a href="DetailViewAction.do?pid=1000"><img src="images/image2.jpg" width="1000" height="310px"></a></li>
-				<li><a href="DetailViewAction.do?pid=1005"><img src="images/image3.jpg" width="1000" height="310px"></a></li>
-				
+				<c:forEach var="donation" items="${dList}">
+					<c:if test="${donation.getThumImageURL() != null || donation.getThumImageURL().length() == 0}"> <!-- ë°°ë„ˆ ì¸ë„¤ì¼ ìˆëŠ”ê±°ë§Œ -->
+						<li><a href="DetailViewAction.do?pid=${donation.getPid()}"><img src="${donation.getThumImageURL()}" width="1000" height="310px"></a></li>
+					</c:if>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>
-
 
 <script language="JavaScript">
 
 	$(document).ready(function() {
 		var $banner = $(".banner").find("ul");
 
-		var $bannerWidth = $banner.children().outerWidth();//ÀÌ¹ÌÁöÀÇ Æø
-		var $bannerHeight = $banner.children().outerHeight(); // ³ôÀÌ
-		var $length = $banner.children().length;//ÀÌ¹ÌÁöÀÇ °¹¼ö
+		var $bannerWidth = $banner.children().outerWidth();//ì´ë¯¸ì§€ì˜ í­
+		var $bannerHeight = $banner.children().outerHeight(); // ë†’ì´
+		var $length = $banner.children().length;//ì´ë¯¸ì§€ì˜ ê°¯ìˆ˜
 		var rollingId;
 		
 	
-		//Á¤ÇØÁø ÃÊ¸¶´Ù ÇÔ¼ö ½ÇÇà
-		rollingId = setInterval(function() { rollingStart(); }, 3000);//´ÙÀ½ ÀÌ¹ÌÁö·Î ·Ñ¸µ ¾Ö´Ï¸ŞÀÌ¼Ç ÇÒ ½Ã°£Â÷
+		//ì •í•´ì§„ ì´ˆë§ˆë‹¤ í•¨ìˆ˜ ì‹¤í–‰
+		rollingId = setInterval(function() { rollingStart(); }, 3000);//ë‹¤ìŒ ì´ë¯¸ì§€ë¡œ ë¡¤ë§ ì• ë‹ˆë©”ì´ì…˜ í•  ì‹œê°„ì°¨
     
 		function rollingStart() {
 			$banner.css("width", $bannerWidth * $length + "px");
 			$banner.css("height", $bannerHeight + "px");
 			//alert(bannerHeight);
-			//¹è³ÊÀÇ ÁÂÃø À§Ä¡¸¦ ¿Å°Ü ÁØ´Ù.
-			$banner.animate({left: - $bannerWidth + "px"}, 1500, function() { //¼ıÀÚ´Â ·Ñ¸µ ÁøÇàµÇ´Â ½Ã°£ÀÌ´Ù.
-				//Ã¹¹øÂ° ÀÌ¹ÌÁö¸¦ ¸¶Áö¸· ³¡¿¡ º¹»ç(ÀÌµ¿ÀÌ ¾Æ´Ï¶ó º¹»ç)ÇØ¼­ Ãß°¡ÇÑ´Ù.
+			//ë°°ë„ˆì˜ ì¢Œì¸¡ ìœ„ì¹˜ë¥¼ ì˜®ê²¨ ì¤€ë‹¤.
+			$banner.animate({left: - $bannerWidth + "px"}, 1500, function() { //ìˆ«ìëŠ” ë¡¤ë§ ì§„í–‰ë˜ëŠ” ì‹œê°„ì´ë‹¤.
+				//ì²«ë²ˆì§¸ ì´ë¯¸ì§€ë¥¼ ë§ˆì§€ë§‰ ëì— ë³µì‚¬(ì´ë™ì´ ì•„ë‹ˆë¼ ë³µì‚¬)í•´ì„œ ì¶”ê°€í•œë‹¤.
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
-				//µÚ·Î º¹»çµÈ Ã¹¹øÀç ÀÌ¹ÌÁö´Â ÇÊ¿ä ¾øÀ¸´Ï »èÁ¦ÇÑ´Ù.
+				//ë’¤ë¡œ ë³µì‚¬ëœ ì²«ë²ˆì¬ ì´ë¯¸ì§€ëŠ” í•„ìš” ì—†ìœ¼ë‹ˆ ì‚­ì œí•œë‹¤.
 				$(this).find("li:first").remove();
-				//´ÙÀ½ ¿òÁ÷ÀÓÀ» À§ÇØ¼­ ¹è³Ê ÁÂÃøÀÇ À§Ä¡°ªÀ» ÃÊ±âÈ­ ÇÑ´Ù.
+				//ë‹¤ìŒ ì›€ì§ì„ì„ ìœ„í•´ì„œ ë°°ë„ˆ ì¢Œì¸¡ì˜ ìœ„ì¹˜ê°’ì„ ì´ˆê¸°í™” í•œë‹¤.
 				$(this).css("left", 0);
-				//ÀÌ °úÁ¤À» ¹İº¹ÇÏ¸é¼­ °è¼Ó ·Ñ¸µÇÏ´Â ¹è³Ê¸¦ ¸¸µé ¼ö ÀÖ´Ù.
+				//ì´ ê³¼ì •ì„ ë°˜ë³µí•˜ë©´ì„œ ê³„ì† ë¡¤ë§í•˜ëŠ” ë°°ë„ˆë¥¼ ë§Œë“¤ ìˆ˜ ìˆë‹¤.
 			}
 			
 			);

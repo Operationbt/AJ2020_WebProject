@@ -29,13 +29,13 @@ public class ProjectDataBean implements java.io.Serializable{
 	private int sponsor;
 	private int category;
 	private boolean approval;
+	private String thumImageURL;
 	
 	public ProjectDataBean() {
-		this(0, null, null, null, null, null, null, 0, 0, 0,0, false);
+		this(0, null, null, null, null, null, null, 0, 0, 0,0, false, null);
 	}
-	
 	public ProjectDataBean(int pid, String writer, String title, Date date, String content, String imageURL,
-			Date deadline, int goal, int current, int sponsor, int category,boolean approval) {
+			Date deadline, int goal, int current, int sponsor, int category, boolean approval) {
 		super();
 		this.pid = pid;
 		this.writer = writer;
@@ -49,6 +49,25 @@ public class ProjectDataBean implements java.io.Serializable{
 		this.sponsor = sponsor;
 		this.category=category;
 		this.approval = approval;
+	}
+	
+	//배너 썸네일 추가
+	public ProjectDataBean(int pid, String writer, String title, Date date, String content, String imageURL,
+			Date deadline, int goal, int current, int sponsor, int category, boolean approval, String thumImageURL) {
+		super();
+		this.pid = pid;
+		this.writer = writer;
+		this.title = title;
+		this.date = date;
+		this.content = content;
+		this.imageURL = imageURL;
+		this.deadline = deadline;
+		this.goal = goal;
+		this.current = current;
+		this.sponsor = sponsor;
+		this.category=category;
+		this.approval = approval;
+		this.thumImageURL = thumImageURL;
 	}
 
 	public int getPid() {
@@ -146,5 +165,23 @@ public class ProjectDataBean implements java.io.Serializable{
 	public void setApproval(boolean approval) {
 		this.approval = approval;
 	}
+
+	public String getThumImageURL() {
+		return thumImageURL;
+	}
+
+	public void setThumImageURL(String thumImageURL) {
+		this.thumImageURL = thumImageURL;
+	}
+
+	@Override
+	public String toString() {
+		return "ProjectDataBean [pid=" + pid + ", writer=" + writer + ", title=" + title + ", date=" + date
+				+ ", content=" + content + ", imageURL=" + imageURL + ", deadline=" + deadline + ", goal=" + goal
+				+ ", current=" + current + ", sponsor=" + sponsor + ", category=" + category + ", approval=" + approval
+				+ ", thumImageURL=" + thumImageURL + "]";
+	}
+	
+	
 
 }

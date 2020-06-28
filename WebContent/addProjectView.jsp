@@ -13,40 +13,36 @@
 <jsp:include page="menuView.jsp" />
 
 <div class="container" style="padding:30px;">
-	<form name="addProjectForm" action="project/AddProjectAction" method="post" onsubmit="return checkForm()">
-	<div class="col-md-10" style="margin-left:70px;">
-		<h3>프로젝트 개설 신청</h3>
-		<table class="table table-bordered">
-			<tr align="center">
-				<td width="20%" bgcolor="#F5F5F5">주체명</td>
-				<td width="80%"><input type="text" value="${userID}"class="form-control" name="writer" readonly></td>
-			</tr>
-			
-			<tr align="center">
-				<td width="20%" bgcolor="#F5F5F5">카테고리</td>
-				<td>
-				<select name="category">
-				<option value="10">전체(All)</option>
-				<option value="1">아동(Child)</option>
-				<option value="2">장애인(Disabled)</option>
-				<option value="3">동물(Animal)</option>
-				<option value="4">환경(Environment)</option>
-				<option value="5">가족(Family)</option>
-				</select></td></tr> 
-			<tr align="center">
-				<td width="20%" bgcolor="#F5F5F5">프로젝트 제목</td>
-				<td width="80%"><input type="text" class="form-control" name="title" placeholder="프로젝트 제목을 입력해주세요."></td>
-			</tr>
-			<tr align="center">
-				<td width="20%" bgcolor="#F5F5F5">마감기한</td>
-				<td width="80%"><input id="datefield" type="date" min="2020-01-01" placeholder="yyyy-mm-dd" name="deadline"></td>
-			</tr>
-			<tr align="center">
-				<td width="20%" bgcolor="#F5F5F5">모금 목표 금액</td>
-				<td width="80%"><input type="text" name="goal" onkeyPress="return onlyNumber(event)" placeholder="ex)100000" style="text-align:right;">원</td>
-			</tr>	
-		</table>
-	</div>
+	<form name="addProjectForm" action="AddProjectAction.do" method="post" onsubmit="return checkForm()">
+		<div class="col-md-10" style="margin-left:70px;">
+			<h3>프로젝트 개설 신청</h3>
+			<input type="hidden" value="${userID}"class="form-control" name="writer" readonly>
+			<table class="table table-bordered">
+				<tr align="center">
+					<td width="20%" bgcolor="#F5F5F5">카테고리</td>
+					<td>
+					<select name="category">
+					<option value="10">전체(All)</option>
+					<option value="1">아동(Child)</option>
+					<option value="2">장애인(Disabled)</option>
+					<option value="3">동물(Animal)</option>
+					<option value="4">환경(Environment)</option>
+					<option value="5">가족(Family)</option>
+					</select></td></tr> 
+				<tr align="center">
+					<td width="20%" bgcolor="#F5F5F5">프로젝트 제목</td>
+					<td width="80%"><input type="text" class="form-control" name="title" placeholder="프로젝트 제목을 입력해주세요."></td>
+				</tr>
+				<tr align="center">
+					<td width="20%" bgcolor="#F5F5F5">마감기한</td>
+					<td width="80%"><input id="datefield" type="date" min="2020-01-01" placeholder="yyyy-mm-dd" name="deadline"></td>
+				</tr>
+				<tr align="center">
+					<td width="20%" bgcolor="#F5F5F5">모금 목표 금액</td>
+					<td width="80%"><input type="text" name="goal" onkeyPress="return onlyNumber(event)" placeholder="ex)100000" style="text-align:right;">원</td>
+				</tr>	
+			</table>
+		</div>
 		<div class="col-md-10" style="margin-left:70px;">
 		프로젝트 소개
 		<textarea name = "content" class="form-control" rows="20" placeholder="프로젝트 진행 계기,상세 내용 및 계획을 작성해주세요."></textarea>

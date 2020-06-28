@@ -200,8 +200,9 @@ public class ProjectDataTableDAO {
 		int sponsor=rs.getInt("proj_sponsor");
 		int category=rs.getInt("proj_category");
 		boolean ap=rs.getBoolean("proj_approval");
+		String thum = rs.getString("proj_thum");
 		
-		ProjectDataBean pe = new ProjectDataBean(id, writer, title, date, content, image, deadline, goal, currentMoney, sponsor, category, ap);
+		ProjectDataBean pe = new ProjectDataBean(id, writer, title, date, content, image, deadline, goal, currentMoney, sponsor, category, ap, thum);
 		return pe;
 	}
 }
