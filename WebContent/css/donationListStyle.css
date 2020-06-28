@@ -2,6 +2,23 @@
 /*
 bootstrap info color = #17a2b8;
 */
+.wrap{
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.content{
+	font-family: NanumBarunGothic,dotum,Sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+	color: #202020;
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	width: 1140px;
+	margin: 600px auto 0;
+}
 .MainDonateList{
 	font-family: NanumBarunGothic,dotum,Sans-serif;
 	font-size: 14px;
@@ -13,19 +30,21 @@ bootstrap info color = #17a2b8;
 	clear: both;
 	margin: 40px auto -24px;
 }
-.card{font-size: 14px;
-line-height: 19px;
--webkit-font-smoothing: antialiased;
-box-sizing: border-box;
-text-decoration: none;
-color: inherit;
-float: left;
-position: relative;
-width: 267px;
-height: 381px;
-margin: 0 0 24px 24px;
-background-color: #fff;
-font-family: NanumSquareWebFont,dotum,Sans-serif;}
+.card{
+	font-size: 14px;
+	line-height: 19px;
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	text-decoration: none;
+	color: inherit;
+	float: left;
+	position: relative;
+	width: 267px;
+	height: 381px;
+	margin: 0 0 24px 24px;
+	background-color: #fff;
+	font-family: NanumSquareWebFont,dotum,Sans-serif;
+}
 .card_img{
 	vertical-align: top;
 }

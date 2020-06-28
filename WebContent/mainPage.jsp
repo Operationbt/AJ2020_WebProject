@@ -23,11 +23,8 @@
 
 
 <%-- 개설된 프로젝트 제목과 작은 설명 보여주는 공간 --%>
-<div class="container">
-	<div style="padding-top:0px">
-		<jsp:include page="donationList.jsp"/>
-	</div>
-</div>
+
+<jsp:include page="donationList.jsp"/>
 
 </body>
 </html>
