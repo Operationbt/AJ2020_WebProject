@@ -42,7 +42,7 @@ CREATE TABLE `userdata_tb` (
 
 LOCK TABLES `userdata_tb` WRITE;
 /*!40000 ALTER TABLE `userdata_tb` DISABLE KEYS */;
-INSERT INTO `userdata_tb` VALUES ('admin','admin',944998,0,1,NULL,NULL,NULL,NULL),('baek','1234',12000,0,0,NULL,NULL,NULL,NULL),('hihi','1234',300000,NULL,0,NULL,NULL,NULL,NULL),('newnew','1234',0,NULL,0,'백지훈','operationbt@naver.com','01072398302','2020-06-05'),('test','0000',65400,100,0,NULL,NULL,NULL,NULL),('zzz','123',0,0,0,'dfsdf','sdgf@naver.com','123','2020-06-09');
+INSERT INTO `userdata_tb` VALUES ('admin','admin',89348800,200,1,NULL,NULL,NULL,NULL),('baek','1234',98000,0,0,NULL,NULL,NULL,NULL),('hihi','1234',300000,NULL,0,NULL,NULL,NULL,NULL),('newnew','1234',0,NULL,0,'백지훈','operationbt@naver.com','01072398302','2020-06-05'),('test','0000',65500,0,0,NULL,NULL,NULL,NULL),('zzz','123',0,0,0,'dfsdf','sdgf@naver.com','123','2020-06-09');
 /*!40000 ALTER TABLE `userdata_tb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-09 23:19:45
+-- Dump completed on 2020-06-29 16:02:18
