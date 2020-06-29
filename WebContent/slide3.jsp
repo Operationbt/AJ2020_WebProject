@@ -8,9 +8,9 @@
 <head>
 <style type="text/css">	
 	/* banner */
-	.banner {position: relative; width: 1000px; height: 310px; top: 0px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner {position: relative; width: 1100px; height: 310px; top: 0px;  margin-left:0px; auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
-	.banner ul li {float: left; width: 1000px; height: 310px; margin:0; padding:0;}
+	.banner ul li {float: left; width: 1100px; height: 310px; margin:0; padding:0;}
 .banner .btn_prev { left:0px;}
 .banner .btn_next { right:10px;}
 .banner .btn_prev,.product_con .btn_next { position:absolute;top:100px;}
@@ -28,7 +28,7 @@
 			<ul>
 				<c:forEach var="donation" items="${dList}">
 					<c:if test="${donation.getThumImageURL() != null && donation.getThumImageURL().length() != 0}"> <!-- 배너 썸네일 있는거만 -->
-						<li><a href="DetailViewAction.do?pid=${donation.getPid()}"><img src="${donation.getThumImageURL()}" width="1000" height="310px"></a></li>
+						<li><a href="DetailViewAction.do?pid=${donation.getPid()}"><img src="${donation.getThumImageURL()}" width="1100" height="310px"></a></li>
 					</c:if>
 				</c:forEach>
 			</ul>

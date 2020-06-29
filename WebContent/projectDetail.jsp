@@ -74,9 +74,10 @@ footer{
 		후원자 현황 : ${project.getSponsor()}명
 		<br>
 		모금 현황 : <fmt:formatNumber value="${project.getCurrent()}" pattern="#,###" /><span class="text">원</span>
-	
+		<br>
+		목표 금액 : <fmt:formatNumber value="${project.getGoal()}" pattern="#,###" /><span class="text">원</span>
 	</div>
-	<div class="col-md-10" style="margin-left:70px; padding-top:30px">	<!-- 프로젝트 첨부 이미지 -->
+	<div class="col-md-10" style="margin-left:70px; padding-top:10px">	<!-- 프로젝트 첨부 이미지 -->
 		<c:if test="${project.getImageURL() != null && project.getImageURL().length() != 0}">
 			<img src="${project.getImageURL()}" width="100%"/>
 		</c:if>

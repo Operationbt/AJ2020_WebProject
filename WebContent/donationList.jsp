@@ -32,7 +32,7 @@
 						</c:choose>
 						<div class="card_content">
 							<strong class="card_title">${donation.getTitle()}</strong>
-							<div class="card_organization">${donation.getWriter()}</div>
+							<div class="card_organization">${donation.getWriter()}님의 프로젝트</div>
 							<div class="card_bar" aria-label="모금률">
 								<!-- 100% 넘는 경우 예외 처리(안하면 뚫고나감) -->
 								<c:choose>
@@ -63,7 +63,7 @@
 						</c:choose>
 						<div class="card_content">
 							<strong class="card_title">${donation.getTitle()}</strong>
-							<div class="card_organization">${donation.getWriter()}</div>
+							<div class="card_organization">${donation.getWriter()}님의 프로젝트</div>
 							<div class="card_bar" aria-label="모금률">
 								<!-- 100% 넘는 경우 예외 처리(안하면 뚫고나감) -->
 								<c:choose>
@@ -95,7 +95,7 @@
 						</c:choose>
 						<div class="card_content">
 							<strong class="card_title">${donation.getTitle()}</strong>
-							<div class="card_organization">${donation.getWriter()}</div>
+							<div class="card_organization">${donation.getWriter()}님의 프로젝트</div>
 							<div class="card_bar" aria-label="모금률">
 								<!-- 100% 넘는 경우 예외 처리(안하면 뚫고나감) -->
 								<c:choose>

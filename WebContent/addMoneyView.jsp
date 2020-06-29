@@ -8,22 +8,19 @@
 <title>Add Money View</title>
 </head>
 <body>
-<div class="container">
-<a class="navbar-brand" href="index.jsp">Home</a>
+<jsp:include page="menuView.jsp" />
+<div class="jumbotron" width=600px>
+	<div class="container" style="padding-top: 0px; width:1000px; margin-left:100px; margin-top:0px; margin-right:100px">
 <form name="addMoneyForm" action="AddMoneyAction.do" method="post">
 	<div class="form-group row">
 		<label class="col-sm-3">충전할 금액을 입력하세요</label>
 		<div class="col-sm-2">
 			<input type="text" value="0" name="Amount" class="form-control" onkeyPress="return onlyNumber(event)">
-		</div>
-	</div>
-	<div class="form-group row">
-		<div class="col-sm-offset-2 col-sm-10">
 			<input type="submit" value="확인">
 		</div>
 	</div>
 </form>
-</div>
+</div></div>
 </body>
 <script type="text/javascript">
 function onlyNumber(evt){

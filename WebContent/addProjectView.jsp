@@ -89,6 +89,10 @@ function checkForm(){
 		alert("빈 칸을 채워주세요");
 		return false;
 	}
+	else{
+		alert("신청완료")
+	}
+		
 }
 function onlyNumber(evt){
 	var charCode=(evt.which) ? evt.which:event.keyCode;
