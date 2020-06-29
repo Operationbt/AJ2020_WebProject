@@ -43,7 +43,9 @@ function checkForm(m){
 		alert("보유 금액을 넘는 금액은 후원할 수 없습니다.");
 		return false;
 	}
-	return true;
+	else {
+		alert(document.donate.donationAmount.value+"원 기부 감사합니다!")
+		return true;}
 }
 function inNumber(){
 	if(event.keyCode<48 || event.keyCode>57){
